@@ -1,0 +1,21 @@
+# Jekyll output directory (where the final HTML is generated)
+_site/
+
+# Jekyll cache and metadata
+.jekyll-cache/
+.jekyll-metadata
+
+# Ruby dependencies (installed via Bundler)
+.bundle/
+vendor/
+Gemfile.lock
+
+# System files and Editor configurations
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Log files
+*.log
