@@ -1,28 +1,84 @@
 {% assign lang = page.lang | default: "en" %}
 <!DOCTYPE html>
-<html lang="{{ lang }}">
+<html lang="{{ lang }}" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title }} | {{ site.title }}</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        (function() {
+            try {
+                var saved = localStorage.getItem('theme');
+                var theme = saved === 'dark' || saved === 'light' ? saved : 'light';
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
 </head>
-<body>
-    <nav>
-        {% if page.lang == "es" %}
-            <a href="{{ '/es/' | relative_url }}">Inicio</a>
-            <a href="{{ '/es/proyectos/' | relative_url }}">Proyectos</a>
-            <a href="{{ '/es/publicaciones/' | relative_url }}">Publicaciones</a>
-            <a href="{{ '/' | relative_url }}" class="lang-btn">English</a>
-        {% else %}
-            <a href="{{ '/' | relative_url }}">Home</a>
-            <a href="{{ '/projects/' | relative_url }}">Projects</a>
-            <a href="{{ '/publications/' | relative_url }}">Publications</a>
-            <a href="{{ '/es/' | relative_url }}" class="lang-btn">Español</a>
-        {% endif %}
-    </nav>
+<body class="bg-global-bg text-global-text antialiased">
 
-    <main>
-        {{ content }}
+    <!-- Fixed Header -->
+    <header id="main-header" class="group">
+        <div class="header-grid">
+            <a href="{{ '/' | relative_url }}" class="group header-logo flex items-center">
+                <svg aria-hidden="true" class="me-3 h-10 w-6 sm:me-3 sm:h-20 sm:w-12" fill="none" viewBox="0 0 800 800">
+                    <title>Logo</title>
+                    </svg>
+            </a>
+
+            <div class="header-title">
+                <span class="text-xl font-bold sm:text-2xl">{{ site.title }}</span>
+            </div>
+
+            <nav class="mobile-nav-menu header-nav sm:flex sm:flex-row sm:items-center" id="navigation-menu">
+                {% if page.lang == "es" %}
+                    <a href="{{ '/es/' | relative_url }}">{{ site.data.i18n.home.es }}</a>
+                    <a href="{{ '/es/proyectos/' | relative_url }}">{{ site.data.i18n.projects.es }}</a>
+                    <a href="{{ '/es/publicaciones/' | relative_url }}">{{ site.data.i18n.publications.es }}</a>
+                {% else %}
+                    <a href="{{ '/' | relative_url }}">{{ site.data.i18n.home.en }}</a>
+                    <a href="{{ '/projects/' | relative_url }}">{{ site.data.i18n.projects.en }}</a>
+                    <a href="{{ '/publications/' | relative_url }}">{{ site.data.i18n.publications.en }}</a>
+                {% endif %}
+            </nav>
+
+            <div class="header-controls flex items-center gap-3">
+                {% if page.lang == "es" %}
+                    <a href="{{ '/' | relative_url }}" class="lang-switch-btn"><span class="icon">🌐</span>{{ site.data.i18n.lang_label.es }}</a>
+                {% else %}
+                    <a href="{{ '/es/' | relative_url }}" class="lang-switch-btn"><span class="icon">🌐</span>{{ site.data.i18n.lang_label.en }}</a>
+                {% endif %}
+
+                <button id="theme-toggle" class="flex h-7 w-7 items-center justify-center rounded-md border border-accent-2/20 bg-accent-2/10 p-1 transition-colors hover:bg-accent-2/20" aria-label="Switch theme">
+                    <svg class="sun-icon h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" /></svg>
+                    <svg class="moon-icon h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" /></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="mx-auto max-w-3xl px-4 sm:px-8">
+        <!-- About Section -->
+        <section class="mb-16">
+            <div class="prose">
+                {{ content }}
+            </div>
+        </section>
+        
     </main>
+
+    <!-- Footer -->
+    <footer class="mx-auto max-w-3xl px-4 sm:px-8 py-8 text-center text-sm opacity-75">
+        <p>&copy; {{ site.time | date: '%Y' }} - {{ site.title }}</p>
+    </footer>
+
+    <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
 </body>
 </html>

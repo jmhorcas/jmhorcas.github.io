@@ -1,9 +1,12 @@
-nav_projects:
+home:
+  en: "Home"
+  es: "Inicio"
+projects:
   en: "Projects"
   es: "Proyectos"
-nav_about:
-  en: "About"
-  es: "Sobre mí"
-switch_lang:
+publications:
+  en: "Publications"
+  es: "Publicaciones"
+lang_label:
   en: "Español"
   es: "English"
