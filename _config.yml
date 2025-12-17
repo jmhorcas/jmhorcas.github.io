@@ -1,0 +1,22 @@
+title: José Miguel Horcas Aguilera
+email: horcas@uma.es
+description: Personal website
+baseurl: "" # Empty Leave it empty if it's for a github.io domain
+url: "https://jmhorcas.github.io"
+
+collections:
+  projects: # English
+    output: true
+    permalink: /projects/:path/
+  projects_es: # Spanish
+    output: true
+    permalink: /es/projects/:path/
+  publications: # English
+    output: true
+    permalink: /publications/:path/
+  publications_es: # Spanish
+    output: true
+    permalink: /es/publications/:path/
+
+# Markdown configuration
+markdown: kramdown
