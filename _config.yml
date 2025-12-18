@@ -1,8 +1,12 @@
 title: José Miguel Horcas Aguilera
+author: José Miguel Horcas
 email: horcas@uma.es
 description: Personal website
 baseurl: "" # Empty Leave it empty if it's for a github.io domain
 url: "https://jmhorcas.github.io"
+
+# Markdown configuration
+markdown: kramdown
 
 collections:
   projects: # English
@@ -18,5 +22,30 @@ collections:
     output: true
     permalink: /es/publications/:path/
 
-# Markdown configuration
-markdown: kramdown
+defaults:
+  # Configuración para Proyectos en Inglés
+  - scope:
+      path: "" # Archivos en la raíz
+      type: "projects" # Todos los archivos en la colección 'projects'
+    values:
+      layout: "default"
+      lang: "en"
+  # Configuración para Proyectos en Español
+  - scope:
+      path: ""
+      type: "projects_es" # Todos los archivos en la colección 'projects_es'
+    values:
+      layout: "default"
+      lang: "es"
+  - scope:
+      path: ""
+      type: "publications" # Para las publicaciones también
+    values:
+      layout: "default"
+      lang: "en"
+  - scope:
+      path: ""
+      type: "publications_es"
+    values:
+      layout: "default"
+      lang: "es"

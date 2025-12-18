@@ -8,5 +8,26 @@ publications:
   en: "Publications"
   es: "Publicaciones"
 lang_label:
-  en: "Español"
-  es: "English"
+  en: "English"
+  es: "Español"
+months:
+  en: "months"
+  es: "meses"
+research_team:
+  en: "Research Team"
+  es: "Equipo de Investigación"
+funding_entity:
+  en: "Funding Entity"
+  es: "Entidad Financiadora"
+ip:
+  en: "Principal Investigator"
+  es: "Investigador Principal"
+ip_short:
+  en: "PI"
+  es: "IP"
+funds:
+  en: "Funds"
+  es: "Fondos"
+duration:
+  en: "Duration"
+  es: "Duración"

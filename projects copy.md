@@ -1,0 +1,55 @@
+---
+layout: default
+title: Projects
+permalink: /projects/
+lang: en
+---
+{% assign t = site.data.i18n %}
+
+<h1>{{t.projects[page.lang]}}</h1>
+
+{% comment %}
+  1. Creamos un array de años únicos extrayendo el año de cada fecha
+{% endcomment %}
+{% assign years = "" | split: "" %}
+{% for project in site.projects %}
+  {% assign y = project.start_date | date: "%Y" %}
+  {% assign years = years | push: y | uniq %}
+{% endfor %}
+
+{% comment %}
+  2. Ordenamos los años (del más reciente al más antiguo)
+{% endcomment %}
+{% assign years = years | sort | reverse %}
+
+{% comment %}
+  3. Iteramos por cada año y buscamos los proyectos que coincidan
+{% endcomment %}
+
+<div class="timeline">
+{% for year in years %}
+  <span class="timeline-org">{{ year }}</span>
+  {% for project in site.projects %}
+    {% assign project_year = project.start_date | date: "%Y" %}
+    {% assign ips =  project.ips | split: ", " %}
+    {% assign members = project.research_team | split: ", " %}
+    {% assign members = ips | concat: members %}
+    {% if project_year == year %}
+      <div class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div class="timeline-header">
+          <span class="timeline-org">{{project.acronym}} ({{project.identifier}})</span>
+          <span class="timeline-dates"><i class="fa-regular fa-calendar-days" title="{{t.duration[page.lang]}}"></i>{{ project.start_date | date: "%d %b %Y" }} - {{ project.end_date | date: "%d %b %Y" }} ({{project.months}} {{t.months[page.lang]}})</span>
+          <span class="timeline-role">{{project.title}}</span>
+        </div>
+        <span class="timeline-meta"><i class="fa-solid fa-coins" title="{{t.funds[page.lang]}}"></i><span class="format-number">{{ project.funds }}</span> €</span>
+        <span class="timeline-meta"><i class="fa-solid fa-building-columns" title="{{t.funding_entity[page.lang]}}"></i>{{project.funding_entity}} ({{project.call}})</span>
+        <!-- <div class="timeline-meta"><i class="fa-solid fa-user-tie" title="{{t.ip[page.lang]}}"></i>{% for member in ips %}{% if member == site.author %}<u>{{member}}</u>{% else %}{{member}}{% endif %}{% unless forloop.last %} • {% endunless %}{% endfor %}</div>-->
+        <div class="timeline-meta"><i class="fa-solid fa-people-group" title="{{t.research_team[page.lang]}}"></i>({{members | size}}){% for member in members %}{% if member == site.author %}<u>{{member}}</u>{% else %}{{member}}{% endif %}{% if ips contains member %}<sup>{{t.ip_short[page.lang]}}</sup>{% endif %}{% unless forloop.last %} • {% endunless %}{% endfor %}</div>
+        <!-- <div class="timeline-meta">Rol: {{project.rol}}</div> -->
+        <!-- <div class="timeline-desc">Investigating mechanistic interpretability for long-context reasoning in LLMs.</div> -->
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+</div>
