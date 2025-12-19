@@ -13,7 +13,7 @@ program: Proyecto Operativo FEDER Andalucía 2014-2020
 ips: Lidia Fuentes, Mercedes Amor
 research_team: Mónica Pinto, Inmaculada Ayala, José Miguel Horcas, José Antonio Montenegro, Daniel Jesús Muñoz
 working_team: Ángel Cañete, Alberto Rodríguez, Pablo Serrano, María Fernández
-rol: Equipo colaborador
+role: Equipo colaborador
 description: Esto es la descripción del proyecto.
 ---
 # {{ page.title }}

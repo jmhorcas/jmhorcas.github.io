@@ -13,7 +13,7 @@ program: Programa Estatal de I+D+i Orientada a los Retos de la Sociedad
 ips: Lidia Fuentes
 research_team: Mónica Pinto, Mercedes Amor, Inmaculada Ayala, José Miguel Horcas, José Antonio Montenegro, Daniel Jesús Muñoz
 working_team: 
-rol: Equipo de Trabajo
+role: Equipo de Trabajo
 description: Esto es la descripción del proyecto.
 ---
 # {{ page.title }}

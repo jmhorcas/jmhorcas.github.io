@@ -3,9 +3,9 @@ title: "Red en Nuevas Tendencias en Arquitectura Software y Variabilidad"
 acronym: TASOVA
 identifier: TIN2017-90644-REDT
 funds: 10000.00
-start_date: 2022-01-01 
-end_date: 2026-03-31
-months: 51
+start_date: 2018-07-01 
+end_date: 2020-12-31
+months: 30
 scope: nacional
 funding_entity: Ministerio de Ciencia, Innovación y Universidades (MCIU)
 call: Conv. 2017 «Redes de Excelencia»
@@ -15,9 +15,9 @@ framework: "Plan Estatal de Investigación Científica y Técnica y de Innovaci�
 ips: Lidia Fuentes
 research_team:
 working_team: 
-rol: Equipo de Trabajo
+role: Equipo de Trabajo
 description: Esto es la descripción del proyecto.
-url: "http://tasova.uma.es/"
+website: "http://tasova.uma.es/"
 ---
 # {{ page.title }}
 Aquí va toda la explicación detallada de este proyecto...

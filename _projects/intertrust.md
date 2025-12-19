@@ -13,9 +13,9 @@ program: 'Specific Programme "Cooperation": Information and communication techno
 ips: Lidia Fuentes
 research_team: Mónica Pinto, Mercedes Amor, Inmaculada Ayala
 working_team: José Miguel Horcas, Nadia Gámez, Gustavo G. Pascual
-rol: "Project Staff: Project-funded Research Assistant"
+role: "Project Staff: Project-funded Research Assistant"
 description: Esto es la descripción del proyecto.
-url: "https://cordis.europa.eu/project/id/317731"
+website: "https://cordis.europa.eu/project/id/317731"
 ---
 # {{ page.title }}
 Aquí va toda la explicación detallada de este proyecto...

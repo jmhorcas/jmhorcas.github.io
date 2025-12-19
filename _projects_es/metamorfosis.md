@@ -15,7 +15,7 @@ ips: David Benavides, María Teresa Gómez
 research_team: Diana Borrego, Rafael Ceballos, Rafael Corchuelo, Patricia Jiménez, María Luisa Parody, Antonia María Reina, Ángel Jesús Varela, José Á. Galindo
 working_team:
 collaborating_team: Francisco Javier Busto, Josep Carmona, Alexander Felferning, Eduardo Fernández-Medina, Antonio José García, José Miguel Horcas, Belén Ramos, Hassan Sleiman, Pedro Szekely, Álvaro Valencia
-rol: Equipo colaborador
+role: Equipo colaborador
 description: Esto es la descripción del proyecto.
 ---
 # {{ page.title }}

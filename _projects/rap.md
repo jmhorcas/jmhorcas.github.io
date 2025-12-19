@@ -6,16 +6,17 @@ funds: 150040.00
 start_date: 2009-01-01 
 end_date: 2013-06-30
 months: 54
-scope: nacional
-funding_entity: Ministerio de Ciencia e Innovación
-call: "Conv. 2008 Proyectos I+D+i"
-program: 
-framework: "Plan Nacional de Investigación Científica, Desarrollo e Innovación 2008-2011"
+scope: national
+funding_entity: Ministerio de Ciencia e Innovación (MICINN)
+call: Proyectos de I+D+i (Conv. 2018)
+program: Programa Nacional de Proyectos de Investigación Fundamental
+subprogram: Subprograma de Proyectos de Investigación Fundamental no Orientada
+framework: Plan Nacional de Investigación Científica, Desarrollo e Innovación 2008-2011
 ips: Lidia Fuentes
 research_team: Mónica Pinto, Mercedes Amor, José María Troya, Daniel Garrido
 working_team: Inmaculada Ayala, Nadia Gámez, José Miguel Horcas
-rol: "Project Staff: Project-funded Specialist Technician"
-description: Esto es la descripción del proyecto.
+role: "Project Staff: Project-funded Specialist Technician"
+description: Automation of software development using model-driven engineering and aspect-oriented programming to optimize complex systems and IoT environments.
 ---
 # {{ page.title }}
 Aquí va toda la explicación detallada de este proyecto...

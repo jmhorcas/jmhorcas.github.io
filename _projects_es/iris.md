@@ -14,7 +14,7 @@ framework: "Programa Estatal para Impulsar la Investigación Científico-Técnic
 ips: Lidia Fuentes, Mercedes Amor
 research_team: Mónica Pinto, Lawrence Mandow, Inmaculada Ayala, Joaquín Ballesteros, José Miguel Horcas, Daniel Jesús Muñoz
 working_team: 
-rol: Equipo de Investigación
+role: Equipo de Investigación
 description: Esto es la descripción del proyecto.
 ---
 # {{ page.title }}

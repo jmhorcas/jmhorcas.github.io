@@ -14,7 +14,7 @@ framework: "Programa Operativo FEDER Andalucía 2014-2020 «Crecimiento intelige
 ips: Lidia Fuentes, Mónica Pinto
 research_team: Mercedes Amor, Lawrence Mandow, Inmaculada Ayala, Joaquín Ballesteros, José Miguel Horcas, Daniel Jesús Muñoz
 working_team: 
-rol: Equipo colaborador
+role: Equipo colaborador
 description: Esto es la descripción del proyecto.
 ---
 # {{ page.title }}

@@ -14,7 +14,7 @@ framework: "Plan Estatal de Investigación Científica y Técnica y de Innovaci�
 ips: Manuel Resinas Arias, David Benavides
 research_team: Beatriz Bernárdez, Adela del Río, Amador Durán, José Á. Galindo, Alfonso Eduardo Márquez, Pablo Neira, Joaquín Peña
 working_team: Margarita Cruz, Irene Bedilia Estrada, José Miguel Horcas, Víctor Hugo Rea, David Romero Organvídez
-rol: Equipo de Trabajo
+role: Equipo de Trabajo
 description: Esto es la descripción del proyecto.
 ---
 # {{ page.title }}

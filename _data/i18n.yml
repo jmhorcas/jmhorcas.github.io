@@ -40,3 +40,9 @@ working_team:
 collaborating_team:
   en: "Collaborating Team"
   es: "Equipo Colaborador"
+website:
+  en: "Website"
+  es: "Sitio Web"
+language:
+  en: "Language"
+  es: "Idioma"

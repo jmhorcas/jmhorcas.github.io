@@ -13,9 +13,9 @@ program:
 ips: Lidia Fuentes
 research_team: Mónica Pinto, Mercedes Amor, Inmaculada Ayala
 working_team: José Miguel Horcas, Daniel Jesús Muñoz
-rol: "Project Staff: Predoctoral and Postdoctoral Researcher FPI Fellowship"
+role: "Project Staff: Predoctoral and Postdoctoral Researcher FPI Fellowship"
 description: Esto es la descripción del proyecto.
-url: "https://caosd.lcc.uma.es/magic/"
+website: "https://caosd.lcc.uma.es/magic/"
 ---
 # {{ page.title }}
 Aquí va toda la explicación detallada de este proyecto...

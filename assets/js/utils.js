@@ -3,6 +3,19 @@
  */
 const ProjectUtils = (function() {
     
+    // Función para traducir las fechas (ej: Dec -> dic)
+    const formatDate = (dateStr, lang) => {
+        if (!dateStr) return "";
+        const date = dateStr === 'now' ? new Date() : new Date(dateStr);
+        
+        // Usamos Intl.DateTimeFormat para obtener el nombre del mes en el idioma correcto
+        return new Intl.DateTimeFormat(lang, {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric'
+        }).format(date);
+    };
+
     const calculateDuration = (startStr, endStr, lang) => {
         const start = new Date(startStr);
         const end = new Date(endStr);
@@ -31,12 +44,19 @@ const ProjectUtils = (function() {
 
     const init = () => {
         document.querySelectorAll('.duration-container').forEach(container => {
+            const lang = container.getAttribute('data-lang') || 'en';
+            const startStr = container.getAttribute('data-start');
+            const endStr = container.getAttribute('data-end') || 'now';
+
+            // 1. Formatear las fechas visibles (Traducción de meses)
+            container.querySelectorAll('.format-date').forEach(el => {
+                const dateToFormat = el.getAttribute('data-date');
+                el.innerText = formatDate(dateToFormat, lang);
+            });
+
+            // 2. Calcular y mostrar duración
             const display = container.querySelector('.duration-display');
-            const durationText = calculateDuration(
-                container.getAttribute('data-start'),
-                container.getAttribute('data-end'),
-                container.getAttribute('data-lang')
-            );
+            const durationText = calculateDuration(startStr, endStr, lang);
             if (display) display.innerText = durationText;
         });
     };

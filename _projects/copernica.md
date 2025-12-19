@@ -15,7 +15,7 @@ ips: María Teresa Gómez
 research_team: David Benavides, Diana Borrego, Rafael Ceballos, José Á. Galindo, Rafael Martínez, Pablo Neira, Antonia María Reina, Ángel Jesús Varela
 working_team:
 collaborating_team: Don Batory, Paolo Ceravolo, Alexander Felferning, José Miguel Horcas, Salvador Muñoz, María Luisa Parody, José Miguel Pérez, Belén Ramos, Álvaro Valencia, Moe Wynn
-rol: Collaborating Researcher
+role: Collaborating Researcher
 description: Esto es la descripción del proyecto.
 ---
 # {{ page.title }}

@@ -15,7 +15,7 @@ framework: "Programa Estatal para la Investigación y el Desarrollo Experimental
 ips: Lidia Fuentes, Mercedes Amor
 research_team: Mónica Pinto, Lawrence Mandow, Inmaculada Ayala, Joaquín Ballesteros, José Miguel Horcas, Daniel Jesús Muñoz
 working_team: 
-rol: Research Team
+role: Research Team
 description: Esto es la descripción del proyecto.
 ---
 # {{ page.title }}

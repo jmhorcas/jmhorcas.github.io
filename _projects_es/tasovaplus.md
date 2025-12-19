@@ -14,9 +14,9 @@ framework: "Plan Estatal de Investigación Científica, Técnica y de Innovació
 ips: David Benavides (US)
 research_team: Lidia Fuentes (UMA), Óscar Díaz (UPV), Rubén Heradio (UNED), Miguel Ángel R. Luaces (UDC), Jennifer Pérez (UPM), Juan Boubeta (UCA), Elena Navarro (UCLM), Rafael Capilla (URJC), Emilio Insfrán (UPV), Leire Etxeberria (Mondragon), Carlos Cetina (USJ), Cristina Vicente (UEx)
 working_team: 
-rol: Project Staff
+role: Project Staff
 description: Esto es la descripción del proyecto.
-url: "https://tasovaplus.github.io/"
+website: "https://tasovaplus.github.io/"
 ---
 # {{ page.title }}
 Aquí va toda la explicación detallada de este proyecto...

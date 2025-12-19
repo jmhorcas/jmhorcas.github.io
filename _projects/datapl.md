@@ -14,7 +14,7 @@ framework: "Programa Estatal para Impulsar la Investigación Científico-Técnic
 ips: David Benavides, José Á. Galindo
 research_team: Megha, Francisco José Domínguez, Pablo Neira
 working_team: Antonio Javier Fernández, Manuel Giménez, Antonio Manuel Gutiérrez, Hiba Hnaini, José Miguel Horcas, Antonio Germán Márquez, Raul Mazo, Leticia Morales, Salvador Muñoz, Miguel Ángel Olivero, David Romero Organvídez, José Antonio Zamudio, Francisco Sebastian Benitez, Noelia Lopez, Jesús Moreno, José Manuel Sánchez
-rol: Equipo de Trabajo
+role: Equipo de Trabajo
 description: Esto es la descripción del proyecto.
 ---
 # {{ page.title }}

@@ -11,7 +11,6 @@
     <title>{{ page.title }} | {{ site.title }}</title>
     <link rel="icon" type="image/svg+xml" href="{{ '/assets/img/favicon.svg' | relative_url }}">
     
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
@@ -72,7 +71,7 @@
                 {% assign target_url = target_url | replace: '.html', '/' %}
 
                 <a href="{{ target_url | relative_url }}" class="lang-switch-btn">
-                    <span class="icon">🌐</span>{{ site.data.i18n.lang_label[target_lang] }}
+                    <i class="fa-solid fa-language" title="site.data.i18n.language[lang]"></i>{{ site.data.i18n.lang_label[target_lang] }}
                 </a>
 
                 <button id="theme-toggle" class="flex h-7 w-7 items-center justify-center rounded-md border border-accent-2/20 bg-accent-2/10 p-1 transition-colors hover:bg-accent-2/20" aria-label="Switch theme">
