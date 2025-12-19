@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Fondo negro -->
+  <rect width="512" height="512" rx="120" fill="#000000"/>
+
+  <!-- Texto verde -->
+  <text x="50%" y="52%" 
+        font-family="'JetBrains Mono', monospace"
+        font-weight="900"
+        font-size="280"
+        fill="#5ff26b"
+        text-anchor="middle"
+        dominant-baseline="middle"
+        letter-spacing="-15">
+    JMH
+  </text>
+</svg>

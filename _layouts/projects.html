@@ -36,7 +36,9 @@ layout: default
 
 <div class="timeline">
 {% for year in years %}
-  <span class="timeline-org">{{ year }}</span>
+  <div class="timeline-year-header">
+    <span class="timeline-year-label">{{ year }}</span>
+  </div>
   {% for project in projects %}
     {% assign project_year = project.start_date | date: "%Y" %}
     {% assign ips =  project.ips | split: ", " %}
