@@ -68,9 +68,9 @@ layout: default
           <div class="timeline-meta"><i class="fa-solid fa-users-gear" title="{{t.collaborating_team[page.lang]}}"></i> ({{collaborating_team | size}}) {% for member in collaborating_team %}{% if member == site.author %}<u>{{member}}</u>{% else %}{{member}}{% endif %}{% unless forloop.last %} • {% endunless %}{% endfor %}</div>
         {% endif %}
         {% if page.lang == "en" %}
-          <div class="timeline-meta"><i class="fa-regular fa-user" title="{{ site.author}}'s role"></i> {{project.role}}</div>
+          <div class="timeline-meta"><i class="fa-regular fa-user" title="{{ site.author}}'s role"></i>{{project.role}}</div>
         {% else %}
-          <div class="timeline-meta"><i class="fa-regular fa-user" title="Rol de {{ site.author}}"></i> {{project.role}}</div>
+          <div class="timeline-meta"><i class="fa-regular fa-user" title="Rol de {{ site.author}}"></i>{{project.role}}</div>
         {% endif %}
         {% if project.description %}
           <div class="timeline-desc">{{project.description}}</div>
