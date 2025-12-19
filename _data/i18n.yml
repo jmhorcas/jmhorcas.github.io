@@ -31,3 +31,12 @@ funds:
 duration:
   en: "Duration"
   es: "Duración"
+researchers:
+  en: "Researchers"
+  es: "Investigadores"
+working_team:
+  en: "Project Staff"
+  es: "Equipo de Trabajo"
+collaborating_team:
+  en: "Collaborating Team"
+  es: "Equipo Colaborador"

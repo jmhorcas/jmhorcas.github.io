@@ -40,21 +40,33 @@ layout: default
   {% for project in projects %}
     {% assign project_year = project.start_date | date: "%Y" %}
     {% assign ips =  project.ips | split: ", " %}
-    {% assign members = project.research_team | split: ", " %}
-    {% assign members = ips | concat: members %}
+    {% assign research_team = project.research_team | split: ", " %}
+    {% assign working_team = project.working_team | split: ", " %}
+    {% assign collaborating_team = project.collaborating_team | split: ", " %}
+    {% assign members = ips | concat: research_team %}
     {% if project_year == year %}
       <div class="timeline-item">
         <span class="timeline-dot"></span>
         <div class="timeline-header">
           <span class="timeline-org">{{project.acronym}} ({{project.identifier}})</span>
-          <span class="timeline-dates"><i class="fa-regular fa-calendar-days" title="{{t.duration[page.lang]}}"></i>{{ project.start_date | date: "%d %b %Y" }} - {{ project.end_date | date: "%d %b %Y" }} ({{project.months}} {{t.months[page.lang]}})</span>
+          <!-- <span class="timeline-dates"><span title="{{t.duration[page.lang]}}">📆</span>{{ project.start_date | date: "%d %b %Y" }} - {{ project.end_date | date: "%d %b %Y" }} ({{project.months}} {{t.months[page.lang]}})</span> -->
+          <span class="timeline-dates duration-container" data-start="{{ project.start_date }}" data-end="{{ project.end_date | default: 'now' }}" data-lang="{{ page.lang }}">
+            <span title="{{ t.duration[page.lang] }}">📆</span> {{ project.start_date | date: "%d %b %Y" }} - {{ project.end_date | date: "%d %b %Y" }} (<span class="duration-display"></span>)
+          </span>
           <span class="timeline-role">{{project.title}}</span>
         </div>
         <span class="timeline-meta"><i class="fa-solid fa-coins" title="{{t.funds[page.lang]}}"></i><span class="format-number">{{ project.funds }}</span> €</span>
-        <span class="timeline-meta"><i class="fa-solid fa-building-columns" title="{{t.funding_entity[page.lang]}}"></i>{{project.funding_entity}} ({{project.call}})</span>
+        <span class="timeline-meta"><i class="fa-solid fa-building-columns" title="{{t.funding_entity[page.lang]}}"></i>{{project.funding_entity}} • {{project.call}}</span>
         <!-- <div class="timeline-meta"><i class="fa-solid fa-user-tie" title="{{t.ip[page.lang]}}"></i>{% for member in ips %}{% if member == site.author %}<u>{{member}}</u>{% else %}{{member}}{% endif %}{% unless forloop.last %} • {% endunless %}{% endfor %}</div>-->
-        <div class="timeline-meta"><i class="fa-solid fa-people-group" title="{{t.research_team[page.lang]}}"></i>({{members | size}}){% for member in members %}{% if member == site.author %}<u>{{member}}</u>{% else %}{{member}}{% endif %}{% if ips contains member %}<sup>{{t.ip_short[page.lang]}}</sup>{% endif %}{% unless forloop.last %} • {% endunless %}{% endfor %}</div>
-        <!-- <div class="timeline-meta">Rol: {{project.rol}}</div> -->
+        <div class="timeline-meta"><i class="fa-solid fa-users" title="{{t.researchers[page.lang]}}"></i>({{members | size}}) {% for member in members %}{% if member == site.author %}<u>{{member}}</u>{% else %}{{member}}{% endif %}{% if ips contains member %}<sup>{{t.ip_short[page.lang]}}</sup>{% endif %}{% unless forloop.last %} • {% endunless %}{% endfor %}</div>
+        {% if working_team.size > 0 %}
+          <div class="timeline-meta"><i class="fa-solid fa-users-gear" title="{{t.working_team[page.lang]}}"></i>({{working_team | size}}) {% for member in working_team %}{% if member == site.author %}<u>{{member}}</u>{% else %}{{member}}{% endif %}{% unless forloop.last %} • {% endunless %}{% endfor %}</div>
+        {% endif %}
+        {% if collaborating_team.size > 0 %}
+          <div class="timeline-meta"><i class="fa-solid fa-users-gear" title="{{t.collaborating_team[page.lang]}}"></i>({{collaborating_team | size}}) {% for member in collaborating_team %}{% if member == site.author %}<u>{{member}}</u>{% else %}{{member}}{% endif %}{% unless forloop.last %} • {% endunless %}{% endfor %}</div>
+        {% endif %}
+        
+        <div class="timeline-meta">Rol: {{project.rol}}</div>
         <!-- <div class="timeline-desc">Investigating mechanistic interpretability for long-context reasoning in LLMs.</div> -->
       </div>
     {% endif %}
