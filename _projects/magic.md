@@ -8,13 +8,13 @@ end_date: 2018-01-21
 months: 48
 scope: autonómico
 funding_entity: Junta de Andalucía
-call: "Conv. 2012 Proyectos de Investigación de Excelencia"
+call: "Proyectos de Investigación de Excelencia (Conv. 2012)"
 program: 
 ips: Lidia Fuentes
 research_team: Mónica Pinto, Mercedes Amor, Inmaculada Ayala
 working_team: José Miguel Horcas, Daniel Jesús Muñoz
 role: "Project Staff: Predoctoral and Postdoctoral Researcher FPI Fellowship"
-description: Esto es la descripción del proyecto.
+description: "The goal of this project is to enhance software development processes of self-management systems for the IoT using software agents, which facilitates the reconfiguration of interconnected hetoregenous devices."
 website: "https://caosd.lcc.uma.es/magic/"
 ---
 # {{ page.title }}

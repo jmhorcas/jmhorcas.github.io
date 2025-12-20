@@ -16,7 +16,7 @@ ips: Lidia Fuentes
 research_team: Mónica Pinto, Mercedes Amor, José María Troya, Daniel Garrido
 working_team: Inmaculada Ayala, Nadia Gámez, José Miguel Horcas
 role: "Equipo de Trabajo: Técnico Especialista con cargo a proyecto"
-description: Automatización del desarrollo de software mediante ingeniería dirigida por modelos y programación orientada a aspectos para optimizar sistemas complejos e IoT.
+description: El objetivo del proyecto es la automatización del desarrollo de software mediante ingeniería dirigida por modelos y programación orientada a aspectos para optimizar sistemas complejos e IoT.
 ---
 # {{ page.title }}
 Aquí va toda la explicación detallada de este proyecto...

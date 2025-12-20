@@ -46,3 +46,6 @@ website:
 language:
   en: "Language"
   es: "Idioma"
+call:
+  en: "Call"
+  es: "Convocatoria"

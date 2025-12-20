@@ -14,7 +14,7 @@ ips: Lidia Fuentes
 research_team: Mónica Pinto, Mercedes Amor, Inmaculada Ayala
 working_team: José Miguel Horcas, Nadia Gámez, Gustavo G. Pascual
 role: "Project Staff: Project-funded Research Assistant"
-description: Esto es la descripción del proyecto.
+description: "El objetivo principal del proyecto era desarrollar un marco de seguridad dinámico que permitiera a las aplicaciones negociar, aplicar y adaptar políticas de seguridad dinámicamente durante el tiempo de ejecución."
 website: "https://cordis.europa.eu/project/id/317731"
 ---
 # {{ page.title }}

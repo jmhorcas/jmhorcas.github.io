@@ -58,7 +58,7 @@ layout: default
           <span class="timeline-title">{{project.title}}</span>
         </div>
         <span class="timeline-meta"><i class="fa-solid fa-coins" title="{{t.funds[page.lang]}}"></i><span class="format-number">{{ project.funds }}</span> €</span>
-        <span class="timeline-meta"><i class="fa-solid fa-building-columns" title="{{t.funding_entity[page.lang]}}"></i>{{project.funding_entity}} • {{project.call}}</span>
+        <span class="timeline-meta"><i class="fa-solid fa-building-columns" title="{{t.funding_entity[page.lang]}} • {{t.call[page.lang]}}"></i>{{project.funding_entity}} • {{project.call}}</span>
         <!-- <div class="timeline-meta"><i class="fa-solid fa-user-tie" title="{{t.ip[page.lang]}}"></i>{% for member in ips %}{% if member == site.author %}<u>{{member}}</u>{% else %}{{member}}{% endif %}{% unless forloop.last %} • {% endunless %}{% endfor %}</div>-->
         <div class="timeline-meta"><i class="fa-solid fa-users" title="{{t.researchers[page.lang]}}"></i> ({{members | size}}) {% for member in members %}{% if member == site.author %}<u>{{member}}</u>{% else %}{{member}}{% endif %}{% if ips contains member %}<sup>{{t.ip_short[page.lang]}}</sup>{% endif %}{% unless forloop.last %} • {% endunless %}{% endfor %}</div>
         {% if working_team.size > 0 %}

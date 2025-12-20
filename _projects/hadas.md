@@ -8,13 +8,13 @@ end_date: 2019-10-31
 months: 46
 scope: national
 funding_entity: Ministerio de Ciencia e Innovación
-call: "Conv. 2015 Proyectos I+D+i «Retos de Investigación»"
+call: "Proyectos de I+D+i (Conv. 2015) «Retos de Investigación»"
 program: Programa Estatal de I+D+i Orientada a los Retos de la Sociedad
 ips: Lidia Fuentes
 research_team: Mónica Pinto, Mercedes Amor, Inmaculada Ayala, José Miguel Horcas, José Antonio Montenegro, Daniel Jesús Muñoz
 working_team: 
 role: Project Staff
-description: Esto es la descripción del proyecto.
+description: "The main goal of the project is to develop tools and methodologies for analyzing and reducing software energy consumption, promoting the development of sustainable applications."
 ---
 # {{ page.title }}
 Aquí va toda la explicación detallada de este proyecto...

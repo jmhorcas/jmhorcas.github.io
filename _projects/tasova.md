@@ -16,7 +16,7 @@ ips: Lidia Fuentes
 research_team: 
 working_team: 
 role: Project Staff
-description: Esto es la descripción del proyecto.
+description: "The project aims to consolidate a national network of excellence dedicated to researching new trends in software architectures and variability management, facilitating the development of complex and dynamic systems such as the Internet of Things (IoT)."
 website: "http://tasova.uma.es/"
 ---
 # {{ page.title }}

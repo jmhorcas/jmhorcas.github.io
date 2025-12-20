@@ -16,7 +16,7 @@ ips: Lidia Fuentes
 research_team: Mónica Pinto, Mercedes Amor, José María Troya, Daniel Garrido
 working_team: Inmaculada Ayala, Nadia Gámez, José Miguel Horcas
 role: "Project Staff: Project-funded Specialist Technician"
-description: Automation of software development using model-driven engineering and aspect-oriented programming to optimize complex systems and IoT environments.
+description: The goal of the project is the automation of software development using model-driven engineering and aspect-oriented programming to optimize complex systems and IoT environments.
 ---
 # {{ page.title }}
 Aquí va toda la explicación detallada de este proyecto...

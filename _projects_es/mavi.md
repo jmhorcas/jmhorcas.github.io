@@ -8,7 +8,7 @@ end_date: 2015-12-31
 months: 36
 scope: nacional
 funding_entity: Ministerio de Economía y Competitividad (MINECO), cofinanciado con fondos FEDER
-call: "Conv. 2012 Proyectos I+D+i «Investigación Fundamental no Orientada»"
+call: "Proyectos de I+D+i (Conv. 2012) «Investigación Fundamental no Orientada»"
 program: 
 framework: 
 ips: Lidia Fuentes
