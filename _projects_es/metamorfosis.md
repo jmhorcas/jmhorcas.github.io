@@ -15,8 +15,8 @@ ips: David Benavides, María Teresa Gómez
 research_team: Diana Borrego, Rafael Ceballos, Rafael Corchuelo, Patricia Jiménez, María Luisa Parody, Antonia María Reina, Ángel Jesús Varela, José Á. Galindo
 working_team:
 collaborating_team: Francisco Javier Busto, Josep Carmona, Alexander Felferning, Eduardo Fernández-Medina, Antonio José García, José Miguel Horcas, Belén Ramos, Hassan Sleiman, Pedro Szekely, Álvaro Valencia
-role: Equipo colaborador
-description: Esto es la descripción del proyecto.
+role: Equipo Colaborador
+description: "El objetivo principal es desarrollar un marco de transformación digital que automatice la personalización de software, integrando la gestión avanzada de datos, la optimización de procesos y el gobierno de la ciberseguridad."
 ---
 # {{ page.title }}
 Aquí va toda la explicación detallada de este proyecto...

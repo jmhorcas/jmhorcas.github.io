@@ -8,13 +8,13 @@ end_date: 2022-09-30
 months: 45
 scope: nacional
 funding_entity: Ministerio de Ciencia e Innovación
-call: "Conv. 2018 Proyectos I+D+i «Retos de Investigación»"
+call: "Proyectos de I+D+i (Conv. 2018) «Retos de Investigación»"
 program: Programa Estatal de I+D+i Orientada a los Retos de la Sociedad
 ips: Lidia Fuentes, Mónica Pinto
 research_team: Mercedes Amor, Inmaculada Ayala, Joaquín Ballesteros, José Miguel Horcas, José Antonio Montenegro, Daniel Jesús Muñoz
 working_team: 
 role: Equipo de Trabajo
-description: Esto es la descripción del proyecto.
+description: "El proyecto se centra en Edge Computing, específicamente en el desarrollo de metodologías y herramientas de software para garantizar que las aplicaciones desplegadas en el borde de la red sean eco-eficientes. Esto implica optimizar el consumo de energía y la gestión de recursos en entornos de computación descentralizados."
 ---
 # {{ page.title }}
 Aquí va toda la explicación detallada de este proyecto...

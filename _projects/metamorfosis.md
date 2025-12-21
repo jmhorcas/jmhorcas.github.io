@@ -16,7 +16,7 @@ research_team: Diana Borrego, Rafael Ceballos, Rafael Corchuelo, Patricia Jimén
 working_team:
 collaborating_team: Francisco Javier Busto, Josep Carmona, Alexander Felferning, Eduardo Fernández-Medina, Antonio José García, José Miguel Horcas, Belén Ramos, Hassan Sleiman, Pedro Szekely, Álvaro Valencia
 role: Collaborating Researcher
-description: Esto es la descripción del proyecto.
+description: "The objective is to develop a digital transformation framework that automates software customization by integrating advanced data management, process optimization, and cybersecurity governance."
 ---
 # {{ page.title }}
 Aquí va toda la explicación detallada de este proyecto...

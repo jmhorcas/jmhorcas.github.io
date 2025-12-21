@@ -14,7 +14,7 @@ ips: Lidia Fuentes, Mercedes Amor
 research_team: Mónica Pinto, Inmaculada Ayala, José Miguel Horcas, José Antonio Montenegro, Daniel Jesús Muñoz
 working_team: Ángel Cañete, Alberto Rodríguez, Pablo Serrano, María Fernández
 role: Collaborating Researcher
-description: Esto es la descripción del proyecto.
+description: "The project is associated with research in software engineering, specifically self-adaptive systems, software product lines, and edge computing applied to augmented reality and IoT applications."
 ---
 # {{ page.title }}
 Aquí va toda la explicación detallada de este proyecto...

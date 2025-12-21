@@ -8,14 +8,14 @@ end_date: 2022-09-30
 months: 45
 scope: nacional
 funding_entity: Ministerio de Ciencia, Innovación y Universidades (MICIU)
-call: Conv. 2018 Proyectos de I+D+i «Retos Investigación»
+call: Proyectos de I+D+i (Conv. 2018) «Retos Investigación»
 program: "Programa Estatal de I+D+i Orientada a los Retos de la Sociedad"
 framework: "Plan Estatal de Investigación Científica y Técnica y de Innovación 2017-2020"
 ips: Manuel Resinas Arias, David Benavides
 research_team: Beatriz Bernárdez, Adela del Río, Amador Durán, José Á. Galindo, Alfonso Eduardo Márquez, Pablo Neira, Joaquín Peña
 working_team: Margarita Cruz, Irene Bedilia Estrada, José Miguel Horcas, Víctor Hugo Rea, David Romero Organvídez
 role: Equipo de Trabajo
-description: Esto es la descripción del proyecto.
+description: "El objetivo de OPHELIA es optimizar los servicios intensivos en conocimiento mediante la automatización del análisis de líneas de productos de software y la mejora técnica de la gestión de niveles de servicio."
 ---
 # {{ page.title }}
 Aquí va toda la explicación detallada de este proyecto...

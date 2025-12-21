@@ -15,7 +15,7 @@ ips: David Benavides (US)
 research_team: Lidia Fuentes (UMA), Óscar Díaz (UPV), Rubén Heradio (UNED), Miguel Ángel R. Luaces (UDC), Jennifer Pérez (UPM), Juan Boubeta (UCA), Elena Navarro (UCLM), Rafael Capilla (URJC), Emilio Insfrán (UPV), Leire Etxeberria (Mondragon), Carlos Cetina (USJ), Cristina Vicente (UEx)
 working_team: 
 role: Equipo de Trabajo
-description: Esto es la descripción del proyecto.
+description: "TASOVA PLUS is the strategic successor to the TASOVA network, serving as Spain's leading collaborative hub for software engineering. The project focuses on creating advanced technological solutions to manage modern software complexity by integrating software architecture and variability management."
 website: "https://tasovaplus.github.io/"
 ---
 # {{ page.title }}

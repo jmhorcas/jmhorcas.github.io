@@ -16,7 +16,7 @@ research_team: David Benavides, Diana Borrego, Rafael Ceballos, José Á. Galind
 working_team:
 collaborating_team: Don Batory, Paolo Ceravolo, Alexander Felferning, José Miguel Horcas, Salvador Muñoz, María Luisa Parody, José Miguel Pérez, Belén Ramos, Álvaro Valencia, Moe Wynn
 role: Collaborating Researcher
-description: Esto es la descripción del proyecto.
+description: "The project focused on creating collaborative business process models to improve the governance and management of shared services and data. It aims to develop technical frameworks that ensure data integrity and efficient cooperation within digital business environments."
 ---
 # {{ page.title }}
 Aquí va toda la explicación detallada de este proyecto...
