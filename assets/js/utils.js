@@ -76,21 +76,21 @@ const ProjectUtils = (function() {
 document.addEventListener("DOMContentLoaded", ProjectUtils.init);
 
 document.addEventListener("DOMContentLoaded", function() {
-    const menuToggle = document.getElementById('mobile-menu-toggle');
-    const navMenu = document.getElementById('navigation-menu');
+    const header = document.getElementById('main-header');
+    const menuBtn = document.getElementById('toggle-navigation-menu');
 
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', function() {
-            // Alterna la clase 'active' que definimos en el CSS
-            navMenu.classList.toggle('active');
+    if (menuBtn && header) {
+        menuBtn.addEventListener('click', function() {
+            const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
             
-            // Opcional: Cambiar el icono de barras a una 'X' al abrir
-            const icon = menuToggle.querySelector('i');
-            if (icon.classList.contains('fa-bars')) {
-                icon.classList.replace('fa-bars', 'fa-xmark');
-            } else {
-                icon.classList.replace('fa-xmark', 'fa-bars');
-            }
+            // 1. Cambiamos el estado del botón
+            menuBtn.setAttribute('aria-expanded', !isExpanded);
+            
+            // 2. Añadimos la clase al header para que el CSS muestre el menú
+            header.classList.toggle('menu-open');
+            
+            // 3. Bloqueamos el scroll del cuerpo (tienes soporte para esto en tu CSS)
+            document.body.classList.toggle('menu-open');
         });
     }
 });

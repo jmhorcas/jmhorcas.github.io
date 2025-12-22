@@ -1397,24 +1397,3 @@ html {
     height: 2rem;
     cursor: pointer;
 }
-
-/* Por defecto, en móvil el menú está oculto y se posiciona absoluto */
-@media (max-width: 639px) {
-    .mobile-nav-menu {
-        display: none; /* Oculto por defecto */
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: var(--global-bg); /* Ajusta a tu variable de fondo */
-        flex-direction: column;
-        padding: 1rem;
-        border-bottom: 1px solid rgba(0,0,0,0.1);
-        z-index: 50;
-    }
-
-    /* Clase que añadiremos con JS para mostrarlo */
-    .mobile-nav-menu.active {
-        display: flex;
-    }
-}
