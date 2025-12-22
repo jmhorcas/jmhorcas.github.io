@@ -49,3 +49,6 @@ language:
 call:
   en: "Call"
   es: "Convocatoria"
+resume:
+  en: "Resume"
+  es: "Resumen"

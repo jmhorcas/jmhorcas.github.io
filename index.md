@@ -3,9 +3,10 @@ layout: default
 title: Home
 lang: en
 ---
+# Hi, I'm {{site.author}}
 
-# Hello, I'm [Your Name]
+I am an **Associate Professor** in the area of **Programming Languages and Software Systems** at the **University of Málaga**. My research focuses on **Software Product Lines**, **variability management**, and the development of **software tools and open solutions** for large-scale configurable systems.
 
-I am a researcher/developer focused on [Your Area]. Currently, I work on projects involving HTML, CSS, and Jekyll.
+On this website, I share my academic background, main scientific contributions, research projects, **open science** tools, and teaching activities.
 
-Welcome to my personal space where I share my work and publications.
+> **Software Product Lines · Variability · Configuration · Quality Attributes · Open Science**
