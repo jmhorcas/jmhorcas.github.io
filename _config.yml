@@ -21,6 +21,12 @@ collections:
   publications_es: # Spanish
     output: true
     permalink: /es/publications/:path/
+  awards: # English
+    output: true
+    permalink: /awards/:path/
+  awards_es: # Spanish
+    output: true
+    permalink: /es/awards/:path/
 
 defaults:
   # Configuración para Proyectos en Inglés

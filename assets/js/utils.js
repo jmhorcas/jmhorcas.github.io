@@ -3,17 +3,21 @@
  */
 const ProjectUtils = (function() {
     
-    // Función para traducir las fechas (ej: Dec -> dic)
-    const formatDate = (dateStr, lang) => {
+    const formatDate = (dateStr, lang, options = {}) => {
         if (!dateStr) return "";
         const date = dateStr === 'now' ? new Date() : new Date(dateStr);
         
-        // Usamos Intl.DateTimeFormat para obtener el nombre del mes en el idioma correcto
-        return new Intl.DateTimeFormat(lang, {
+        // Configuración por defecto (la que ya usas)
+        const defaultOptions = {
             day: '2-digit',
             month: 'short',
             year: 'numeric'
-        }).format(date);
+        };
+
+        // Combinamos las opciones: si pasas unas nuevas, ganan las nuevas
+        const finalOptions = Object.assign({}, defaultOptions, options);
+
+        return new Intl.DateTimeFormat(lang, finalOptions).format(date);
     };
 
     const calculateDuration = (startStr, endStr, lang) => {
@@ -51,7 +55,12 @@ const ProjectUtils = (function() {
             // 1. Formatear las fechas visibles (Traducción de meses)
             container.querySelectorAll('.format-date').forEach(el => {
                 const dateToFormat = el.getAttribute('data-date');
-                el.innerText = formatDate(dateToFormat, lang);
+                const formatType = el.getAttribute('data-format');
+                let options = {};
+                if (formatType === 'month-year') {
+                    options = { day: undefined, month: 'short', year: 'numeric' };
+                }
+                el.innerText = formatDate(dateToFormat, lang, options);
             });
 
             // 2. Calcular y mostrar duración

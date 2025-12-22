@@ -1223,6 +1223,19 @@ html {
     color: var(--color-accent-2);
 }
 
+.timeline-icon {
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--color-accent-2);
+}
+
+.timeline-award {
+    font-weight: 700;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--color-accent-2);
+}
+
 .timeline-title {
     color: var(--color-global-text);
     font-size: 1rem;

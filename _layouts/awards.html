@@ -1,0 +1,52 @@
+---
+layout: default
+---
+{% assign t = site.data.i18n %}
+
+{% assign sufijo = "" %}
+{% if page.lang == "es" %}{% assign sufijo = "_es" %}{% endif %}
+{% assign collection_name = "awards" | append: sufijo %}
+
+{% assign awards = site[collection_name] %}
+  
+{% assign years = "" | split: "" %}
+{% for award in awards %}
+  {% assign y = award.date | date: "%Y" %}
+  {% assign years = years | push: y | uniq %}
+{% endfor %}
+{% assign years = years | sort | reverse %}
+
+
+<h1 class="prose">{{ page.title }} ({{awards.size}})</h1>
+
+<div class="timeline">
+{% for year in years %}
+  <div class="timeline-year-header">
+    <span class="timeline-year-label">{{ year }}</span>
+  </div>
+  {% for award in awards %}
+    {% assign award_year = award.date | date: "%Y" %}
+    {% assign authors = award.authors | split: ", " %}
+    {% if award_year == year %}
+      <div class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div class="timeline-header">
+          <span class="timeline-icon">{{award.icon}} </span><span class="timeline-award">{{award.title}}</span>
+          <span class="timeline-dates duration-container" data-start="{{ award.date }}" data-lang="{{ page.lang }}">
+            <span title="{{t.date[page.lang]}} • {{ t.location[page.lang] }}">🗺️</span><span class="format-date" data-date="{{ award.date }}" data-format="month-year">{{ award.date | date: "%b %Y" }}</span> • <span>{{ award.location }}</span>
+          </span>
+          <span class="timeline-title">{{award.work}}</span>
+        </div>
+        <div class="timeline-meta"><i class="fa-solid fa-building-columns" title="{{t.entity[page.lang]}}"></i> {{award.entity}}</div>
+        <div class="timeline-meta"><i class="fa-solid fa-users" title="{{t.authors[page.lang]}}"></i> {% for author in authors %}{% if author == site.author %}<u>{{author}}</u>{% else %}{{author}}{% endif %}{% unless forloop.last %} • {% endunless %}{% endfor %}</div>
+        {% if award.description %}
+          <div class="timeline-desc">{{award.description}}</div>
+        {% endif %}
+        {% if award.work_link %}
+          <div class="timeline-meta"><a href="{{award.work_link}}" title="DOI/URI" target="_blank" rel="noopener">🌐</a></div>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+</main>

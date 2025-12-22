@@ -52,3 +52,18 @@ call:
 resume:
   en: "Resume"
   es: "Resumen"
+awards:
+  en: "Awards"
+  es: "Premios"
+location:
+  en: "Location"
+  es: "Lugar"
+date:
+  en: "Date"
+  es: "Fecha"
+entity:
+  en: "Entity"
+  es: "Entidad"
+authors:
+  en: "Authors"
+  es: "Autores"
