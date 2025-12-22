@@ -74,3 +74,23 @@ const ProjectUtils = (function() {
 })();
 
 document.addEventListener("DOMContentLoaded", ProjectUtils.init);
+
+document.addEventListener("DOMContentLoaded", function() {
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    const navMenu = document.getElementById('navigation-menu');
+
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
+            // Alterna la clase 'active' que definimos en el CSS
+            navMenu.classList.toggle('active');
+            
+            // Opcional: Cambiar el icono de barras a una 'X' al abrir
+            const icon = menuToggle.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
+                icon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        });
+    }
+});
