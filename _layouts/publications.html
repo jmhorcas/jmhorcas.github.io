@@ -1,5 +1,93 @@
 ---
 layout: default
 ---
+{% assign t = site.data.i18n %}
+{% assign open_brace = '{' %}
+{% assign close_brace = '}' %}
 
-<h1 class="prose">🚧 Under Construction</h1>
+{% assign month_names = "january,february,march,april,may,june,july,august,september,october,november,december,jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec" | split: ',' %}
+{% assign month_numbers = "01,02,03,04,05,06,07,08,09,10,11,12,01,02,03,04,05,06,07,08,09,10,11,12" | split: ',' %}
+
+{% capture sorted_list %}
+  {% for pub in site.data.publications %}
+    {% assign m_lower = pub.month | downcase %}
+    {% assign m_num = "00" %}
+
+    {% for name in month_names %}
+      {% if name == m_lower %}
+        {% assign m_num = month_numbers[forloop.index0] %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+
+    {{ pub.year }}{{ m_num }}|{{ pub.ID }}{% unless forloop.last %}::{% endunless %}
+  {% endfor %}
+{% endcapture %}
+
+{% assign sorted_array = sorted_list | split: '::' | sort | reverse %}
+
+{% assign years = "" | split: "" %}
+{% for pub in site.data.publications %}
+  {% assign y = pub.year %}
+  {% assign years = years | push: y | uniq %}
+{% endfor %}
+{% assign years = years | sort | reverse %}
+
+<h1 class="prose">{{ page.title }} ({{site.data.publications.size}})</h1>
+
+
+<div class="timeline">
+{% for year in years %}
+  <div class="timeline-year-header">
+    <span class="timeline-year-label">{{ year }}</span>
+  </div>
+  {% for item in sorted_array %}
+    {% assign pub_id = item | split: '|' | last %}
+    {% assign pub = site.data.publications | where: "ID", pub_id | first %}
+    {% assign authors = pub.author | split: " and " %}
+    {% assign author_index = -1 %}
+    {% for author in authors %}
+        {% if author == site.author %}
+            {% assign author_index = forloop.index %}
+        {% endif %}
+    {% endfor %}
+    {% if pub.year == year %}
+      <div class="timeline-item flex items-start gap-4">
+        <span class="timeline-dot"></span>
+        <div class="flex-grow">
+          <div class="timeline-header">
+            <span class="timeline-org">{{pub.title | replace: open_brace, '' | replace: close_brace, '' }}</span>
+          </div>
+          <div class="timeline-meta"><i class="fa-solid fa-users" title="{{t.authors[page.lang]}}"></i>({{author_index}}/{{authors.size}}) {% for author in authors %}{% if author == site.author %}<u>{{author}}</u>{% else %}{{author}}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
+          {% if pub.journal %}
+            <div class="timeline-title"><i class="fa-solid fa-book-journal-whills" title="{{t.journal[page.lang]}}"></i>{{ pub.journal | replace: open_brace, '' | replace: close_brace, '' }}</div>
+          {% elsif pub.booktitle %}
+            <div class="timeline-title"><i class="fa-solid fa-book-journal-whills" title="{{t.conference[page.lang]}}{% if pub.track %} • Track{% endif %}"></i>{{ pub.booktitle | replace: open_brace, '' | replace: close_brace, '' }}{% if pub.track %} • {{pub.track}}{% endif %}</div>
+          {% endif %}
+            <div class="timeline-meta"><span title="{{t.date[page.lang]}}{% if pub.address %} • {{ t.location[page.lang] }}{% endif %}">🗺️</span><span class="format-date" data-date="{{ pub.date }}" data-format="month-year">{{ pub.month | date: "%b" }} {{pub.year}}</span>{% if pub.address %} • <span>{{ pub.address }}</span>{% endif %}</div>
+          {% if pub.doi %}
+            <div class="timeline-meta"><a href="https://doi.org/{{ pub.doi }}" title="DOI" target="_blank" rel="noopener">🔗 {{pub.doi}}</a></div>
+          {% elsif pub.url %}
+            <div class="timeline-meta"><a href="{{ pub.url }}" title="URL" target="_blank" rel="noopener">🔗 {{pub.url}}</a></div>
+          {% endif %}          
+        </div>
+        
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+</div>
+
+
+<div class="publications">
+  {% for entry in pubs %}
+    <div class="item-pub">
+      <strong>{{ entry.title }}</strong><br>
+      <span>{{ entry.author }}</span> | <em>{{ entry.journal }}</em> ({{ entry.year }})
+      {% if entry.doi %}
+        <a href="https://doi.org/{{ entry.doi }}">DOI</a>
+      {% endif %}
+    </div>
+    <hr>
+  {% endfor %}
+</div>

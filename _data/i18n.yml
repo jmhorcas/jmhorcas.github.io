@@ -67,3 +67,9 @@ entity:
 authors:
   en: "Authors"
   es: "Autores"
+journal:
+  en: "Journal"
+  es: "Revista"
+conference:
+  en: "Conference"
+  es: "Conferencia"

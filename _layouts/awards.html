@@ -47,7 +47,7 @@ layout: default
             <div class="timeline-desc">{{award.description}}</div>
           {% endif %}
           {% if award.work_link %}
-            <div class="timeline-meta"><a href="{{award.work_link}}" title="DOI/URI" target="_blank" rel="noopener">🗎</a></div>
+            <div class="timeline-meta"><a href="{{award.work_link}}" title="DOI/URI" target="_blank" rel="noopener">🔗</a></div>
           {% endif %}
         </div>
         {% if award.image %}
@@ -63,4 +63,4 @@ layout: default
     {% endif %}
   {% endfor %}
 {% endfor %}
-</main>
+</div>

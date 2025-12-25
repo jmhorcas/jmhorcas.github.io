@@ -1,0 +1,26 @@
+name: Convert BibTeX to JSON
+on:
+  push:
+    paths:
+      - '_data/publications.bib' # Se activa solo si cambias el .bib
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: pip install bibtexparser
+      - name: Run converter
+        run: python convertir_bib.py
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name 'BibBot'
+          git config --global user.email 'bot@github.com'
+          git add _data/publications.json
+          git commit -m "Update publications data from bibtex" || exit 0
+          git push
