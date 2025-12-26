@@ -8,21 +8,21 @@ layout: default
 {% assign month_names = "january,february,march,april,may,june,july,august,september,october,november,december,jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec" | split: ',' %}
 {% assign month_numbers = "01,02,03,04,05,06,07,08,09,10,11,12,01,02,03,04,05,06,07,08,09,10,11,12" | split: ',' %}
 
-{% capture sorted_list %}
-  {% for pub in site.data.publications %}
-    {% assign m_lower = pub.month | downcase %}
-    {% assign m_num = "00" %}
+{%- capture sorted_list -%}
+{%- for pub in site.data.publications -%}
+  {%- assign m_lower = pub.month | downcase -%}
+  {%- assign m_num = "00" -%}
 
-    {% for name in month_names %}
-      {% if name == m_lower %}
-        {% assign m_num = month_numbers[forloop.index0] %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
+  {%- for name in month_names -%}
+    {%- if name == m_lower -%}
+      {%- assign m_num = month_numbers[forloop.index0] -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
 
-    {{ pub.year }}{{ m_num }}|{{ pub.ID }}{% unless forloop.last %}::{% endunless %}
-  {% endfor %}
-{% endcapture %}
+  {{ pub.year }}{{ m_num }}|{{ pub.ID }}{% unless forloop.last %}::{% endunless %}
+{%- endfor -%}
+{%- endcapture -%}
 
 {% assign sorted_array = sorted_list | split: '::' | sort | reverse %}
 
