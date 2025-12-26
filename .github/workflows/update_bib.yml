@@ -4,6 +4,9 @@ on:
     paths:
       - '_data/publications.bib' # Se activa solo si cambias el .bib
 
+permissions:
+  contents: write
+  
 jobs:
   build:
     runs-on: ubuntu-latest
