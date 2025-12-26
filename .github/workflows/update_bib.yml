@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: pip install bibtexparser
       - name: Run converter
-        run: python convertir_bib.py
+        run: python bib_to_json.py
       - name: Commit and push if changed
         run: |
           git config --global user.name 'BibBot'
