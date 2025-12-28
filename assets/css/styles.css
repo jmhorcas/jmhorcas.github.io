@@ -506,7 +506,7 @@ body {
     /* Fuerza a que el primer h1 de la página tenga aire suficiente */
     .prose h1:first-of-type, 
     h1.prose:first-of-type {
-        margin-top: 3rem !important; 
+        margin-top: 5rem !important; 
         display: block !important;
         visibility: visible !important;
     }
