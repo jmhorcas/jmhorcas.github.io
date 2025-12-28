@@ -1516,3 +1516,25 @@ html {
     white-space: nowrap;
     font-size: 0.9rem;
   }
+
+  /* TErcer nivel de subfiltros */
+  .level-3 {
+    margin-top: -8px; /* Pegado al nivel 2 */
+  }
+
+  .tracks-group {
+    background: #f8f9fa; /* Más claro que el nivel 2 */
+    border: 1px dashed #dee2e6; /* Borde sutil para indicar sub-categoría */
+    transform: scale(0.85); /* Más pequeño aún */
+  }
+
+  .level-3 .switch-text {
+    font-size: 0.75rem;
+    color: #6c757d;
+  }
+
+  /* Ajuste para que los badges de nivel 3 no pesen visualmente */
+  .level-3 .badge {
+    background: transparent;
+    border: 1px solid #dee2e6;
+  }

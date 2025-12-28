@@ -97,56 +97,102 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 function updateCounts() {
-  // Contamos elementos reales en el DOM
+  // 1. Contamos elementos del Nivel 1 (Generales)
   const total = document.querySelectorAll('.timeline-item').length;
   const journals = document.querySelectorAll('.timeline-item.journal').length;
+  const others = document.querySelectorAll('.timeline-item.other').length;
+  
+  // 2. Contamos elementos del Nivel 2 (Conferencias)
   const internationalConferences = document.querySelectorAll('.timeline-item.international-conference').length;
   const nationalConferences = document.querySelectorAll('.timeline-item.national-conference').length;
-  const others = document.querySelectorAll('.timeline-item.other').length;
-  const conferences = internationalConferences + nationalConferences;
+  const totalConferences = internationalConferences + nationalConferences;
 
-  // Actualizamos los spans
+  // 3. Contamos elementos del Nivel 3 (Tracks de Internacionales)
+  // Usamos selectores combinados para asegurar que solo contamos tracks internacionales
+  const main = document.querySelectorAll('.timeline-item.international-conference.main').length;
+  const workshop = document.querySelectorAll('.timeline-item.international-conference.workshop').length;
+  const short = document.querySelectorAll('.timeline-item.international-conference.short').length;
+  const tutorial = document.querySelectorAll('.timeline-item.international-conference.tutorial').length;
+  const industrial = document.querySelectorAll('.timeline-item.international-conference.industrial').length;
+  const tool = document.querySelectorAll('.timeline-item.international-conference.tool').length;
+  const phdSymposium = document.querySelectorAll('.timeline-item.international-conference.phd-symposium').length;
+  // Si tienes symposium, añádelo igual: .international-conference.symposium
+
+  // 4. Actualizamos los spans en el HTML
+  // Nivel 1
   document.getElementById('count-all').textContent = total;
   document.getElementById('count-journal').textContent = journals;
-  document.getElementById('count-conference').textContent = conferences;
+  document.getElementById('count-conference').textContent = totalConferences;
+  document.getElementById('count-other').textContent = others;
+
+  // Nivel 2
   document.getElementById('count-international-conference').textContent = internationalConferences;
   document.getElementById('count-national-conference').textContent = nationalConferences;
-  document.getElementById('count-other').textContent = others;
+
+  // Nivel 3
+  document.getElementById('count-main').textContent = main;
+  document.getElementById('count-workshop').textContent = workshop;
+  document.getElementById('count-short').textContent = short;
+  document.getElementById('count-tutorial').textContent = tutorial;
+  document.getElementById('count-industrial').textContent = industrial;
+  document.getElementById('count-tool').textContent = tool;
+  document.getElementById('count-phd-symposium').textContent = phdSymposium;
 }
+
 
 function filterPubs(type) {
   const items = document.querySelectorAll('.timeline-item');
   const groups = document.querySelectorAll('.timeline-year-group');
-  const subPanel = document.getElementById('subfilter-confs');
+  const subConfs = document.getElementById('subfilter-confs');
+  const subTracks = document.getElementById('subfilter-tracks');
 
-  // Mostrar/Ocultar el panel de subfiltros
-  // Se muestra si eliges 'conference', 'international-conference' o 'national-conference'
-  if (type.includes('conference')) {
-    subPanel.style.display = 'flex';
-  } else {
-    subPanel.style.display = 'none';
-    // Resetear el radio button del subfiltro a "Todas" al salir
-    document.querySelector('input[name="sub-filter"][value="conference"]').checked = true;
-  }
+  // 1. CONTROL DE VISIBILIDAD DE PANELES (Cascada)
+  const isAConferenceAction = (type === 'conference' || type === 'international-conference' || type === 'national-conference' || isTrack(type));
+  const isAnInternationalAction = (type === 'international-conference' || isTrack(type));
 
+  subConfs.style.display = isAConferenceAction ? 'flex' : 'none';
+  subTracks.style.display = isAnInternationalAction ? 'flex' : 'none';
+
+  // 2. LÓGICA DE FILTRADO DE PUBLICACIONES
   items.forEach(item => {
-    // Lógica: si el tipo es 'conference', mostramos tanto nacionales como internacionales
     if (type === 'all') {
       item.style.display = 'flex';
-    } else if (type === 'conference') {
-      item.style.display = (item.classList.contains('international-conference') || 
-                            item.classList.contains('national-conference')) ? 'flex' : 'none';
-    } else {
+    } 
+    else if (type === 'conference') {
+      // Mostrar cualquier conferencia (nacional o internacional)
+      const isAnyConf = item.classList.contains('international-conference') || item.classList.contains('national-conference');
+      item.style.display = isAnyConf ? 'flex' : 'none';
+    } 
+    else if (type === 'international-conference') {
+      // Mostrar TODAS las internacionales (resetea el filtro de tracks visualmente)
+      item.style.display = item.classList.contains('international-conference') ? 'flex' : 'none';
+    }
+    else if (isTrack(type)) {
+      // ESTA ES LA CLAVE: Para que el track solo afecte a las internacionales
+      // El item debe tener la clase del track (ej. 'workshop') Y 'international-conference'
+      const matchesTrack = item.classList.contains(type);
+      const isInternational = item.classList.contains('international-conference');
+      
+      item.style.display = (matchesTrack && isInternational) ? 'flex' : 'none';
+    }
+    else {
+      // Otros filtros directos: 'journal', 'other', 'national-conference'
       item.style.display = item.classList.contains(type) ? 'flex' : 'none';
     }
   });
 
-  // Ocultar años vacíos
+  // 3. OCULTAR AÑOS VACÍOS
   groups.forEach(group => {
     const hasVisible = Array.from(group.querySelectorAll('.timeline-item'))
                             .some(i => i.style.display !== 'none');
     group.style.display = hasVisible ? 'block' : 'none';
   });
+}
+
+// Función auxiliar para detectar si es un track
+function isTrack(type) {
+  const tracks = ['main', 'workshop', 'short', 'industrial', 'tool', 'tutorial', 'phd-symposium'];
+  return tracks.includes(type);
 }
 
 // Ejecutar el conteo nada más cargar la página

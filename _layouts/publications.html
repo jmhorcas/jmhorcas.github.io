@@ -72,6 +72,42 @@ layout: default
       </label>
     </div>
   </div>
+  <div id="subfilter-tracks" class="filter-container sub-container level-3" style="display: none;">
+    <div class="filter-switch-group sub-group tracks-group">
+      <label class="switch-label sub">
+        <input type="radio" name="track-filter" value="international-conference" checked onclick="filterPubs('international-conference')">
+        <span class="switch-text">{{t.all[page.lang]}}</span>
+      </label>
+      <label class="switch-label sub">
+        <input type="radio" name="track-filter" value="main" onclick="filterPubs('main')">
+        <span class="switch-text">Main <span id="count-main" class="badge">0</span></span>
+      </label>
+      <label class="switch-label sub">
+        <input type="radio" name="track-filter" value="short" onclick="filterPubs('short')">
+        <span class="switch-text">Short <span id="count-short" class="badge">0</span></span>
+      </label>
+      <label class="switch-label sub">
+        <input type="radio" name="track-filter" value="industrial" onclick="filterPubs('industrial')">
+        <span class="switch-text">Industrial <span id="count-industrial" class="badge">0</span></span>
+      </label>
+      <label class="switch-label sub">
+        <input type="radio" name="track-filter" value="tool" onclick="filterPubs('tool')">
+        <span class="switch-text">Tool <span id="count-tool" class="badge">0</span></span>
+      </label>
+      <label class="switch-label sub">
+        <input type="radio" name="track-filter" value="workshop" onclick="filterPubs('workshop')">
+        <span class="switch-text">Workshops <span id="count-workshop" class="badge">0</span></span>
+      </label>
+      <label class="switch-label sub">
+        <input type="radio" name="track-filter" value="phd-symposium" onclick="filterPubs('phd-symposium')">
+        <span class="switch-text">PhD Symposium <span id="count-phd-symposium" class="badge">0</span></span>
+      </label>
+      <label class="switch-label sub">
+        <input type="radio" name="track-filter" value="tutorial" onclick="filterPubs('tutorial')">
+        <span class="switch-text">Tutorial <span id="count-tutorial" class="badge">0</span></span>
+      </label>
+    </div>
+  </div>
 </div>
 
 <div class="timeline">
@@ -87,6 +123,10 @@ layout: default
       {% if pub.journal %}{% assign pub_type = "journal" %}{% endif %}
       {% if pub.booktitle %}{% assign pub_type = "international-conference" %}{% endif %}
       {% if pub.scope == "national" %}{% assign pub_type = "national-conference" %}{% endif %}
+      {% assign pub_track = "main" %}
+      {% assign conference_title = pub.booktitle | downcase %}
+      {% if conference_title contains "workshop" %}{% assign pub_track = "workshop" %}{% endif %}
+      {% if pub.track %}{% assign pub_track = pub.track | downcase | strip | replace: " ", "-" %}{% endif %}
       {% assign authors = pub.author | split: " and " %}
       {% assign author_index = -1 %}
       {% for author in authors %}
@@ -95,7 +135,7 @@ layout: default
           {% endif %}
       {% endfor %}
       {% if pub.year == year %}
-        <div class="timeline-item {{pub_type}} flex items-start gap-4">
+        <div class="timeline-item {{pub_type}} {{pub_track}} flex items-start gap-4">
           <span class="timeline-dot"></span>
           <div class="flex-grow">
             <div class="timeline-header">
