@@ -4,6 +4,9 @@ on:
     paths:
       - '_data/publications.bib' # Se activa solo si cambias el .bib
 
+permissions:
+  contents: write
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,11 +19,11 @@ jobs:
       - name: Install dependencies
         run: pip install bibtexparser
       - name: Run converter
-        run: python convertir_bib.py
+        run: python bib_to_json.py
       - name: Commit and push if changed
         run: |
-          git config --global user.name 'BibBot'
-          git config --global user.email 'bot@github.com'
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add _data/publications.json
           git commit -m "Update publications data from bibtex" || exit 0
           git push
