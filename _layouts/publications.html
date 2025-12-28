@@ -35,26 +35,42 @@ layout: default
 
 <h1 class="prose">{{ page.title }} ({{site.data.publications.size}})</h1>
 
-<div class="filter-container" style="margin-bottom: 30px;">
-  <div class="filter-switch-group">
-    <label class="switch-label">
-      <input type="radio" name="pub-filter" value="all" checked onclick="filterPubs('all')">
-      <span class="switch-text">{{t.all[page.lang]}} <span id="count-all" class="badge">0</span></span>
-    </label>
-
-    <label class="switch-label">
-      <input type="radio" name="pub-filter" value="journal" onclick="filterPubs('journal')">
-      <span class="switch-text">{{t.journals[page.lang]}} <span id="count-journal" class="badge">0</span></span>
-    </label>
-
-    <label class="switch-label">
-      <input type="radio" name="pub-filter" value="international-conference" onclick="filterPubs('international-conference')">
-      <span class="switch-text">{{t.international_conferences[page.lang]}} <span id="count-international-conference" class="badge">0</span></span>
-    </label>
-    <label class="switch-label">
-      <input type="radio" name="pub-filter" value="national-conference" onclick="filterPubs('national-conference')">
-      <span class="switch-text">{{t.national_conferences[page.lang]}} <span id="count-national-conference" class="badge">0</span></span>
-    </label>
+<div class="filter-wrapper">
+  <div class="filter-container">
+    <div class="filter-switch-group">
+      <label class="switch-label">
+        <input type="radio" name="pub-filter" value="all" checked onclick="filterPubs('all')">
+        <span class="switch-text">{{t.all[page.lang]}} <span id="count-all" class="badge">0</span></span>
+      </label>
+      <label class="switch-label">
+        <input type="radio" name="pub-filter" value="journal" onclick="filterPubs('journal')">
+        <span class="switch-text">{{t.journals[page.lang]}} <span id="count-journal" class="badge">0</span></span>
+      </label>
+      <label class="switch-label">
+        <input type="radio" name="pub-filter" value="conference" onclick="filterPubs('conference')">
+        <span class="switch-text">{{t.conferences[page.lang]}} <span id="count-conference" class="badge">0</span></span>
+      </label>
+      <label class="switch-label">
+        <input type="radio" name="pub-filter" value="other" onclick="filterPubs('other')">
+        <span class="switch-text">{{t.others[page.lang]}} <span id="count-other" class="badge">0</span></span>
+      </label>
+    </div>
+  </div>
+  <div id="subfilter-confs" class="filter-container sub-container" style="display: none;">
+    <div class="filter-switch-group sub-group">
+      <label class="switch-label sub">
+        <input type="radio" name="sub-filter" value="conference" checked onclick="filterPubs('conference')">
+        <span class="switch-text">{{t.all[page.lang]}}</span>
+      </label>
+      <label class="switch-label sub">
+        <input type="radio" name="sub-filter" value="international-conference" onclick="filterPubs('international-conference')">
+        <span class="switch-text">{{t.internationals[page.lang]}} <span id="count-international-conference" class="badge">0</span></span>
+      </label>
+      <label class="switch-label sub">
+        <input type="radio" name="sub-filter" value="national-conference" onclick="filterPubs('national-conference')">
+        <span class="switch-text">{{t.nationals[page.lang]}} <span id="count-national-conference" class="badge">0</span></span>
+      </label>
+    </div>
   </div>
 </div>
 

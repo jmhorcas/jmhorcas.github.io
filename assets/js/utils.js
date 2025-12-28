@@ -102,27 +102,46 @@ function updateCounts() {
   const journals = document.querySelectorAll('.timeline-item.journal').length;
   const internationalConferences = document.querySelectorAll('.timeline-item.international-conference').length;
   const nationalConferences = document.querySelectorAll('.timeline-item.national-conference').length;
+  const others = document.querySelectorAll('.timeline-item.other').length;
+  const conferences = internationalConferences + nationalConferences;
 
   // Actualizamos los spans
   document.getElementById('count-all').textContent = total;
   document.getElementById('count-journal').textContent = journals;
+  document.getElementById('count-conference').textContent = conferences;
   document.getElementById('count-international-conference').textContent = internationalConferences;
   document.getElementById('count-national-conference').textContent = nationalConferences;
+  document.getElementById('count-other').textContent = others;
 }
 
 function filterPubs(type) {
   const items = document.querySelectorAll('.timeline-item');
   const groups = document.querySelectorAll('.timeline-year-group');
+  const subPanel = document.getElementById('subfilter-confs');
+
+  // Mostrar/Ocultar el panel de subfiltros
+  // Se muestra si eliges 'conference', 'international-conference' o 'national-conference'
+  if (type.includes('conference')) {
+    subPanel.style.display = 'flex';
+  } else {
+    subPanel.style.display = 'none';
+    // Resetear el radio button del subfiltro a "Todas" al salir
+    document.querySelector('input[name="sub-filter"][value="conference"]').checked = true;
+  }
 
   items.forEach(item => {
-    if (type === 'all' || item.classList.contains(type)) {
+    // Lógica: si el tipo es 'conference', mostramos tanto nacionales como internacionales
+    if (type === 'all') {
       item.style.display = 'flex';
+    } else if (type === 'conference') {
+      item.style.display = (item.classList.contains('international-conference') || 
+                            item.classList.contains('national-conference')) ? 'flex' : 'none';
     } else {
-      item.style.display = 'none';
+      item.style.display = item.classList.contains(type) ? 'flex' : 'none';
     }
   });
 
-  // Ocultar años que se quedan vacíos
+  // Ocultar años vacíos
   groups.forEach(group => {
     const hasVisible = Array.from(group.querySelectorAll('.timeline-item'))
                             .some(i => i.style.display !== 'none');

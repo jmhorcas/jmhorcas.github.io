@@ -1398,12 +1398,16 @@ html {
     cursor: pointer;
 }
 
-
+/* ============================= */
+/* Filter Switches Component    */
+/* ============================= */
 .filter-container {
     display: flex;         /* Activa flexbox */
     justify-content: center; /* Centra horizontalmente */
     width: 100%;           /* Asegura que ocupe todo el ancho */
-    margin: 20px 0 40px 0; /* Espaciado arriba y abajo */
+    /* margin: 20px 0 40px 0; /* Espaciado arriba y abajo */
+    padding: 5px 0;
+    margin: 0;
   }
 
 .filter-switch-group {
@@ -1447,4 +1451,68 @@ html {
   .switch-label input:checked + .switch-text .badge {
     background: #007bff;
     color: white;
+  }
+
+  .sub-group {
+    background: #e9ecef; /* Un gris un poco más oscuro */
+    transform: scale(0.95); /* Ligeramente más pequeños */
+  }
+  
+  .switch-label.sub .switch-text {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+
+.filter-wrapper {
+    display: flex;
+    flex-direction: column; /* Alinea los grupos uno debajo del otro */
+    align-items: center;    /* Centra ambos grupos horizontalmente */
+    gap: 0px;              /* Espacio entre la fila principal y la sub-fila */
+    margin-bottom: 30px;
+    width: 100%;
+  }
+
+  .filter-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Estilos específicos para que el subfiltro se vea como un "hijo" del principal */
+  .sub-container {
+    margin-top: -5px; /* Acerca un poco el subfiltro al principal */
+    z-index: 1; /* Asegura que esté por encima del filtro principal */
+    animation: slideDown 0.3s ease-out;
+  }
+
+  .sub-group {
+    background: #e9ecef; /* Color ligeramente distinto para diferenciar jerarquía */
+    padding: 2px;
+    border-radius: 0 0 10px 10px;
+    transform: scale(0.9);
+    position: relative;
+  }
+
+  /* Opcional: Flecha que apunta al grupo principal
+  .sub-group::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #e9ecef; 
+}
+*/
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Ajuste para que no se vea gigante en escritorio */
+  .switch-text {
+    white-space: nowrap;
+    font-size: 0.9rem;
   }

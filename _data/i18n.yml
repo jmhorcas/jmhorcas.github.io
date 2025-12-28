@@ -82,9 +82,12 @@ journals:
 conferences:
   en: "Conferences"
   es: "Conferencias"
-international_conferences:
-  en: "International Conferences 🗺️"
-  es: "Conferencias Internacionales 🗺️"
-national_conferences:
-  en: "National Conferences 🇪🇸"
-  es: "Conferencias Nacionales 🇪🇸"
+internationals:
+  en: "Internationals 🗺️"
+  es: "Internacionales 🗺️"
+nationals:
+  en: "Nationals 🇪🇸"
+  es: "Nacionales 🇪🇸"
+others:
+  en: "Others"
+  es: "Otras"
