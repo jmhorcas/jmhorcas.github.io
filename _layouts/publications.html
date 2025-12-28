@@ -35,59 +35,73 @@ layout: default
 
 <h1 class="prose">{{ page.title }} ({{site.data.publications.size}})</h1>
 
+<div class="filter-container" style="margin-bottom: 30px;">
+  <div class="filter-switch-group">
+    <label class="switch-label">
+      <input type="radio" name="pub-filter" value="all" checked onclick="filterPubs('all')">
+      <span class="switch-text">{{t.all[page.lang]}} <span id="count-all" class="badge">0</span></span>
+    </label>
+
+    <label class="switch-label">
+      <input type="radio" name="pub-filter" value="journal" onclick="filterPubs('journal')">
+      <span class="switch-text">{{t.journals[page.lang]}} <span id="count-journal" class="badge">0</span></span>
+    </label>
+
+    <label class="switch-label">
+      <input type="radio" name="pub-filter" value="international-conference" onclick="filterPubs('international-conference')">
+      <span class="switch-text">{{t.international_conferences[page.lang]}} <span id="count-international-conference" class="badge">0</span></span>
+    </label>
+    <label class="switch-label">
+      <input type="radio" name="pub-filter" value="national-conference" onclick="filterPubs('national-conference')">
+      <span class="switch-text">{{t.national_conferences[page.lang]}} <span id="count-national-conference" class="badge">0</span></span>
+    </label>
+  </div>
+</div>
 
 <div class="timeline">
 {% for year in years %}
-  <div class="timeline-year-header">
-    <span class="timeline-year-label">{{ year }}</span>
-  </div>
-  {% for item in sorted_array %}
-    {% assign pub_id = item | split: '|' | last %}
-    {% assign pub = site.data.publications | where: "ID", pub_id | first %}
-    {% assign authors = pub.author | split: " and " %}
-    {% assign author_index = -1 %}
-    {% for author in authors %}
-        {% if author == site.author %}
-            {% assign author_index = forloop.index %}
-        {% endif %}
-    {% endfor %}
-    {% if pub.year == year %}
-      <div class="timeline-item flex items-start gap-4">
-        <span class="timeline-dot"></span>
-        <div class="flex-grow">
-          <div class="timeline-header">
-            <span class="timeline-org">{{pub.title | replace: open_brace, '' | replace: close_brace, '' }}</span>
-          </div>
-          <div class="timeline-meta"><i class="fa-solid fa-users" title="{{t.authors[page.lang]}}"></i>({{author_index}}/{{authors.size}}) {% for author in authors %}{% if author == site.author %}<u>{{author}}</u>{% else %}{{author}}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
-          {% if pub.journal %}
-            <div class="timeline-title"><i class="fa-solid fa-book-journal-whills" title="{{t.journal[page.lang]}}"></i>{{ pub.journal | replace: open_brace, '' | replace: close_brace, '' }}</div>
-          {% elsif pub.booktitle %}
-            <div class="timeline-title"><i class="fa-solid fa-book-journal-whills" title="{{t.conference[page.lang]}}{% if pub.track %} • Track{% endif %}"></i>{{ pub.booktitle | replace: open_brace, '' | replace: close_brace, '' }}{% if pub.track %} • {{pub.track}}{% endif %}</div>
-          {% endif %}
-            <div class="timeline-meta"><span title="{{t.date[page.lang]}}{% if pub.address %} • {{ t.location[page.lang] }}{% endif %}">🗺️</span><span class="format-date" data-date="{{ pub.date }}" data-format="month-year">{{ pub.month | date: "%b" }} {{pub.year}}</span>{% if pub.address %} • <span>{{ pub.address }}</span>{% endif %}</div>
-          {% if pub.doi %}
-            <div class="timeline-meta"><a href="https://doi.org/{{ pub.doi }}" title="DOI" target="_blank" rel="noopener">🔗 {{pub.doi}}</a></div>
-          {% elsif pub.url %}
-            <div class="timeline-meta"><a href="{{ pub.url }}" title="URL" target="_blank" rel="noopener">🔗 {{pub.url}}</a></div>
-          {% endif %}          
-        </div>
-        
-      </div>
-    {% endif %}
-  {% endfor %}
-{% endfor %}
-</div>
-
-
-<div class="publications">
-  {% for entry in pubs %}
-    <div class="item-pub">
-      <strong>{{ entry.title }}</strong><br>
-      <span>{{ entry.author }}</span> | <em>{{ entry.journal }}</em> ({{ entry.year }})
-      {% if entry.doi %}
-        <a href="https://doi.org/{{ entry.doi }}">DOI</a>
-      {% endif %}
+  <div class="timeline-year-group">
+    <div class="timeline-year-header">
+      <span class="timeline-year-label">{{ year }}</span>
     </div>
-    <hr>
-  {% endfor %}
+    {% for item in sorted_array %}
+      {% assign pub_id = item | split: '|' | last %}
+      {% assign pub = site.data.publications | where: "ID", pub_id | first %}
+      {% assign pub_type = "other" %}
+      {% if pub.journal %}{% assign pub_type = "journal" %}{% endif %}
+      {% if pub.booktitle %}{% assign pub_type = "international-conference" %}{% endif %}
+      {% if pub.scope == "national" %}{% assign pub_type = "national-conference" %}{% endif %}
+      {% assign authors = pub.author | split: " and " %}
+      {% assign author_index = -1 %}
+      {% for author in authors %}
+          {% if author == site.author %}
+              {% assign author_index = forloop.index %}
+          {% endif %}
+      {% endfor %}
+      {% if pub.year == year %}
+        <div class="timeline-item {{pub_type}} flex items-start gap-4">
+          <span class="timeline-dot"></span>
+          <div class="flex-grow">
+            <div class="timeline-header">
+              <span class="timeline-org">{{pub.title | replace: open_brace, '' | replace: close_brace, '' }}</span>
+            </div>
+            <div class="timeline-meta"><i class="fa-solid fa-users" title="{{t.authors[page.lang]}}"></i>({{author_index}}/{{authors.size}}) {% for author in authors %}{% if author == site.author %}<u>{{author}}</u>{% else %}{{author}}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
+            {% if pub.journal %}
+              <div class="timeline-title"><i class="fa-solid fa-book-journal-whills" title="{{t.journal[page.lang]}}"></i>{{ pub.journal | replace: open_brace, '' | replace: close_brace, '' }}</div>
+            {% elsif pub.booktitle %}
+              <div class="timeline-title"><i class="fa-solid fa-book-journal-whills" title="{{t.conference[page.lang]}}{% if pub.track %} • Track{% endif %}"></i>{{ pub.booktitle | replace: open_brace, '' | replace: close_brace, '' }}{% if pub.track %} • {{pub.track}}{% endif %}</div>
+            {% endif %}
+              <div class="timeline-meta"><span title="{{t.date[page.lang]}}{% if pub.address %} • {{ t.location[page.lang] }}{% endif %}">🗺️</span><span class="format-date" data-date="{{ pub.date }}" data-format="month-year">{{ pub.month | date: "%b" }} {{pub.year}}</span>{% if pub.address %} • <span>{{ pub.address }}</span>{% endif %}</div>
+            {% if pub.doi %}
+              <div class="timeline-meta"><a href="https://doi.org/{{ pub.doi }}" title="DOI" target="_blank" rel="noopener">🔗 {{pub.doi}}</a></div>
+            {% elsif pub.url %}
+              <div class="timeline-meta"><a href="{{ pub.url }}" title="URL" target="_blank" rel="noopener">🔗 {{pub.url}}</a></div>
+            {% endif %}          
+          </div>
+          
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endfor %}
 </div>

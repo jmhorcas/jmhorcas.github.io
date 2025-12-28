@@ -73,3 +73,18 @@ journal:
 conference:
   en: "Conference"
   es: "Conferencia"
+all:
+  en: "All"
+  es: "Todas"
+journals:
+  en: "Journals"
+  es: "Revistas"
+conferences:
+  en: "Conferences"
+  es: "Conferencias"
+international_conferences:
+  en: "International Conferences 🗺️"
+  es: "Conferencias Internacionales 🗺️"
+national_conferences:
+  en: "National Conferences 🇪🇸"
+  es: "Conferencias Nacionales 🇪🇸"

@@ -94,3 +94,41 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
+
+function updateCounts() {
+  // Contamos elementos reales en el DOM
+  const total = document.querySelectorAll('.timeline-item').length;
+  const journals = document.querySelectorAll('.timeline-item.journal').length;
+  const internationalConferences = document.querySelectorAll('.timeline-item.international-conference').length;
+  const nationalConferences = document.querySelectorAll('.timeline-item.national-conference').length;
+
+  // Actualizamos los spans
+  document.getElementById('count-all').textContent = total;
+  document.getElementById('count-journal').textContent = journals;
+  document.getElementById('count-international-conference').textContent = internationalConferences;
+  document.getElementById('count-national-conference').textContent = nationalConferences;
+}
+
+function filterPubs(type) {
+  const items = document.querySelectorAll('.timeline-item');
+  const groups = document.querySelectorAll('.timeline-year-group');
+
+  items.forEach(item => {
+    if (type === 'all' || item.classList.contains(type)) {
+      item.style.display = 'flex';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+
+  // Ocultar años que se quedan vacíos
+  groups.forEach(group => {
+    const hasVisible = Array.from(group.querySelectorAll('.timeline-item'))
+                            .some(i => i.style.display !== 'none');
+    group.style.display = hasVisible ? 'block' : 'none';
+  });
+}
+
+// Ejecutar el conteo nada más cargar la página
+document.addEventListener("DOMContentLoaded", updateCounts);

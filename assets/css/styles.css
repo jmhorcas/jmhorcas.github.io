@@ -1397,3 +1397,54 @@ html {
     height: 2rem;
     cursor: pointer;
 }
+
+
+.filter-container {
+    display: flex;         /* Activa flexbox */
+    justify-content: center; /* Centra horizontalmente */
+    width: 100%;           /* Asegura que ocupe todo el ancho */
+    margin: 20px 0 40px 0; /* Espaciado arriba y abajo */
+  }
+
+.filter-switch-group {
+    display: inline-flex;  /* Mantiene los botones en línea */
+    background: #f1f3f5;
+    padding: 3px;
+    border-radius: 12px;   /* Bordes más redondeados para look moderno */
+    gap: 2px;
+    border: 1px solid #e2e8f0;
+  }
+  .switch-label input { display: none; } /* Escondemos el radio button */
+  
+  .switch-text {
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+
+  /* Color cuando está seleccionado */
+  .switch-label input:checked + .switch-text {
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    color: #007bff;
+  }
+
+  .badge {
+    background: #e9ecef;
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-size: 0.8em;
+    color: #666;
+  }
+  
+  .switch-label input:checked + .switch-text .badge {
+    background: #007bff;
+    color: white;
+  }
