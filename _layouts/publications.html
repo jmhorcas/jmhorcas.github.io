@@ -44,15 +44,15 @@ layout: default
       </label>
       <label class="switch-label">
         <input type="radio" name="pub-filter" value="journal" onclick="filterPubs('journal')">
-        <span class="switch-text">{{t.journals[page.lang]}} <span id="count-journal" class="badge">0</span></span>
+        <span class="switch-text"><i class="fa-solid fa-circle" style="color: #c32b72;"></i>{{t.journals[page.lang]}} <span id="count-journal" class="badge">0</span></span>
       </label>
       <label class="switch-label">
         <input type="radio" name="pub-filter" value="conference" onclick="filterPubs('conference')">
-        <span class="switch-text">{{t.conferences[page.lang]}} <span id="count-conference" class="badge">0</span></span>
+        <span class="switch-text"><i class="fa-solid fa-circle" style="color: #196ca3;"></i>{{t.conferences[page.lang]}} <span id="count-conference" class="badge">0</span></span>
       </label>
       <label class="switch-label">
         <input type="radio" name="pub-filter" value="other" onclick="filterPubs('other')">
-        <span class="switch-text">{{t.others[page.lang]}} <span id="count-other" class="badge">0</span></span>
+        <span class="switch-text"><i class="fa-solid fa-circle" style="color: #ffd500;"></i>{{t.others[page.lang]}} <span id="count-other" class="badge">0</span></span>
       </label>
     </div>
   </div>
@@ -64,11 +64,15 @@ layout: default
       </label>
       <label class="switch-label sub">
         <input type="radio" name="sub-filter" value="international-conference" onclick="filterPubs('international-conference')">
-        <span class="switch-text">{{t.internationals[page.lang]}} <span id="count-international-conference" class="badge">0</span></span>
+        <span class="switch-text"><i class="fa-solid fa-circle" style="color: #196ca3;"></i>{{t.internationals[page.lang]}} <span id="count-international-conference" class="badge">0</span></span>
+      </label>
+      <label class="switch-label sub">
+        <input type="radio" name="sub-filter" value="workshop" onclick="filterPubs('workshop')">
+        <span class="switch-text"><i class="fa-solid fa-circle" style="color: #2ecc71;"></i>{{t.workshops[page.lang]}} <span id="count-workshop" class="badge">0</span></span>
       </label>
       <label class="switch-label sub">
         <input type="radio" name="sub-filter" value="national-conference" onclick="filterPubs('national-conference')">
-        <span class="switch-text">{{t.nationals[page.lang]}} <span id="count-national-conference" class="badge">0</span></span>
+        <span class="switch-text"><i class="fa-solid fa-circle" style="color: #e68019;"></i>{{t.nationals[page.lang]}} <span id="count-national-conference" class="badge">0</span></span>
       </label>
     </div>
   </div>
@@ -80,37 +84,33 @@ layout: default
       </label>
       <label class="switch-label sub">
         <input type="radio" name="track-filter" value="main" onclick="filterPubs('main')">
-        <span class="switch-text">Main <span id="count-main" class="badge">0</span></span>
+        <span class="switch-text">{{t.main_track[page.lang]}} <span id="count-main" class="badge">0</span></span>
       </label>
       <label class="switch-label sub">
         <input type="radio" name="track-filter" value="short" onclick="filterPubs('short')">
-        <span class="switch-text">Short <span id="count-short" class="badge">0</span></span>
+        <span class="switch-text">{{t.short_paper[page.lang]}} <span id="count-short" class="badge">0</span></span>
       </label>
       <label class="switch-label sub">
         <input type="radio" name="track-filter" value="industrial" onclick="filterPubs('industrial')">
-        <span class="switch-text">Industrial <span id="count-industrial" class="badge">0</span></span>
+        <span class="switch-text">{{t.industrial[page.lang]}} <span id="count-industrial" class="badge">0</span></span>
       </label>
       <label class="switch-label sub">
         <input type="radio" name="track-filter" value="tool" onclick="filterPubs('tool')">
-        <span class="switch-text">Tool <span id="count-tool" class="badge">0</span></span>
-      </label>
-      <label class="switch-label sub">
-        <input type="radio" name="track-filter" value="workshop" onclick="filterPubs('workshop')">
-        <span class="switch-text">Workshops <span id="count-workshop" class="badge">0</span></span>
-      </label>
-      <label class="switch-label sub">
-        <input type="radio" name="track-filter" value="phd-symposium" onclick="filterPubs('phd-symposium')">
-        <span class="switch-text">PhD Symposium <span id="count-phd-symposium" class="badge">0</span></span>
+        <span class="switch-text">{{t.tool_track[page.lang]}} <span id="count-tool" class="badge">0</span></span>
       </label>
       <label class="switch-label sub">
         <input type="radio" name="track-filter" value="tutorial" onclick="filterPubs('tutorial')">
-        <span class="switch-text">Tutorial <span id="count-tutorial" class="badge">0</span></span>
+        <span class="switch-text">{{t.tutorial[page.lang]}} <span id="count-tutorial" class="badge">0</span></span>
+      </label>
+      <label class="switch-label sub">
+        <input type="radio" name="track-filter" value="phd-symposium" onclick="filterPubs('phd-symposium')">
+        <span class="switch-text">{{t.phd_symposium[page.lang]}} <span id="count-phd-symposium" class="badge">0</span></span>
       </label>
     </div>
   </div>
 </div>
 
-<div class="timeline">
+<div class="timeline publications-timeline">
 {% for year in years %}
   <div class="timeline-year-group">
     <div class="timeline-year-header">
@@ -123,9 +123,9 @@ layout: default
       {% if pub.journal %}{% assign pub_type = "journal" %}{% endif %}
       {% if pub.booktitle %}{% assign pub_type = "international-conference" %}{% endif %}
       {% if pub.scope == "national" %}{% assign pub_type = "national-conference" %}{% endif %}
-      {% assign pub_track = "main" %}
       {% assign conference_title = pub.booktitle | downcase %}
-      {% if conference_title contains "workshop" %}{% assign pub_track = "workshop" %}{% endif %}
+      {% if conference_title contains "workshop" %}{% assign pub_type = "workshop" %}{% endif %}
+      {% assign pub_track = "main" %}
       {% if pub.track %}{% assign pub_track = pub.track | downcase | strip | replace: " ", "-" %}{% endif %}
       {% assign authors = pub.author | split: " and " %}
       {% assign author_index = -1 %}

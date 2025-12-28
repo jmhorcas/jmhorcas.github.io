@@ -83,11 +83,32 @@ conferences:
   en: "Conferences"
   es: "Conferencias"
 internationals:
-  en: "Internationals 🗺️"
-  es: "Internacionales 🗺️"
+  en: "Internationals"
+  es: "Internacionales"
 nationals:
   en: "Nationals 🇪🇸"
   es: "Nacionales 🇪🇸"
 others:
   en: "Others"
   es: "Otras"
+workshops:
+  en: "Workshops"
+  es: "Workshops"
+main_track:
+  en: "Main track"
+  es: "Track principal"
+short_paper:
+  en: "Short paper"
+  es: "Artículo corto"
+industrial:
+  en: "Industrial"
+  es: "Industrial"
+tool_track:
+  en: "Tool"
+  es: "Herramientas"
+tutorial:
+  en: "Tutorial"
+  es: "Tutorial"
+phd_symposium:
+  en: "PhD Symposium"
+  es: "Simposio PhD"

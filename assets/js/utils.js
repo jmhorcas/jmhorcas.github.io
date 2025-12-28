@@ -105,12 +105,12 @@ function updateCounts() {
   // 2. Contamos elementos del Nivel 2 (Conferencias)
   const internationalConferences = document.querySelectorAll('.timeline-item.international-conference').length;
   const nationalConferences = document.querySelectorAll('.timeline-item.national-conference').length;
-  const totalConferences = internationalConferences + nationalConferences;
+  const workshop = document.querySelectorAll('.timeline-item.workshop').length;
+  const totalConferences = internationalConferences + nationalConferences + workshop;
 
   // 3. Contamos elementos del Nivel 3 (Tracks de Internacionales)
   // Usamos selectores combinados para asegurar que solo contamos tracks internacionales
   const main = document.querySelectorAll('.timeline-item.international-conference.main').length;
-  const workshop = document.querySelectorAll('.timeline-item.international-conference.workshop').length;
   const short = document.querySelectorAll('.timeline-item.international-conference.short').length;
   const tutorial = document.querySelectorAll('.timeline-item.international-conference.tutorial').length;
   const industrial = document.querySelectorAll('.timeline-item.international-conference.industrial').length;
@@ -147,7 +147,7 @@ function filterPubs(type) {
   const subTracks = document.getElementById('subfilter-tracks');
 
   // 1. CONTROL DE VISIBILIDAD DE PANELES (Cascada)
-  const isAConferenceAction = (type === 'conference' || type === 'international-conference' || type === 'national-conference' || isTrack(type));
+  const isAConferenceAction = (type === 'conference' || type === 'international-conference' || type === 'national-conference' || type === 'workshop' || isTrack(type));
   const isAnInternationalAction = (type === 'international-conference' || isTrack(type));
 
   subConfs.style.display = isAConferenceAction ? 'flex' : 'none';
@@ -160,7 +160,7 @@ function filterPubs(type) {
     } 
     else if (type === 'conference') {
       // Mostrar cualquier conferencia (nacional o internacional)
-      const isAnyConf = item.classList.contains('international-conference') || item.classList.contains('national-conference');
+      const isAnyConf = item.classList.contains('international-conference') || item.classList.contains('national-conference') || item.classList.contains('workshop');
       item.style.display = isAnyConf ? 'flex' : 'none';
     } 
     else if (type === 'international-conference') {
@@ -169,7 +169,7 @@ function filterPubs(type) {
     }
     else if (isTrack(type)) {
       // ESTA ES LA CLAVE: Para que el track solo afecte a las internacionales
-      // El item debe tener la clase del track (ej. 'workshop') Y 'international-conference'
+      // El item debe tener la clase del track (ej. 'tool') Y 'international-conference'
       const matchesTrack = item.classList.contains(type);
       const isInternational = item.classList.contains('international-conference');
       
@@ -191,7 +191,7 @@ function filterPubs(type) {
 
 // Función auxiliar para detectar si es un track
 function isTrack(type) {
-  const tracks = ['main', 'workshop', 'short', 'industrial', 'tool', 'tutorial', 'phd-symposium'];
+  const tracks = ['main', 'short', 'industrial', 'tool', 'tutorial', 'phd-symposium'];
   return tracks.includes(type);
 }
 

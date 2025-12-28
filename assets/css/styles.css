@@ -466,7 +466,7 @@ body {
     max-width: none; /* Allow prose to use full container width */
 }
 
-.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+.prose h1, .prose.h1, .prose h2, .prose.h2, .prose h3, .prose.h3, .prose h4, .prose.h4, .prose h5, .prose.h5, .prose h6, .prose.h6 {
     color: var(--color-accent-2);
     font-weight: 600;
     line-height: 1.25;
@@ -474,10 +474,10 @@ body {
     margin-bottom: 1rem;
 }
 
-.prose h1 { font-size: 2.25rem; }
-.prose h2 { font-size: 1.875rem; }
-.prose h3 { font-size: 1.5rem; }
-.prose h4 { font-size: 1.25rem; }
+.prose h1 .prose.h1 { font-size: 2.25rem; }
+.prose h2 .prose.h2 { font-size: 1.875rem; }
+.prose h3 .prose.h3 { font-size: 1.5rem; }
+.prose h4 .prose.h4 { font-size: 1.25rem; }
 
 .prose p {
     margin-bottom: 1.25rem;
@@ -1356,6 +1356,37 @@ html {
     border-bottom: none !important; /* Por si tu tema usa borde en lugar de subrayado */
 }
 
+/* Estos colores SOLO funcionarán dentro de .publications-timeline */
+
+  /* Rojo para Journals */
+  .publications-timeline .timeline-item.journal .timeline-dot {
+    background-color: #c32b72;
+    border-color: #c32b72; /* Opcional: para que el borde combine */
+  }
+
+  /* Azul para International Conferences */
+  .publications-timeline .timeline-item.international-conference .timeline-dot {
+    background-color: #196ca3;
+    border-color: #196ca3;
+  }
+
+  /* Verde para Workshops */
+  .publications-timeline .timeline-item.workshop .timeline-dot {
+    background-color: #2ecc71;
+    border-color: #2ecc71;
+  }
+
+  /* Amarillo para Nationals */
+  .publications-timeline .timeline-item.national-conference .timeline-dot {
+    background-color: #e68019;
+    border-color: #e68019;
+  }
+
+  /* Negro para Others (dentro de publicaciones) */
+  .publications-timeline .timeline-item.other .timeline-dot {
+    background-color: #ffd500;
+    border-color: #ffd500;
+  }
 
 /*************************/
 /* Timeline dialog modal */
