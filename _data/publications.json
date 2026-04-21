@@ -1454,5 +1454,17 @@
         "author": "Brian Flores and José Miguel Horcas and Mercedes Amor and Lidia Fuentes",
         "ENTRYTYPE": "inproceedings",
         "ID": "Flores2025_KubernetesFM"
+    },
+    {
+        "jcr": "Q4 (176/177) Computer Science, Interdisciplinary Applications. Impact factor: 0.1",
+        "url": "https://ercim-news.ercim.eu/en144/special/bibtexviz-visualizing-research-productivity-with-open-science-data",
+        "month": "apr",
+        "year": "2026",
+        "number": "144",
+        "journal": "{ERCIM} News",
+        "title": "BibTexViz: Visualizing Research Productivity with Open Science Data",
+        "author": "José Miguel Horcas",
+        "ENTRYTYPE": "article",
+        "ID": "Horcas2026_BibTexViz"
     }
 ]
