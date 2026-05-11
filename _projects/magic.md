@@ -6,7 +6,7 @@ funds: 163686.50
 start_date: 2014-01-29 
 end_date: 2018-01-21
 months: 48
-scope: autonómico
+scope: regional
 funding_entity: Junta de Andalucía
 call: "Proyectos de Investigación de Excelencia (Conv. 2012)"
 program: 

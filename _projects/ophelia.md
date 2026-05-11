@@ -6,7 +6,7 @@ funds: 147136.00
 start_date: 2019-01-01 
 end_date: 2022-09-30
 months: 45
-scope: nacional
+scope: national
 funding_entity: Ministerio de Ciencia, Innovación y Universidades (MICIU)
 call: Proyectos de I+D+i (Conv. 2018) «Retos Investigación»
 program: "Programa Estatal de I+D+i Orientada a los Retos de la Sociedad"

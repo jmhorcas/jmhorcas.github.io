@@ -6,7 +6,7 @@ funds: 146000.00
 start_date: 2025-01-01 
 end_date: 2026-12-31
 months: 
-scope: autonómico
+scope: regional
 funding_entity: Junta de Andalucía
 call: Proyectos de investigación por los agentes del sistema andaluz del conocimiento (Conv. 2024)
 program:

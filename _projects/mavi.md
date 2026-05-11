@@ -6,7 +6,7 @@ funds: 98841.60
 start_date: 2013-01-01 
 end_date: 2015-12-31
 months: 36
-scope: nacional
+scope: national
 funding_entity: Ministerio de Economía y Competitividad (MINECO), co-funded by FEDER
 call: "Proyectos de I+D+i (Conv. 2012) «Investigación Fundamental no Orientada»"
 program: 

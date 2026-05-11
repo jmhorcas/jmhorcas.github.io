@@ -6,7 +6,7 @@ funds: 90000.00
 start_date: 2022-01-01
 end_date: 2023-05-31
 months: 17
-scope: autonómico
+scope: regional
 funding_entity: Junta de Andalucía
 call: Conv. 2020 Proyectos de I+D+i
 program: Plan Andaluz de Investigación, Desarrollo e Innovación (PAIDI 2020)
