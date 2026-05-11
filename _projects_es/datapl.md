@@ -4,8 +4,8 @@ acronym: Data-PL
 identifier: PID2022-138486OB-I00
 funds: 115375.00
 start_date: 2023-09-01 
-end_date: 2026-08-31
-months: 44
+end_date: 2027-08-31
+months: 48
 scope: nacional
 funding_entity: Ministerio de Ciencia e Innovación
 call: Proyectos de I+D+i (Conv. 2022) «Proyectos de Generación de Conocimiento»
