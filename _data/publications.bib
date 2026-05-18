@@ -1391,3 +1391,53 @@
   url          = {https://ercim-news.ercim.eu/en144/special/bibtexviz-visualizing-research-productivity-with-open-science-data},
   jcr          = {Q4 (176/177) Computer Science, Interdisciplinary Applications. Impact factor: 0.1},
 }
+
+@inproceedings{Horcas2026_JISBD_LLMs4UVL,
+  editor       = {SISTEDES},
+  publisher    = {SISTEDES},
+  title        = {Cuantificando el conocimiento factual sobre el lenguaje UVL en los Modelos de Lenguaje},
+  author       = {José Miguel Horcas and Joaquin Ballesteros and Mónica Pinto and Lidia Fuentes},
+  url          = {},
+  booktitle    = {XXX Jornadas de Ingeniería del Software y Bases de Datos ({JISBD})},
+  year         = {2026},
+  month        = {jun},
+  address      = {Alicante, Spain},
+  abstract     = {Los Modelos de Lenguaje de Gran Escala (LLMs) han transformado la ingeniería del software, demostrando capacidades emergentes en dominios técnicos; sin embargo, su eficacia en el modelado y análisis de la variabilidad mediante el lenguaje UVL (Universal Variability Language) no ha sido cuantificada de manera sistemática. A pesar de su potencial para asistir en la creación de modelos, los LLMs son propensos a sufrir alucinaciones o a generar estructuras que violan las reglas gramaticales formales del lenguaje. Para abordar este problema, este trabajo presenta una metodología para la elicitación y cuantificación del conocimiento factual de los LLMs sobre UVL mediante la técnica de materialización extensiva. El enfoque se fundamenta en la comparación de una base de conocimiento de referencia (Ground Truth), construida a partir de fuentes oficiales, frente al conocimiento extraído de modelos de lenguaje frontera. Los resultados, evaluados mediante métricas de precisión y exhaustividad sobre los grafos de conocimiento, revelan que el conocimiento factual de los modelos evaluados es parcial y heterogéneo. Se identifica, además, una tensión inherente entre la expansión generativa y la fidelidad formal, donde los modelos suelen priorizar la exhaustividad sobre la precisión técnica. Estos hallazgos confirman la necesidad de emplear metodologías de auditoría estructuradas para evaluar rigurosamente el conocimiento especializado en modelos de lenguaje.},
+  keywords     = {Conocimiento factual, Materialización extensiva, Modelo de lenguaje, Universal Variability Language, UVL},
+  scope        = {national}
+}
+
+@inproceedings{Horcas2026_JISBD_UVengine,
+  editor       = {SISTEDES},
+  publisher    = {SISTEDES},
+  title        = {UVengine: Derivación de artefactos configurables a partir de modelos de características en UVL},
+  author       = {José Miguel Horcas and Mónica Pinto and Lidia Fuentes},
+  url          = {},
+  booktitle    = {XXX Jornadas de Ingeniería del Software y Bases de Datos ({JISBD})},
+  year         = {2026},
+  month        = {jun},
+  address      = {Alicante, Spain},
+  abstract     = {El lenguaje UVL (Universal Variability Language) se ha consolidado como una propuesta estandarizada para la especificación textual de modelos de características. Aunque el ecosistema de herramientas de UVL proporciona soporte sólido para el modelado y análisis de variabilidad, el soporte para la derivación automática de artefactos a partir de configuraciones sigue siendo limitado, especialmente cuando se utilizan extensiones avanzadas del lenguaje. 
+Este artículo presenta UVengine, un motor de resolución de variabilidad que permite generar productos personalizados a partir de modelos UVL mediante un enfoque basado en plantillas. La herramienta soporta todas las extensiones del lenguaje UVL y permite resolver variabilidad sobre cualquier artefacto textual. Además, se ha aplicado con éxito en distintos contextos reales, incluyendo configuraciones de Kubernetes, pipelines de visualización y procesos de migración de datos. El artículo describe el enfoque de la herramienta y presenta su aplicación en estos escenarios.},
+  keywords     = {Configuración, FM, Línea de Productos Software, Modelo de características, SPL, UVL, Variabilidad},
+  scope        = {national},
+  track        = {tool}
+}
+
+@inproceedings{Horcas2026_JISBD_UVengine,
+  editor       = {SISTEDES},
+  publisher    = {SISTEDES},
+  title        = {Unificación y Verificación Formal de Políticas de Seguridad en Kubernetes con Modelos de Características},
+  author       = {Brian Flores and José Miguel Horcas and Lidia Fuentes},
+  url          = {},
+  booktitle    = {XXX Jornadas de Ingeniería del Software y Bases de Datos ({JISBD})},
+  year         = {2026},
+  month        = {jun},
+  address      = {Alicante, Spain},
+  abstract     = {Kubernetes se ha convertido en el estándar de facto para la orquestación de contenedores gracias a su modelo declarativo para gestionar arquitecturas en la nube. Sin embargo, su gran espacio de configuración, con miles de parámetros, incrementa el riesgo de errores de configuración, identificados como una de las principales amenazas de seguridad, ya que pueden provocar accesos no autorizados, escalada de privilegios o agotamiento de recursos.
+Herramientas como Kyverno, Trivy y Polaris permiten detectar configuraciones inseguras mediante enfoques de políticas como código y motores de reglas. No obstante, estas políticas se definen dentro de ecosistemas específicos y utilizan lenguajes y mecanismos de razonamiento heterogéneos, lo que dificulta analizar de forma uniforme sus interacciones y restricciones.
+En este trabajo proponemos un proceso formal basado en modelado de características para sistematizar la validación de seguridad en Kubernetes. A partir de un modelo de variabilidad del sistema, presentamos una metodología para extraer políticas de múltiples fuentes y formalizarlas en un modelo unificado, permitiendo detectar configuraciones inseguras y conflictos lógicos entre políticas antes del despliegue.
+Los resultados experimentales muestran que el enfoque permite identificar riesgos de seguridad y mejorar la coherencia de las configuraciones declarativas de Kubernetes.},
+  keywords     = {Modelo de características, Kubernetes, Políticas de seguridad, Líneas de Productos Software, UVL, Variabilidad},
+  scope        = {national}
+}
