@@ -50,17 +50,46 @@ layout: default
             <div class="timeline-meta"><a href="{{award.work_link}}" title="DOI/URI" target="_blank" rel="noopener">🔗</a></div>
           {% endif %}
         </div>
-        {% if award.image %}
-          <div class="timeline-image shrink-0">
-            <img src="{{ award.image | relative_url }}" alt="{{ award.title }}" class="timeline-clickable rounded-lg shadow-sm border border-accent-2/10" onclick="document.getElementById('img-{{ forloop.index }}').showModal()">
-          </div>
-          <dialog id="img-{{ forloop.index }}" class="timeline-dialog">
-            <img src="{{ award.image | relative_url }}" alt="">
-            <button onclick="this.closest('dialog').close()">✕</button>
-          </dialog>
+
+
+        {% if award.images %}
+
+        <div class="timeline-image shrink-0">
+
+            <div class="swiper award-swiper">
+                <div class="swiper-wrapper">
+
+                {% for img in award.images %}
+                    <div class="swiper-slide">
+                        <img
+                            src="{{ img | relative_url }}"
+                            alt="{{ award.title }}"
+                            class="timeline-clickable rounded-lg shadow-sm border border-accent-2/10"
+                            onclick="showImage('{{ img | relative_url }}')"">
+                    </div>
+                {% endfor %}
+
+                </div>
+
+                {% if award.images.size > 1 %}
+                    <div class="swiper-button-prev"><i class="fa-solid fa-circle-chevron-left"></i></div>
+                    <div class="swiper-button-next"><i class="fa-solid fa-circle-chevron-right"></i></div>
+                {% endif %}
+            </div>
+
+        </div>
+
         {% endif %}
+
+
+
       </div>
     {% endif %}
   {% endfor %}
 {% endfor %}
 </div>
+
+<dialog id="image-dialog" class="timeline-dialog">
+    <img id="dialog-image" src="" alt="">
+    <button onclick="document.getElementById('image-dialog').close()">✕</button>
+</dialog>

@@ -8,6 +8,12 @@ date: 2021-09-17
 location: Vienna, Austria
 icon: 🥇
 image: /assets/img/awards/confws2021.png
+images:
+  - "/assets/img/awards/confws2021.png"
+  - "/assets/img/awards/confws2021_b.jpeg"
+  - "/assets/img/awards/confws2021_c.jpeg"
+  - "/assets/img/awards/confws2021_d.jpeg"
+  - "/assets/img/awards/confws2021_e.jpeg"
 description: "Best Paper Award."
 ---
 # {{ page.title }}

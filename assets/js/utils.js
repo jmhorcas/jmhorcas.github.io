@@ -197,3 +197,21 @@ function isTrack(type) {
 
 // Ejecutar el conteo nada más cargar la página
 document.addEventListener("DOMContentLoaded", updateCounts);
+
+// Carga swiper para el slider de imágenes
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".award-swiper").forEach(function (swiperEl) {
+    new Swiper(swiperEl, {
+      loop: true,
+      navigation: {
+        nextEl: swiperEl.querySelector(".swiper-button-next"),
+        prevEl: swiperEl.querySelector(".swiper-button-prev"),
+      },
+    });
+  });
+});
+
+function showImage(src) {
+    document.getElementById("dialog-image").src = src;
+    document.getElementById("image-dialog").showModal();
+}

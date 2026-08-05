@@ -8,6 +8,9 @@ date: 2018-09-28
 location: Granada, España
 icon: 🥇
 image: /assets/img/awards/somet2018.png
+images:
+  - "/assets/img/awards/somet2018.png"
+  - "/assets/img/awards/somet2018_b.jpeg"
 description: "Premio al Mejor Artículo en reconocimiento a la excelencia profesional como uno de los mejores artículos de la conferencia. Felicitado y reconocido por el excelente trabajo de investigación reportado en el artículo."
 ---
 # {{ page.title }}

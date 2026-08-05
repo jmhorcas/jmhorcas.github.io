@@ -8,6 +8,10 @@ date: 2021-09-24
 location: Málaga, España
 icon: 🏆
 image: /assets/img/awards/sistedes2020.png
+images:
+  - "/assets/img/awards/sistedes2020.png"
+  - "/assets/img/awards/sistedes2020_b.jpg"
+  - "/assets/img/awards/sistedes2020_c.jpg"
 description: "Premio a la mejor Tesis Doctoral en el ámbito de SISTEDES, 2020."
 ---
 # {{ page.title }}

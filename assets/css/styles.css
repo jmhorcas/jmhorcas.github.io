@@ -1617,3 +1617,39 @@ html {
         overflow-x: visible; /* Evita que se recorte el contenido */
     }
 }
+
+/* Images carousel */
+.timeline-image{
+    width:220px;      /* o el ancho que ya usabas */
+    flex-shrink:0;
+}
+
+.award-swiper{
+    width:100%;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.award-swiper img{
+    display:block;
+    width:100%;
+    height:auto;
+}
+
+.award-swiper .swiper-button-next,
+.award-swiper .swiper-button-prev{
+    color:white;
+    transform:scale(.55);
+}
+
+.award-swiper .swiper-button-next::after,
+.award-swiper .swiper-button-prev::after {
+    display: none;
+}
+
+.award-swiper .swiper-button-next i,
+.award-swiper .swiper-button-prev i {
+    font-size: 28px;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 0 4px rgba(0,0,0,.8);
+}

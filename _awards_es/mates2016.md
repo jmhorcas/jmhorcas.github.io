@@ -8,6 +8,9 @@ date: 2016-09-30
 location: Klagenfurt, Austria
 icon: 🥇
 image: /assets/img/awards/mates2016.png
+images:
+  - "/assets/img/awards/mates2016.png"
+  - "/assets/img/awards/mates2016_b.jpeg"
 description: "Premio al Mejor Artículo en reconocimiento a la excelente investigación presentada en el trabajo."
 ---
 # {{ page.title }}
