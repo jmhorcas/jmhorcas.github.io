@@ -2,7 +2,7 @@ name: Convert BibTeX to JSON
 on:
   push:
     paths:
-      - '_data/publications.bib' # Se activa solo si cambias el .bib
+      - 'assets/bib/publications.bib' # Se activa solo si cambias el .bib
 
 permissions:
   contents: write

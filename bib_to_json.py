@@ -20,5 +20,5 @@ def convert_bib_to_json(bib_file, output_file):
 
 if __name__ == "__main__":
     # Cambia 'mis_referencias.bib' por el nombre de tu archivo
-    convert_bib_to_json('_data/publications.bib', '_data/publications.json')
+    convert_bib_to_json('assets/bib/publications.bib', '_data/publications.json')
     print("¡Éxito! El archivo _data/publications.json ha sido actualizado.")

@@ -375,6 +375,9 @@ class MarkdownLoader {
         const targetRoot = root || document.body;
         if (!targetRoot) return;
 
+        if (targetRoot.dataset.bHoverApplied) return;
+        targetRoot.dataset.bHoverApplied = "1";
+
         const walker = document.createTreeWalker(
             targetRoot,
             NodeFilter.SHOW_TEXT,
@@ -387,7 +390,7 @@ class MarkdownLoader {
                     const parent = node.parentNode;
                     if (!parent) return NodeFilter.FILTER_REJECT;
                     const tag = parent.nodeName;
-                    if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'NOSCRIPT') {
+                    if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'NOSCRIPT' || tag === 'CODE' || tag === 'PRE' || tag === 'BUTTON') {
                         return NodeFilter.FILTER_REJECT;
                     }
                     if (parent.classList && parent.classList.contains('hover-b')) {

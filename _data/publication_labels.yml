@@ -1,0 +1,41 @@
+en:
+  title: Title
+  author: Authors
+  journal: Journal
+  booktitle: Conference
+  volume: Volume
+  number: Number
+  pages: Pages
+  month: Month
+  year: Year
+  address: Location
+  publisher: Publisher
+  doi: DOI
+  url: URL
+  abstract: Abstract
+  keywords: Keywords
+  awards: Awards
+  jcr: JCR
+  icore: ICORE
+  calification: Classification
+
+es:
+  title: Título
+  author: Autores
+  journal: Revista
+  booktitle: Conferencia
+  volume: Volumen
+  number: Número
+  pages: Páginas
+  month: Mes
+  year: Año
+  address: Lugar
+  publisher: Editorial
+  doi: DOI
+  url: URL
+  abstract: Resumen
+  keywords: Palabras clave
+  awards: Premios
+  jcr: JCR
+  icore: ICORE
+  calification: Clasificación

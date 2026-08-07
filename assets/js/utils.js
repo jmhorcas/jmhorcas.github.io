@@ -215,3 +215,78 @@ function showImage(src) {
     document.getElementById("dialog-image").src = src;
     document.getElementById("image-dialog").showModal();
 }
+
+function copyReference(id) {
+  const text = document.getElementById("reference-" + id).innerText.trim();
+
+   navigator.clipboard.writeText(text)
+    .then(() => showToast("✓ Reference copied"))
+    .catch(console.error);
+}
+
+let bibDatabase = null;
+
+async function loadBib() {
+
+    if (bibDatabase !== null)
+        return bibDatabase;
+
+    const response = await fetch("/assets/bib/publications.bib");
+
+    bibDatabase = await response.text();
+
+    return bibDatabase;
+}
+
+async function copyBibtex(id){
+
+    const bib = await loadBib();
+
+    const escaped = id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+    const regex = new RegExp(
+        "@\\w+\\s*\\{\\s*" + escaped + "\\s*,([\\s\\S]*?)\\n\\}",
+        "m"
+    );
+
+    const match = bib.match(regex);
+
+    if(!match){
+
+        alert("BibTeX entry not found.");
+
+        return;
+    }
+
+    const entry = match[0];
+
+    try {
+      await navigator.clipboard.writeText(entry);
+      showToast("✓ BibTeX copied");
+    }
+    catch (err) {
+        console.error(err);
+    }
+}
+
+function showToast(message) {
+
+    let toast = document.getElementById("toast");
+
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "toast";
+        toast.className = "toast";
+        document.body.appendChild(toast);
+    }
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toast.timer);
+
+    toast.timer = setTimeout(() => {
+        toast.classList.remove("show");
+    }, 1800);
+}

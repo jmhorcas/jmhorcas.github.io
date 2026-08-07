@@ -1,0 +1,116 @@
+{% capture reference %}
+    {{ pub.author | replace: " and ", ", " }}.
+    {{ pub.title | replace: open_brace, '' | replace: close_brace, '' }}.
+    {% if pub.journal %}
+    {{ pub.journal | replace: open_brace, '' | replace: close_brace, '' }},
+    {% elsif pub.booktitle %}
+    {{ pub.booktitle | replace: open_brace, '' | replace: close_brace, '' }},
+    {% endif %}
+    {{ pub.year }}.
+    {% if pub.volume %}{{ pub.volume }}{% if pub.number %}({{pub.number}}){% endif %}:{% endif %}
+    {% if pub.pages %} {{ pub.pages | replace: "--","-" }}.{% endif %}
+    {% if pub.address %} {{ pub.address }}.{% endif %}
+    {% if pub.doi %}
+    https://doi.org/{{ pub.doi }}
+    {% elsif pub.url %}
+    {{ pub.url }}
+    {% endif %}
+{% endcapture %}
+
+        <dialog id="pub-{{pub.ID}}" class="publication-dialog">
+          <div class="publication-modal">
+
+            <div class="publication-modal-header">
+                <h5>{{ pub.title | replace: open_brace, '' | replace: close_brace, '' }}</h5>
+
+                <button class="dialog-close"
+                        onclick="this.closest('dialog').close()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+
+            <div class="publication-modal-body">
+
+              <div class="publication-info">
+
+                {% assign labels = site.data.publication_labels[page.lang] %}
+                {% assign order = "title,author,journal,booktitle,volume,number,pages,year,month,address,publisher,jcr,icore,calification,awards,notes,doi,url,abstract,keywords" | split: "," %}
+
+                {% for key in order %}
+
+                    {% assign value = pub[key] %}
+
+                    {% if value %}
+
+                        <p>
+
+                            <strong>{{ labels[key] | default:key | capitalize }}:</strong>
+
+                            {% case key %}
+
+
+                            {% when "author" %}
+
+                                {% assign authors = value | split:" and " -%}
+                                {%- for author in authors -%}
+                                    {%- assign author = author | strip -%}
+                                    {%- if author == site.author -%}
+                                        <u>{{author}}</u>
+                                    {%- else -%}
+                                        {{author}}
+                                    {%- endif -%}
+                                    {%- unless forloop.last -%}, {% endunless -%}
+                                {%- endfor -%}
+
+                            {% when "doi" %}
+
+                                <a href="https://doi.org/{{value}}" target="_blank">{{value}}</a>
+
+                            {% when "url" %}
+
+                                <a href="{{value}}" target="_blank">{{value}}</a>
+
+                            {% when "awards" %}
+
+                                {% for award in value %}
+                                    🏆 {{award}}{% unless forloop.last %}<br>{% endunless %}
+                                {% endfor %}
+
+                            {% else %}
+
+                                {{value | replace: open_brace, '' | replace: close_brace, '' }}
+                                
+                            {% endcase %}
+
+                        </p>
+
+                    {% endif %}
+
+                {% endfor %}
+                <div class="publication-reference">
+
+                    <strong>Reference</strong>
+
+                    <p id="reference-{{pub.ID}}">
+                    {{ reference | strip }}
+                    </p>
+
+                </div>
+                
+              </div>
+
+            </div>
+            <div class="publication-modal-footer">
+
+              <button type="button" onclick="copyReference('{{pub.ID}}')">
+                <i class="fa-solid fa-tag"></i> Copy Reference
+              </button>
+
+              <button type="button" onclick="copyBibtex('{{pub.ID}}')">
+                  <i class="fa-solid fa-copy"></i> Copy BibTeX
+              </button>
+
+            </div>
+          </div>
+        </dialog>

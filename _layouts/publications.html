@@ -139,7 +139,11 @@ layout: default
           <span class="timeline-dot"></span>
           <div class="flex-grow">
             <div class="timeline-header">
-              <span class="timeline-org">{{pub.title | replace: open_brace, '' | replace: close_brace, '' }}</span>
+              <span
+                class="timeline-org publication-title"
+                onclick="document.getElementById('pub-{{pub.ID}}').showModal()">
+                {{pub.title | replace: open_brace, '' | replace: close_brace, '' }}
+              </span>
             </div>
             <div class="timeline-meta"><i class="fa-solid fa-users" title="{{t.authors[page.lang]}}"></i>({{author_index}}/{{authors.size}}) {% for author in authors %}{% if author == site.author %}<u>{{author}}</u>{% else %}{{author}}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
             {% if pub.journal %}
@@ -156,6 +160,7 @@ layout: default
           </div>
           
         </div>
+        {% include publication_dialog.html pub=pub %}
       {% endif %}
     {% endfor %}
   </div>
