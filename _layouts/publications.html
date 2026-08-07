@@ -33,6 +33,8 @@ layout: default
 {% endfor %}
 {% assign years = years | sort | reverse %}
 
+{% include publication_stats.html %}
+
 <h1 class="prose">{{ page.title }} ({{site.data.publications.size}})</h1>
 
 <div class="filter-wrapper">
@@ -119,12 +121,7 @@ layout: default
     {% for item in sorted_array %}
       {% assign pub_id = item | split: '|' | last %}
       {% assign pub = site.data.publications | where: "ID", pub_id | first %}
-      {% assign pub_type = "other" %}
-      {% if pub.journal %}{% assign pub_type = "journal" %}{% endif %}
-      {% if pub.booktitle %}{% assign pub_type = "international-conference" %}{% endif %}
-      {% if pub.scope == "national" %}{% assign pub_type = "national-conference" %}{% endif %}
-      {% assign conference_title = pub.booktitle | downcase %}
-      {% if conference_title contains "workshop" %}{% assign pub_type = "workshop" %}{% endif %}
+      {% include publication_type.html pub=pub %}
       {% assign pub_track = "main" %}
       {% if pub.track %}{% assign pub_track = pub.track | downcase | strip | replace: " ", "-" %}{% endif %}
       {% assign authors = pub.author | split: " and " %}

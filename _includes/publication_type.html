@@ -1,0 +1,18 @@
+{% assign pub_type = "other" %}
+
+{% if include.pub.journal %}
+    {% assign pub_type = "journal" %}
+{% endif %}
+
+{% if include.pub.booktitle %}
+    {% assign pub_type = "international-conference" %}
+{% endif %}
+
+{% if include.pub.scope == "national" %}
+    {% assign pub_type = "national-conference" %}
+{% endif %}
+
+{% assign conference_title = include.pub.booktitle | downcase %}
+{% if conference_title contains "workshop" %}
+    {% assign pub_type = "workshop" %}
+{% endif %}

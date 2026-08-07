@@ -1,0 +1,49 @@
+{% assign total_pubs = 0 %}
+{% assign journal_count = 0 %}
+{% assign q1_count = 0 %}
+{% assign international_count = 0 %}
+{% assign national_count = 0 %}
+{% assign workshop_count = 0 %}
+{% assign other_count = 0 %}
+{% assign best_paper_count = 0 %}
+
+{% for pub in site.data.publications %}
+
+    {% assign total_pubs = total_pubs | plus: 1 %}
+
+    {% include publication_type.html pub=pub %}
+
+    {% case pub_type %}
+
+        {% when "journal" %}
+            {% assign journal_count = journal_count | plus: 1 %}
+
+            {% if pub.quartile == "Q1" %}
+                {% assign q1_count = q1_count | plus: 1 %}
+            {% endif %}
+
+        {% when "international-conference" %}
+            {% assign international_count = international_count | plus: 1 %}
+
+        {% when "national-conference" %}
+            {% assign national_count = national_count | plus: 1 %}
+
+        {% when "workshop" %}
+            {% assign workshop_count = workshop_count | plus: 1 %}
+
+        {% else %}
+            {% assign other_count = other_count | plus: 1 %}
+
+    {% endcase %}
+
+    {% if pub.award %}
+        {% assign best_paper_count = best_paper_count | plus: 1 %}
+    {% endif %}
+
+{% endfor %}
+
+{% assign conference_count = international_count | plus: national_count | plus: workshop_count %}
+{% assign international_with_workshops = international_count | plus: workshop_count | plus: other_count %}
+
+
+{% assign projects_count = site.projects | size %}

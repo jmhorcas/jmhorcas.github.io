@@ -55,3 +55,7 @@ defaults:
     values:
       layout: "default"
       lang: "es"
+scholar:
+  citations: 849
+  h_index: 17
+  i10_index: 30
