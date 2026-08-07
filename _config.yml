@@ -27,6 +27,12 @@ collections:
   awards_es: # Spanish
     output: true
     permalink: /es/awards/:path/
+  community_service: # English
+    output: true
+    permalink: /community-service/:path/
+  community_service_es: # Spanish
+    output: true
+    permalink: /es/community-service/:path/
 
 defaults:
   # Configuración para Proyectos en Inglés
