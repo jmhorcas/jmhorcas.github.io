@@ -38,14 +38,13 @@ layout: default
               <span title="{{t.date[page.lang]}} • {{ t.location[page.lang] }}">🗺️</span><span class="format-date" data-date="{{ media.date }}" data-format="month-year">{{ media.date | date: "%b %Y" }}</span> • <span>{{ media.location }}</span>
             </span>
             </div>
-            <span class="timeline-title">{{media.title}}</span>
         
           <div class="timeline-meta"><i class="fa-solid fa-building-columns" title="{{t.entity[page.lang]}}"></i> {{media.entity}}</div>
           {% if media.description %}
             <div class="timeline-desc">{{media.description}}</div>
           {% endif %}
           {% if media.link %}
-            <div class="timeline-meta"><a href="{{media.link}}" title="DOI/URI" target="_blank" rel="noopener">🔗</a></div>
+            <div class="timeline-meta"><a href="{{media.link}}" title="Link" target="_blank" rel="noopener">🔗 {{media.link}}</a></div>
           {% endif %}
         </div>
 
@@ -59,11 +58,14 @@ layout: default
 
                 {% for img in media.images %}
                     <div class="swiper-slide">
-                        <img
-                            src="{{ img | relative_url }}"
-                            alt="{{ media.title }}"
-                            class="timeline-clickable rounded-lg shadow-sm border border-accent-2/10"
-                            onclick="showImage('{{ img | relative_url }}')"">
+                        <a href="{{media.link}}" target="_blank" rel="noopener noreferrer">
+                          <img
+                              src="{{ img | relative_url }}"
+                              alt="{{ media.title }}"
+                              title="{{ media.title }}"
+                              class="timeline-clickable rounded-lg shadow-sm border border-accent-2/10"
+                              style="cursor: pointer !important;">
+                        </a>
                     </div>
                 {% endfor %}
 

@@ -102,10 +102,10 @@ class MarkdownLoader {
                     const markdown = await response.text();
                     const html = this.parseMarkdown(markdown);
                     contentElement.innerHTML = html;
-                    // Apply hover effect to new content
-                    if (typeof window.applyBHoverEffect === 'function') {
-                        window.applyBHoverEffect(contentElement);
-                    }
+                    // // Apply hover effect to new content
+                    // if (typeof window.applyBHoverEffect === 'function') {
+                    //     window.applyBHoverEffect(contentElement);
+                    // }
                     console.log(`Successfully loaded ${section} from: ${fullPath}`);
                     return; // Success, exit early
                 } else {
@@ -129,9 +129,9 @@ class MarkdownLoader {
             </div>
         `;
         // Apply hover effect to error content
-        if (typeof window.applyBHoverEffect === 'function') {
-            window.applyBHoverEffect(contentElement);
-        }
+        // if (typeof window.applyBHoverEffect === 'function') {
+        //     window.applyBHoverEffect(contentElement);
+        // }
     }
 
     parseMarkdown(markdown) {
@@ -180,114 +180,114 @@ class MarkdownLoader {
 }
 
 // Hover effect for letter 'b' and 'B'
-(function() {
-    function applyBHoverEffect(root) {
-        const targetRoot = root || document.body;
-        if (!targetRoot) return;
+// (function() {
+//     function applyBHoverEffect(root) {
+//         const targetRoot = root || document.body;
+//         if (!targetRoot) return;
 
-        if (targetRoot.dataset.bHoverApplied) return;
-        targetRoot.dataset.bHoverApplied = "1";
+//         if (targetRoot.dataset.bHoverApplied) return;
+//         targetRoot.dataset.bHoverApplied = "1";
 
-        const walker = document.createTreeWalker(
-            targetRoot,
-            NodeFilter.SHOW_TEXT,
-            {
-                acceptNode(node) {
-                    const value = node.nodeValue;
-                    if (!value || (value.indexOf('b') === -1 && value.indexOf('B') === -1)) {
-                        return NodeFilter.FILTER_REJECT;
-                    }
-                    const parent = node.parentNode;
-                    if (!parent) return NodeFilter.FILTER_REJECT;
-                    const tag = parent.nodeName;
-                    if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'NOSCRIPT' || tag === 'CODE' || tag === 'PRE' || tag === 'BUTTON') {
-                        return NodeFilter.FILTER_REJECT;
-                    }
-                    if (parent.classList && parent.classList.contains('hover-b')) {
-                        return NodeFilter.FILTER_REJECT;
-                    }
-                    return NodeFilter.FILTER_ACCEPT;
-                }
-            }
-        );
+//         const walker = document.createTreeWalker(
+//             targetRoot,
+//             NodeFilter.SHOW_TEXT,
+//             {
+//                 acceptNode(node) {
+//                     const value = node.nodeValue;
+//                     if (!value || (value.indexOf('b') === -1 && value.indexOf('B') === -1)) {
+//                         return NodeFilter.FILTER_REJECT;
+//                     }
+//                     const parent = node.parentNode;
+//                     if (!parent) return NodeFilter.FILTER_REJECT;
+//                     const tag = parent.nodeName;
+//                     if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'NOSCRIPT' || tag === 'CODE' || tag === 'PRE' || tag === 'BUTTON') {
+//                         return NodeFilter.FILTER_REJECT;
+//                     }
+//                     if (parent.classList && parent.classList.contains('hover-b')) {
+//                         return NodeFilter.FILTER_REJECT;
+//                     }
+//                     return NodeFilter.FILTER_ACCEPT;
+//                 }
+//             }
+//         );
 
-        const nodesToProcess = [];
-        let current;
-        while ((current = walker.nextNode())) {
-            nodesToProcess.push(current);
-        }
+//         const nodesToProcess = [];
+//         let current;
+//         while ((current = walker.nextNode())) {
+//             nodesToProcess.push(current);
+//         }
 
-        nodesToProcess.forEach((textNode) => {
-            const text = textNode.nodeValue;
-            const fragment = document.createDocumentFragment();
-            let buffer = '';
+//         nodesToProcess.forEach((textNode) => {
+//             const text = textNode.nodeValue;
+//             const fragment = document.createDocumentFragment();
+//             let buffer = '';
 
-            for (let i = 0; i < text.length; i++) {
-                const ch = text[i];
-                if (ch === 'b' || ch === 'B') {
-                    if (buffer) {
-                        fragment.appendChild(document.createTextNode(buffer));
-                        buffer = '';
-                    }
-                    const span = document.createElement('span');
-                    span.className = 'hover-b';
-                    span.textContent = ch;
-                    fragment.appendChild(span);
-                } else {
-                    buffer += ch;
-                }
-            }
+//             for (let i = 0; i < text.length; i++) {
+//                 const ch = text[i];
+//                 if (ch === 'b' || ch === 'B') {
+//                     if (buffer) {
+//                         fragment.appendChild(document.createTextNode(buffer));
+//                         buffer = '';
+//                     }
+//                     const span = document.createElement('span');
+//                     span.className = 'hover-b';
+//                     span.textContent = ch;
+//                     fragment.appendChild(span);
+//                 } else {
+//                     buffer += ch;
+//                 }
+//             }
 
-            if (buffer) {
-                fragment.appendChild(document.createTextNode(buffer));
-            }
+//             if (buffer) {
+//                 fragment.appendChild(document.createTextNode(buffer));
+//             }
 
-            if (textNode.parentNode) {
-                textNode.parentNode.replaceChild(fragment, textNode);
-            }
-        });
-    }
+//             if (textNode.parentNode) {
+//                 textNode.parentNode.replaceChild(fragment, textNode);
+//             }
+//         });
+//     }
 
-    window.applyBHoverEffect = applyBHoverEffect;
-})();
+//     window.applyBHoverEffect = applyBHoverEffect;
+// })();
 
-// Bee spawning when clicking on a 'b'/'B'
-(function() {
-    function spawnBeeFromElement(el) {
-        const rect = el.getBoundingClientRect();
-        const startX = rect.left + rect.width / 2;
-        const startY = rect.top + rect.height / 2;
+// // Bee spawning when clicking on a 'b'/'B'
+// (function() {
+//     function spawnBeeFromElement(el) {
+//         const rect = el.getBoundingClientRect();
+//         const startX = rect.left + rect.width / 2;
+//         const startY = rect.top + rect.height / 2;
 
-        const bee = document.createElement('div');
-        bee.className = 'flying-bee';
-        bee.textContent = '🐝';
-        bee.style.left = startX + 'px';
-        bee.style.top = startY + 'px';
+//         const bee = document.createElement('div');
+//         bee.className = 'flying-bee';
+//         bee.textContent = '🐝';
+//         bee.style.left = startX + 'px';
+//         bee.style.top = startY + 'px';
 
-        // Random off-screen direction
-        const angle = Math.random() * Math.PI * 2;
-        const distance = Math.max(window.innerWidth, window.innerHeight) + 200;
-        const dx = Math.cos(angle) * distance;
-        const dy = Math.sin(angle) * distance;
-        bee.style.setProperty('--dx', dx + 'px');
-        bee.style.setProperty('--dy', dy + 'px');
+//         // Random off-screen direction
+//         const angle = Math.random() * Math.PI * 2;
+//         const distance = Math.max(window.innerWidth, window.innerHeight) + 200;
+//         const dx = Math.cos(angle) * distance;
+//         const dy = Math.sin(angle) * distance;
+//         bee.style.setProperty('--dx', dx + 'px');
+//         bee.style.setProperty('--dy', dy + 'px');
 
-        document.body.appendChild(bee);
+//         document.body.appendChild(bee);
 
-        const cleanup = () => {
-            if (bee && bee.parentNode) bee.parentNode.removeChild(bee);
-        };
-        bee.addEventListener('animationend', cleanup, { once: true });
-        setTimeout(cleanup, 4000);
-    }
+//         const cleanup = () => {
+//             if (bee && bee.parentNode) bee.parentNode.removeChild(bee);
+//         };
+//         bee.addEventListener('animationend', cleanup, { once: true });
+//         setTimeout(cleanup, 4000);
+//     }
 
-    document.addEventListener('click', (e) => {
-        const target = e.target;
-        if (target && target.classList && target.classList.contains('hover-b')) {
-            spawnBeeFromElement(target);
-        }
-    });
-})();
+//     document.addEventListener('click', (e) => {
+//         const target = e.target;
+//         if (target && target.classList && target.classList.contains('hover-b')) {
+//             spawnBeeFromElement(target);
+//         }
+//     });
+// })();
 
 // Initialize all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
@@ -296,10 +296,10 @@ document.addEventListener('DOMContentLoaded', () => {
     new LazyImageLoader();
     new MarkdownLoader();
     
-    // Apply hover effect to all 'b' letters on initial content
-    if (typeof window.applyBHoverEffect === 'function') {
-        window.applyBHoverEffect(document.body);
-    }
+    // // Apply hover effect to all 'b' letters on initial content
+    // if (typeof window.applyBHoverEffect === 'function') {
+    //     window.applyBHoverEffect(document.body);
+    // }
 
     // Initialize party hat explosion feature
     new PartyHatExplosion();
