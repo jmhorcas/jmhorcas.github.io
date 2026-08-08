@@ -1,0 +1,394 @@
+/* ==========================================================================
+   Header Component Styles
+   ========================================================================== */
+
+/* Header Base Container */
+#main-header {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 57.6rem; /* Same as max-w-3xl */
+    width: 100%;
+    background-color: color-mix(in srgb, var(--color-global-bg) 95%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+    z-index: 100;
+    padding: 1rem 1rem 0.5rem 1rem; /* Match main content px-4 */
+}
+
+@media (min-width: 640px) {
+    #main-header {
+        padding: 1rem 2rem 0.5rem 2rem; /* Match main content sm:px-8 */
+    }
+}
+
+/* Header grid layout */
+.header-grid {
+    display: grid;
+    grid-template-columns: auto 1fr minmax(0, auto);
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "logo title controls"
+        "logo nav controls";
+    align-items: center;
+    column-gap: 1rem;
+}
+
+.header-logo { grid-area: logo; align-self: center; }
+.header-title { grid-area: title; align-self: center; }
+.header-nav { gap: 0.75rem; align-items: center; display: flex}
+.header-controls { 
+    grid-area: controls; 
+    justify-self: end; 
+    max-width: 100%; 
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Logo hover effects */
+.group:hover .grayscale {
+    filter: none;
+}
+
+#main-header a[href="#"] {
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+#main-header a[href="#"]:hover svg {
+    transform: scale(1.05);
+    transition: opacity 0.2s ease;
+}
+
+#main-header a[href="#"]:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* ==========================================================================
+   Navigation Styles - Desktop (>= 1024px)
+   ========================================================================== */
+@media (min-width: 1024px) {
+    /* Style for the inline button next to the 5 primary links */
+    #toggle-navigation-menu {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 0.5rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    /* Primary visible links (First 5 links) */
+    .primary-nav-links {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0;
+        margin-top: 0.25rem;
+        margin-left: -1rem;
+
+        > a {
+            padding: 0 1rem;
+            border-left: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+
+            &:first-child {
+                border-left: none;
+            }
+
+            &:hover {
+                text-decoration: underline;
+                text-underline-offset: 2px;
+            }
+
+            &.active {
+                text-decoration: underline;
+                text-underline-offset: 4px;
+                font-weight: 600;
+            }
+        }
+    }
+
+    /* Hide mobile duplicate links on desktop view */
+    .mobile-only-links {
+        display: none !important;
+    }
+
+    /* Secondary dropdown menu for overflow items */
+    .secondary-nav-links {
+        display: none; /* Hidden by default */
+        position: absolute;
+        top: calc(100% + 0.75rem);
+        right: 0;
+        background-color: var(--color-card-bg);
+        border: 1px solid var(--color-border);
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        box-shadow: 0 4px 16px var(--color-shadow);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        flex-direction: column;
+        gap: 0.25rem;
+        min-width: 200px;
+        z-index: 120;
+
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            transition: background-color 0.2s ease, color 0.2s ease;
+
+            &:hover {
+                background-color: color-mix(in srgb, var(--color-accent) 15%, transparent);
+            }
+
+            &.active {
+                font-weight: 600;
+                background-color: color-mix(in srgb, var(--color-accent) 10%, transparent);
+            }
+        }
+    }
+
+    /* Show desktop dropdown when header is toggled open */
+    .group.menu-open .secondary-nav-links {
+        display: flex !important;
+        animation: fadeInScale 0.2s ease-out forwards;
+    }
+}
+
+/* ==========================================================================
+   Mobile Navigation & Tablet Overlay (< 1024px)
+   ========================================================================== */
+@media (max-width: 1023px) {
+    /* Ensure header container doesn't hide the nav wrapper */
+    .header-nav {
+        display: flex !important;
+        align-items: center;
+    }
+
+    /* Force hamburger toggle button to be visible */
+    #toggle-navigation-menu {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        z-index: 200;
+    }
+
+    /* Hide desktop inline links on mobile view */
+    .primary-nav-links {
+        display: none !important;
+    }
+
+    /* Fullscreen mobile menu overlay */
+    .secondary-nav-links {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background-color: color-mix(in srgb, var(--color-global-bg) 98%, transparent) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        z-index: 150 !important;
+        display: none !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 1.25rem !important;
+        padding: 2rem !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        transform: none !important;
+        inset: 0 !important;
+    }
+
+    .mobile-only-links {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.25rem !important;
+        width: 100% !important;
+        align-items: center !important;
+    }
+
+    .secondary-nav-links a,
+    .mobile-only-links a {
+        font-size: 1.25rem !important;
+        padding: 0.75rem 1.5rem !important;
+        border-radius: 0.5rem !important;
+        transition: opacity 0.2s ease, transform 0.2s ease !important;
+        text-align: center !important;
+        min-width: 220px !important;
+        background-color: color-mix(in srgb, var(--color-accent) 10%, transparent) !important;
+        border: 1px solid var(--color-accent) !important;
+        color: var(--color-accent) !important;
+        text-decoration: none !important;
+        display: block !important;
+        margin: 0 !important;
+
+        &:hover {
+            background-color: var(--color-accent) !important;
+            color: var(--color-global-bg) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 12px color-mix(in srgb, var(--color-accent) 30%, transparent) !important;
+            text-decoration: none !important;
+        }
+    }
+
+    /* Show overlay when menu is toggled open */
+    .group.menu-open .secondary-nav-links {
+        display: flex !important;
+    }
+}
+
+/* Show mobile menu when opened */
+.group.menu-open .secondary-nav-links {
+    display: flex !important;
+    z-index: 150 !important;
+}
+
+/* ==========================================================================
+   Buttons & Controls
+   ========================================================================== */
+
+/* Navigation toggle button */
+#toggle-navigation-menu {
+    z-index: 200;
+    position: relative;
+    background-color: color-mix(in srgb, var(--color-accent-2) 10%, transparent);
+    border-radius: 0.375rem;
+    border: 1px solid color-mix(in srgb, var(--color-accent-2) 20%, transparent);
+    transition: opacity 0.2s ease;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+        background-color: color-mix(in srgb, var(--color-accent-2) 20%, transparent);
+        transform: scale(1.05);
+    }
+
+    svg {
+        width: 24px;
+        height: 24px;
+        transition: opacity 0.2s ease;
+    }
+
+    &[aria-expanded="false"] {
+        svg:first-of-type { display: block; opacity: 1; }
+        svg:last-of-type  { display: none;  opacity: 0; }
+    }
+
+    &[aria-expanded="true"] {
+        svg:first-of-type { display: none;  opacity: 0; }
+        svg:last-of-type  { display: block; opacity: 1; }
+    }
+}
+
+/* Theme toggle button & Icon Visibility */
+#theme-toggle {
+    background-color: color-mix(in srgb, var(--color-accent-2) 20%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-accent-2) 30%, transparent);
+    transition: opacity 0.2s ease;
+    z-index: 50;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+        background-color: color-mix(in srgb, var(--color-accent-2) 30%, transparent);
+        transform: scale(1.05);
+    }
+}
+
+[data-theme="dark"] .sun-icon { display: block; }
+[data-theme="dark"] .moon-icon { display: none; }
+[data-theme="light"] .sun-icon { display: none; }
+[data-theme="light"] .moon-icon { display: block; }
+:root .sun-icon { display: none; }
+:root .moon-icon { display: block; }
+
+/* Responsive Grid Collapse for Mobile & Tablets */
+@media (max-width: 1023px) {
+    .header-grid {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        flex-wrap: nowrap;
+    }
+
+    .header-title { display: flex; align-items: center; flex: 1; min-width: 0; }
+    .header-nav { display: none; }
+
+    .header-controls {
+        gap: 0.5rem;
+        white-space: nowrap;
+    }
+
+    .header-logo { margin-right: 0.5rem; }
+
+    #toggle-navigation-menu svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    #theme-toggle,
+    #toggle-navigation-menu {
+        min-width: 44px;
+        min-height: 44px;
+        padding: 0.5rem;
+    }
+    
+    #toggle-navigation-menu:active,
+    #theme-toggle:active {
+        transform: scale(0.95);
+    }
+    
+    #main-header {
+        padding-bottom: 1rem;
+    }
+
+    #main-header svg {
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        height: 4rem !important;
+        width: 2.4rem !important;
+    }
+}
+
+/* Animations for Header */
+@media (max-width: 640px) {
+    #main-header .text-xl {
+        font-size: 1.125rem;
+    }
+    
+    .secondary-nav-links,
+    .group.menu-open .secondary-nav-links {
+        animation: fadeInScale 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

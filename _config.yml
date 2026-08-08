@@ -33,6 +33,13 @@ collections:
   community_service_es: # Spanish
     output: true
     permalink: /es/community-service/:path/
+  media: # English
+    output: true
+    permalink: /media/:path/
+  media_es: # Spanish
+    output: true
+    permalink: /es/media/:path/
+
 
 defaults:
   # Configuración para Proyectos en Inglés

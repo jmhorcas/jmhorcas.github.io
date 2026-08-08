@@ -75,27 +75,6 @@ const ProjectUtils = (function() {
 
 document.addEventListener("DOMContentLoaded", ProjectUtils.init);
 
-document.addEventListener("DOMContentLoaded", function() {
-    const header = document.getElementById('main-header');
-    const menuBtn = document.getElementById('toggle-navigation-menu');
-
-    if (menuBtn && header) {
-        menuBtn.addEventListener('click', function() {
-            const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-            
-            // 1. Cambiamos el estado del botón
-            menuBtn.setAttribute('aria-expanded', !isExpanded);
-            
-            // 2. Añadimos la clase al header para que el CSS muestre el menú
-            header.classList.toggle('menu-open');
-            
-            // 3. Bloqueamos el scroll del cuerpo (tienes soporte para esto en tu CSS)
-            document.body.classList.toggle('menu-open');
-        });
-    }
-});
-
-
 function updateCounts() {
   // 1. Contamos elementos del Nivel 1 (Generales)
   const total = document.querySelectorAll('.timeline-item').length;
