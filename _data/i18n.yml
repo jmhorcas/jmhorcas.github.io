@@ -118,3 +118,9 @@ community_service:
 media:
   en: "Media & Outreach"
   es: "Divulgación"
+software:
+  en: "Software & Technology Transfer"
+  es: "Software y Transferencia Tecnológica"
+registered_software:
+  en: "Registered Software"
+  es: "Software Registrado"

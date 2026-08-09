@@ -39,6 +39,13 @@ collections:
   media_es: # Spanish
     output: true
     permalink: /es/media/:path/
+  software: # English
+    output: true
+    permalink: /software/:path/
+  software_es: # Spanish
+    output: true
+    permalink: /es/software/:path/
+
 
 
 defaults:
