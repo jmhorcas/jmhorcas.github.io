@@ -1,0 +1,138 @@
+---
+layout: default
+---
+{% assign t = site.data.i18n %}
+
+  {% comment %} 
+    Lógica automática: si el idioma es 'es', añade '_es' al nombre de la colección 
+  {% endcomment %}
+  {% assign sufijo = "" %}
+  {% if page.lang == "es" %}{% assign sufijo = "_es" %}{% endif %}
+  {% assign nombre_coleccion = "supervision" | append: sufijo %}
+  
+  {% assign works = site[nombre_coleccion] %}
+
+  <h1 class="prose">{{ page.title }} ({{works.size}})</h1>
+  
+    {% comment %}
+  1. Creamos un array de años únicos extrayendo el año de cada fecha
+{% endcomment %}
+{% assign years = "" | split: "" %}
+{% for work in works %}
+  {% assign y = work.start_date | date: "%Y" %}
+  {% assign years = years | push: y | uniq %}
+{% endfor %}
+
+{% comment %}
+  2. Ordenamos los años (del más reciente al más antiguo)
+{% endcomment %}
+{% assign years = years | sort | reverse %}
+
+{% comment %}
+  3. Iteramos por cada año y buscamos los proyectos que coincidan
+{% endcomment %}
+
+
+<div class="filter-wrapper">
+  <div class="filter-container">
+    <div class="filter-switch-group">
+
+      <label class="switch-label">
+        <input type="radio" name="project-filter" value="all" checked
+               onclick="filterWorks('all')">
+        <span class="switch-text">
+          {{t.all[page.lang]}}
+          <span id="count-project-all" class="badge">{{ works.size }}</span>
+        </span>
+      </label>
+
+      <label class="switch-label">
+        <input type="radio" name="project-filter" value="european"
+               onclick="filterWorks('european')">
+        <span class="switch-text">
+          <i class="fa-solid fa-circle" style="color: #196ca3;"></i>
+          {{t.internationals[page.lang]}}
+          <span id="count-project-international" class="badge">0</span>
+        </span>
+      </label>
+
+      <label class="switch-label">
+        <input type="radio" name="project-filter" value="national"
+               onclick="filterWorks('national')">
+        <span class="switch-text">
+          <i class="fa-solid fa-circle" style="color: #c32b72;"></i>
+          {{t.nationals[page.lang]}}
+          <span id="count-project-national" class="badge">0</span>
+        </span>
+      </label>
+
+      <label class="switch-label">
+        <input type="radio" name="project-filter" value="regional"
+               onclick="filterWorks('regional')">
+        <span class="switch-text">
+          <i class="fa-solid fa-circle" style="color: #006633;"></i>
+          {{t.regionals[page.lang]}}
+          <span id="count-project-regional" class="badge">0</span>
+        </span>
+      </label>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="timeline">
+  {% for year in years %}
+  <div class="timeline-year-group">
+
+  
+    <div class="timeline-year-header">
+      <span class="timeline-year-label">{{ year }}</span>
+    </div>
+    {% for work in works %}
+      {% assign work_year = work.start_date | date: "%Y" %}
+      {% assign ips =  work.ips | split: ", " %}
+      {% assign research_team = work.research_team | split: ", " %}
+      {% assign working_team = work.working_team | split: ", " %}
+      {% assign collaborating_team = work.collaborating_team | split: ", " %}
+      {% assign members = ips | concat: research_team %}
+      {% if work_year == year %}
+        <div class="timeline-item {{ work.scope | downcase | strip }}"">
+          <span class="timeline-dot"></span>
+          <div class="timeline-header">
+            <span class="timeline-org">{{work.acronym}} ({{work.identifier}})</span>
+            <!-- <span class="timeline-dates"><span title="{{t.duration[page.lang]}}">📆</span>{{ work.start_date | date: "%d %b %Y" }} - {{ work.end_date | date: "%d %b %Y" }} ({{work.months}} {{t.months[page.lang]}})</span> -->
+            <span class="timeline-dates duration-container" data-start="{{ work.start_date }}" data-end="{{ work.end_date }}" data-lang="{{ page.lang }}">
+              <span title="{{ t.duration[page.lang] }}">📆</span><span class="format-date" data-date="{{ work.start_date }}">{{ work.start_date | date: "%d %b %Y" }}</span> - <span class="format-date" data-date="{{ work.end_date }}">{{ work.end_date | date: "%d %b %Y" }}</span> (<span class="duration-display"></span>)
+            </span>
+            <span class="timeline-title">{{work.title}}</span>
+          </div>
+          <span class="timeline-meta"><i class="fa-solid fa-coins" title="{{t.funds[page.lang]}}"></i><span class="format-number">{{ work.funds }}</span> €</span>
+          <span class="timeline-meta"><i class="fa-solid fa-building-columns" title="{{t.funding_entity[page.lang]}} • {{t.call[page.lang]}}"></i>{{work.funding_entity}} • {{work.call}}</span>
+          <!-- <div class="timeline-meta"><i class="fa-solid fa-user-tie" title="{{t.ip[page.lang]}}"></i>{% for member in ips %}{% if member == site.author %}<u>{{member}}</u>{% else %}{{member}}{% endif %}{% unless forloop.last %} • {% endunless %}{% endfor %}</div>-->
+          <div class="timeline-meta"><i class="fa-solid fa-users" title="{{t.researchers[page.lang]}}"></i> ({{members | size}}) {% for member in members %}{% if member == site.author %}<u>{{member}}</u>{% else %}{{member}}{% endif %}{% if ips contains member %}<sup>{{t.ip_short[page.lang]}}</sup>{% endif %}{% unless forloop.last %} • {% endunless %}{% endfor %}</div>
+          {% if working_team.size > 0 %}
+            <div class="timeline-meta"><i class="fa-solid fa-users-gear" title="{{t.working_team[page.lang]}}"></i> ({{working_team | size}}) {% for member in working_team %}{% if member == site.author %}<u>{{member}}</u>{% else %}{{member}}{% endif %}{% unless forloop.last %} • {% endunless %}{% endfor %}</div>
+          {% endif %}
+          {% if collaborating_team.size > 0 %}
+            <div class="timeline-meta"><i class="fa-solid fa-users-gear" title="{{t.collaborating_team[page.lang]}}"></i> ({{collaborating_team | size}}) {% for member in collaborating_team %}{% if member == site.author %}<u>{{member}}</u>{% else %}{{member}}{% endif %}{% unless forloop.last %} • {% endunless %}{% endfor %}</div>
+          {% endif %}
+          {% if page.lang == "en" %}
+            <div class="timeline-meta"><i class="fa-regular fa-user" title="{{ site.author}}'s role"></i>{{work.role}}</div>
+          {% else %}
+            <div class="timeline-meta"><i class="fa-regular fa-user" title="Rol de {{ site.author}}"></i>{{work.role}}</div>
+          {% endif %}
+          {% if work.description %}
+            <div class="timeline-desc">{{work.description}}</div>
+          {% endif %}
+          {% if work.website %}
+            <div class="timeline-meta"><a href="{{work.website}}" title="{{t.website[page.lang]}}" target="_blank" rel="noopener">🌐</a></div>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>

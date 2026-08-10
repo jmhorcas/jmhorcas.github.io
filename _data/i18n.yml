@@ -126,7 +126,10 @@ registered_software:
   es: "Software Registrado"
 internationals:
   en: "Internationals 🇪🇺"
-  es: "Internacionals 🇪🇺"
+  es: "Internacionales 🇪🇺"
 regionals:
   en: "Regionals 🇺🇿"
   es: "Regionales 🇺🇿"
+supervision:
+  en: "Academic Supervision"
+  es: "Dirección Académica"

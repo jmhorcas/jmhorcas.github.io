@@ -8,6 +8,7 @@ url: "https://jmhorcas.github.io"
 # Markdown configuration
 markdown: kramdown
 
+collections_dir: collections
 collections:
   projects: # English
     output: true
@@ -45,6 +46,12 @@ collections:
   software_es: # Spanish
     output: true
     permalink: /es/software/:path/
+  supervision: # English
+    output: true
+    permalink: /supervision/:path/
+  supervision_es: # Spanish
+    output: true
+    permalink: /es/supervision/:path/
 
 
 
