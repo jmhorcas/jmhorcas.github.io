@@ -32,8 +32,62 @@ layout: default
   3. Iteramos por cada año y buscamos los proyectos que coincidan
 {% endcomment %}
 
+
+<div class="filter-wrapper">
+  <div class="filter-container">
+    <div class="filter-switch-group">
+
+      <label class="switch-label">
+        <input type="radio" name="project-filter" value="all" checked
+               onclick="filterProjects('all')">
+        <span class="switch-text">
+          {{t.all[page.lang]}}
+          <span id="count-project-all" class="badge">{{ projects.size }}</span>
+        </span>
+      </label>
+
+      <label class="switch-label">
+        <input type="radio" name="project-filter" value="european"
+               onclick="filterProjects('european')">
+        <span class="switch-text">
+          <i class="fa-solid fa-circle" style="color: #196ca3;"></i>
+          {{t.internationals[page.lang]}}
+          <span id="count-project-international" class="badge">0</span>
+        </span>
+      </label>
+
+      <label class="switch-label">
+        <input type="radio" name="project-filter" value="national"
+               onclick="filterProjects('national')">
+        <span class="switch-text">
+          <i class="fa-solid fa-circle" style="color: #c32b72;"></i>
+          {{t.nationals[page.lang]}}
+          <span id="count-project-national" class="badge">0</span>
+        </span>
+      </label>
+
+      <label class="switch-label">
+        <input type="radio" name="project-filter" value="regional"
+               onclick="filterProjects('regional')">
+        <span class="switch-text">
+          <i class="fa-solid fa-circle" style="color: #006633;"></i>
+          {{t.regionals[page.lang]}}
+          <span id="count-project-regional" class="badge">0</span>
+        </span>
+      </label>
+
+
+    </div>
+  </div>
+</div>
+
+
+
 <div class="timeline">
   {% for year in years %}
+  <div class="timeline-year-group">
+
+  
     <div class="timeline-year-header">
       <span class="timeline-year-label">{{ year }}</span>
     </div>
@@ -45,7 +99,7 @@ layout: default
       {% assign collaborating_team = project.collaborating_team | split: ", " %}
       {% assign members = ips | concat: research_team %}
       {% if project_year == year %}
-        <div class="timeline-item">
+        <div class="timeline-item {{ project.scope | downcase | strip }}"">
           <span class="timeline-dot"></span>
           <div class="timeline-header">
             <span class="timeline-org">{{project.acronym}} ({{project.identifier}})</span>
@@ -79,5 +133,6 @@ layout: default
         </div>
       {% endif %}
     {% endfor %}
+  </div>
   {% endfor %}
 </div>

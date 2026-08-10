@@ -124,3 +124,9 @@ software:
 registered_software:
   en: "Registered Software"
   es: "Software Registrado"
+internationals:
+  en: "Internationals 🇪🇺"
+  es: "Internacionals 🇪🇺"
+regionals:
+  en: "Regionals 🇺🇿"
+  es: "Regionales 🇺🇿"

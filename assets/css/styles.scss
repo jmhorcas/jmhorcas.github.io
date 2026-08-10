@@ -1520,3 +1520,29 @@ html {
     opacity: 1;
     transform: translateX(2px);
 }
+
+
+/* Colores de los proyectos según su scope */
+
+/* Azul para International */
+.timeline-item.international .timeline-dot {
+    background-color: #196ca3;
+    border-color: #196ca3;
+}
+
+.timeline-item.european .timeline-dot {
+    background-color: #196ca3;
+    border-color: #196ca3;
+}
+
+/* Rojo para National */
+.timeline-item.national .timeline-dot {
+    background-color: #c32b72;
+    border-color: #c32b72;
+}
+
+/* Verde para Regional */
+.timeline-item.regional .timeline-dot {
+    background-color: #006633;
+    border-color: #006633;
+}
