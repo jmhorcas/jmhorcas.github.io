@@ -1482,3 +1482,41 @@ html {
     opacity: 1;
     transform: translateY(0);
 }
+
+
+/* BibTexViz link */
+.bibtexviz-link {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0.8rem 0 2rem;
+}
+
+.bibtexviz-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.bibtexviz-link img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.bibtexviz-link span {
+    font-size: 0.85rem;
+    color: inherit;
+}
+
+.bibtexviz-link strong {
+    font-weight: 600;
+}
+
+.bibtexviz-link a:hover {
+    opacity: 1;
+    transform: translateX(2px);
+}
