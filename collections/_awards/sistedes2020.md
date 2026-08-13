@@ -5,14 +5,15 @@ entity: Sociedad de Ingeniería de Software y Tecnologías de Desarrollo de Soft
 work_link: https://hdl.handle.net/10630/17231
 authors: José Miguel Horcas
 date: 2021-09-24
-location: Málaga, Spain
+address: 
+  en: Málaga, Spain
+  es: Málaga, España
 icon: 🏆
-image: /assets/img/awards/sistedes2020.png
 images:
   - "/assets/img/awards/sistedes2020.png"
   - "/assets/img/awards/sistedes2020_b.jpg"
   - "/assets/img/awards/sistedes2020_c.jpg"
-description: "Best PhD Thesis Award in the field of SISTEDES, 2020."
+description: 
+  en: "Best PhD Thesis Award in the field of SISTEDES, 2020."
+  es: "Premio a la mejor Tesis Doctoral en el ámbito de SISTEDES, 2020."
 ---
-# {{ page.title }}
-Aquí va toda la explicación detallada de este premio...

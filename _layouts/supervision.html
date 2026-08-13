@@ -6,9 +6,7 @@ layout: default
   {% comment %} 
     Lógica automática: si el idioma es 'es', añade '_es' al nombre de la colección 
   {% endcomment %}
-  {% assign sufijo = "" %}
-  {% if page.lang == "es" %}{% assign sufijo = "_es" %}{% endif %}
-  {% assign nombre_coleccion = "supervision" | append: sufijo %}
+    {% assign nombre_coleccion = "supervision" %}
   
   {% assign works = site[nombre_coleccion] %}
 

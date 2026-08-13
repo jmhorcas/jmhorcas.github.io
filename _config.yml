@@ -10,78 +10,40 @@ markdown: kramdown
 
 collections_dir: collections
 collections:
-  projects: # English
+  projects:
     output: true
     permalink: /projects/:path/
-  projects_es: # Spanish
-    output: true
-    permalink: /es/projects/:path/
-  publications: # English
+  publications:
     output: true
     permalink: /publications/:path/
-  publications_es: # Spanish
-    output: true
-    permalink: /es/publications/:path/
-  awards: # English
+  awards:
     output: true
     permalink: /awards/:path/
-  awards_es: # Spanish
-    output: true
-    permalink: /es/awards/:path/
-  community_service: # English
+  community_service:
     output: true
     permalink: /community-service/:path/
-  community_service_es: # Spanish
-    output: true
-    permalink: /es/community-service/:path/
-  media: # English
+  media:
     output: true
     permalink: /media/:path/
-  media_es: # Spanish
-    output: true
-    permalink: /es/media/:path/
-  software: # English
+  software:
     output: true
     permalink: /software/:path/
-  software_es: # Spanish
-    output: true
-    permalink: /es/software/:path/
-  supervision: # English
+  supervision:
     output: true
     permalink: /supervision/:path/
-  supervision_es: # Spanish
-    output: true
-    permalink: /es/supervision/:path/
-
-
 
 defaults:
-  # Configuración para Proyectos en Inglés
-  - scope:
-      path: "" # Archivos en la raíz
-      type: "projects" # Todos los archivos en la colección 'projects'
-    values:
-      layout: "default"
-      lang: "en"
-  # Configuración para Proyectos en Español
   - scope:
       path: ""
-      type: "projects_es" # Todos los archivos en la colección 'projects_es'
+      type: "projects"
     values:
       layout: "default"
-      lang: "es"
   - scope:
       path: ""
-      type: "publications" # Para las publicaciones también
+      type: "publications" 
     values:
       layout: "default"
-      lang: "en"
-  - scope:
-      path: ""
-      type: "publications_es"
-    values:
-      layout: "default"
-      lang: "es"
+
 scholar:
   citations: 849
   h_index: 17

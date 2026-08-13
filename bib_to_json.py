@@ -3,6 +3,23 @@ import json
 import os
 
 
+# Mapping dictionary for month names and abbreviations to standard 2-digit numbers
+MONTH_MAP = {
+    'january': '01', 'jan': '01',
+    'february': '02', 'feb': '02',
+    'march': '03', 'mar': '03',
+    'april': '04', 'apr': '04',
+    'may': '05',
+    'june': '06', 'jun': '06',
+    'july': '07', 'jul': '07',
+    'august': '08', 'aug': '08',
+    'september': '09', 'sep': '09',
+    'october': '10', 'oct': '10',
+    'november': '11', 'nov': '11',
+    'december': '12', 'dec': '12'
+}
+
+
 def convert_bib_to_json(bib_file, output_file):
     # Asegurarse de que la carpeta _data existe
     if not os.path.exists('_data'):
@@ -12,9 +29,23 @@ def convert_bib_to_json(bib_file, output_file):
         # Cargamos el archivo BibTeX
         bib_database = bibtexparser.load(f)
         
-    # Convertimos las entradas a una lista de diccionarios
     entries = bib_database.entries
 
+    # Process each entry to inject the formatted date attribute
+    for entry in entries:
+        year = entry.get('year', '0000')
+        raw_month = entry.get('month', '').strip().lower()
+        
+        # Resolve the 2-digit representation of the month if available
+        month_num = MONTH_MAP.get(raw_month, '00')
+        
+        # Combine into YYYY-MM format
+        entry['date'] = f"{year}-{month_num}-{'01'}"  # Defaulting to the first day of the month
+
+        # --- CAMBIO DE 'url' A 'handle' ---
+        if 'url' in entry:
+            entry['handle'] = entry.pop('url')
+            
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(entries, f, indent=4, ensure_ascii=False)
 

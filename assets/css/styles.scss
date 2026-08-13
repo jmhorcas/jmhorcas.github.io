@@ -1051,37 +1051,32 @@ html {
     border-bottom: none !important; /* Por si tu tema usa borde en lugar de subrayado */
 }
 
-/* Estos colores SOLO funcionarán dentro de .publications-timeline */
+/* Colores para dots de publicaciones o elementos genéricos */
 
-  /* Rojo para Journals */
-  .publications-timeline .timeline-item.journal .timeline-dot {
-    background-color: #c32b72;
-    border-color: #c32b72; /* Opcional: para que el borde combine */
-  }
+.timeline-item.journal .timeline-dot {
+  background-color: #c32b72;
+  border-color: #c32b72;
+}
 
-  /* Azul para International Conferences */
-  .publications-timeline .timeline-item.international-conference .timeline-dot {
-    background-color: #196ca3;
-    border-color: #196ca3;
-  }
+.timeline-item.international-conference .timeline-dot {
+  background-color: #196ca3;
+  border-color: #196ca3;
+}
 
-  /* Verde para Workshops */
-  .publications-timeline .timeline-item.workshop .timeline-dot {
-    background-color: #2ecc71;
-    border-color: #2ecc71;
-  }
+.timeline-item.workshop .timeline-dot {
+  background-color: #2ecc71;
+  border-color: #2ecc71;
+}
 
-  /* Amarillo para Nationals */
-  .publications-timeline .timeline-item.national-conference .timeline-dot {
-    background-color: #e68019;
-    border-color: #e68019;
-  }
+.timeline-item.national-conference .timeline-dot {
+  background-color: #e68019;
+  border-color: #e68019;
+}
 
-  /* Negro para Others (dentro de publicaciones) */
-  .publications-timeline .timeline-item.other .timeline-dot {
-    background-color: #ffd500;
-    border-color: #ffd500;
-  }
+.timeline-item.other .timeline-dot {
+  background-color: #ffd500;
+  border-color: #ffd500;
+}
 
 /*************************/
 /* Timeline dialog modal */

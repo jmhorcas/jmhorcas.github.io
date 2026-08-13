@@ -1,5 +1,5 @@
 ---
 layout: awards
-title: Awards
+title: Premios
 lang: es
 ---

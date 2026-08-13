@@ -1,0 +1,243 @@
+{% assign t = site.data.i18n %}
+{% assign open_brace = '{' %}
+{% assign close_brace = '}' %}
+
+{% assign items = include.items %}
+{% assign type = include.type %}
+
+{% assign years = "" | split: "" %}
+{% for item in items %}
+    {% if item.start_date %}
+        {% assign y = item.start_date | date: "%Y" %}
+    {% elsif item.date %}
+        {% assign y = item.date | date: "%Y" %}
+    {% else %}
+        {% assign y = item.year %}
+    {% endif %}
+    {% assign years = years | push: y | uniq %}
+{% endfor %}
+{% assign years = years | sort | reverse %}
+
+<div class="timeline">
+    {% for year in years %}
+        <div class="timeline-year-group">
+            <div class="timeline-year-header">
+                <span class="timeline-year-label">{{ year }}</span>
+            </div>
+            {% for item in items %}
+                {% comment %} Reset item-level variables to prevent state leak across loop iterations {% endcomment %}
+                {% assign authors = nil %}
+                {% assign ips = nil %}
+                {% assign research_team = nil %}
+                {% assign working_team = nil %}
+                {% assign collaborating_team = nil %}
+                {% assign members = nil %}
+                {% assign entities = nil %}
+                {% assign title = nil %}
+                {% assign author_index = nil %}
+                {% assign item_year = nil %}
+                {% assign conference_title = nil %}
+                {% assign all_categories = nil %}
+                {% assign cat_project = nil %}
+                {% assign cat_pub_type = nil %}
+                {% assign cat_pub_conference_type = nil %}
+                {% assign cat_pub_track = nil %}
+
+                {% comment %} Category filters {% endcomment %}
+                {% if type == "project" %}
+                    {% assign cat_project = item.scope | downcase | strip %}
+                {% elsif type == "publication" %}
+                    {% assign cat_pub_type = "other" %}
+                    {% if item.journal %}
+                        {% assign cat_pub_type = "journal" %}
+                    {% elsif item.booktitle %}
+                        {% assign cat_pub_type = "conference" %}
+                        {% assign cat_pub_conference_type = "international-conference" %}
+                        {% assign conference_title = item.booktitle | downcase %}
+                        {% if conference_title contains "workshop" %}
+                            {% assign cat_pub_conference_type = "workshop" %}
+                        {% endif %}
+                        {% if item.scope == "national" %}
+                            {% assign cat_pub_conference_type = "national-conference" %}
+                        {% endif %}
+                        {% assign cat_pub_track = "main" %}
+                        {% if item.track %}{% assign cat_pub_track = item.track | downcase | strip | replace: " ", "-" %}{% endif %}
+                        {% assign cat_pub_track = cat_pub_conference_type | append: "-" | append: cat_pub_track %}
+                    {% endif %}
+                {% endif %}
+                {% assign all_categories = "" | append: cat_project | append: " " | append: cat_pub_type | append: " " | append: cat_pub_conference_type | append: " " | append: cat_pub_track | strip %}
+
+                {% comment %} Initialize fields {% endcomment %}
+                {% if item.title[page.lang] %}
+                    {% assign title = item.title[page.lang] %}
+                {% else %}
+                    {% assign title = item.title %}
+                {% endif %}
+                {% assign title = title | replace: open_brace, '' | replace: close_brace, '' %}
+                
+                {% if item.authors %}
+                    {% assign authors = item.authors | split: ", " %}
+                {% endif %}
+                {% if item.author %}
+                    {% assign authors = item.author | split: " and " %}
+                {% endif %}
+                {% if authors %}
+                    {% assign author_index = -1 %}
+                    {% for author in authors %}
+                        {% if author == site.author %}
+                            {% assign author_index = forloop.index %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+                {% if item.start_date %}
+                    {% assign item_year = item.start_date | date: "%Y" %}
+                {% elsif item.date %}
+                    {% assign item_year = item.date | date: "%Y" %}
+                {% else %}
+                    {% assign item_year = item.year %}
+                {% endif %}
+
+                {% if item.ips %}
+                    {% assign ips = item.ips | split: ", " %}
+                {% endif %}
+                {% if item.research_team %}
+                    {% assign research_team = item.research_team | split: ", " %}
+                {% endif %}
+                {% if item.working_team %}
+                    {% assign working_team = item.working_team | split: ", " %}
+                {% endif %}
+                {% if item.collaborating_team %}
+                    {% assign collaborating_team = item.collaborating_team | split: ", " %}
+                {% endif %}
+                {% if ips and research_team %}
+                    {% assign members = ips | concat: research_team %}
+                {% endif %}
+                {% if item.entity %}
+                    {% assign entities = item.entity | split: ", " %}
+                {% endif %}
+
+                {% if item_year == year %}
+                    <div class="timeline-item flex items-start gap-4 {{ all_categories }}" data-category="{{ all_categories }}">
+                        <span class="timeline-dot {{ all_categories }}" data-category="{{ all_categories }}"></span>
+                        <div class="flex-grow">
+                            <div class="timeline-header">
+                                <span>{% if item.icon %}<span class="timeline-icon">{{ item.icon }}</span>{% endif %}<span class="timeline-org" onclick="document.getElementById('pub-{{item.ID}}').showModal()">{% if item.acronym %}{{ item.acronym }} {% endif %}{% if item.identifier %}({{ item.identifier }}){% else %}{{ title }}{% endif %}</span></span>
+                                {% if item.start_date or item.end_date %}
+                                    <span class="timeline-dates duration-container" data-start="{{ item.start_date }}" data-end="{{ item.end_date }}" data-lang="{{ page.lang }}">
+                                        <span title="{{ t.duration[page.lang] }}">📆</span><span class="format-date" data-date="{{ item.start_date }}">{{ item.start_date | date: "%d %b %Y" }}</span> - <span class="format-date" data-date="{{ item.end_date }}">{{ item.end_date | date: "%d %b %Y" }}</span> (<span class="duration-display"></span>)
+                                    </span>
+                                {% endif %}
+                                {% if item.identifier %}
+                                    <span class="timeline-title">{{title}}</span>
+                                {% endif %}
+                                {% if item.work %}
+                                    <span class="timeline-title">{{item.work}}</span>
+                                {% endif %}
+                            </div>
+
+                            {% if authors %}
+                                <div class="timeline-meta"><i class="fa-solid fa-users" title="{{t.authors[page.lang]}}"></i>({{author_index}}/{{authors.size}}) {% for author in authors %}{% if author == site.author %}<u>{{author}}</u>{% else %}{{author}}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
+                            {% endif %}
+
+                            {% if item.journal %}
+                                <div class="timeline-meta"><i class="fa-solid fa-book-journal-whills" title="{{t.journal[page.lang]}}"></i>{{ item.journal | replace: open_brace, '' | replace: close_brace, '' }}</div>
+                            {% elsif item.booktitle %}
+                                <div class="timeline-meta"><i class="fa-solid fa-book-journal-whills" title="{{t.conference[page.lang]}}{% if item.track %} • Track{% endif %}"></i>{{ item.booktitle | replace: open_brace, '' | replace: close_brace, '' }}{% if item.track %} • {{item.track}}{% endif %}</div>
+                            {% endif %}
+
+                            {% if item.venue %}
+                                <div class="timeline-meta">{{item.venue}}</div>
+                            {% endif %}
+
+                            {% if entities %}
+                                <div class="timeline-meta"><i class="fa-solid fa-building-columns" title="{{t.entity[page.lang]}}"></i>{% for entity in entities %}{{entity}}{% unless forloop.last %} • {% endunless %}{% endfor %}</div>
+                            {% endif %}
+
+                            {% if item.date or item.address %}
+                                <div class="timeline-meta"><span title="{{t.date[page.lang]}}{% if item.address %} • {{ t.location[page.lang] }}{% endif %}">🗺️</span><span class="format-date" data-date="{{ item.date }}" data-format="month-year">{{ item.date | date: "%b %Y" }}</span>{% if item.address %} • <span>{% if item.address[page.lang] %}{{ item.address[page.lang] }}{% else %}{{ item.address }}{% endif %}</span>{% endif %}</div>
+                            {% endif %}
+                            
+                            {% if item.funds %}
+                                <div class="timeline-meta"><i class="fa-solid fa-coins" title="{{t.funds[page.lang]}}"></i><span class="format-number">{{ item.funds }}</span> €</div>
+                            {% endif %}
+
+                            {% if item.funding_entity or item.call %}
+                                <div class="timeline-meta"><i class="fa-solid fa-building-columns" title="{{t.funding_entity[page.lang]}} • {{t.call[page.lang]}}"></i>{{item.funding_entity}}{% if item.call %} • {{item.call}}{% endif %}</div>
+                            {% endif %}
+
+                            {% if members %}
+                                <div class="timeline-meta"><i class="fa-solid fa-users" title="{{t.researchers[page.lang]}}"></i> ({{members | size}}) {% for member in members %}{% if member == site.author %}<u>{{member}}</u>{% else %}{{member}}{% endif %}{% if ips contains member %}<sup>{{t.ip_short[page.lang]}}</sup>{% endif %}{% unless forloop.last %} • {% endunless %}{% endfor %}</div>
+                            {% endif %}
+
+                            {% if working_team and working_team.size > 0 %}
+                                <div class="timeline-meta"><i class="fa-solid fa-users-gear" title="{{t.working_team[page.lang]}}"></i> ({{working_team | size}}) {% for member in working_team %}{% if member == site.author %}<u>{{member}}</u>{% else %}{{member}}{% endif %}{% unless forloop.last %} • {% endunless %}{% endfor %}</div>
+                            {% endif %}
+
+                            {% if collaborating_team and collaborating_team.size > 0 %}
+                                <div class="timeline-meta"><i class="fa-solid fa-users-gear" title="{{t.collaborating_team[page.lang]}}"></i> ({{collaborating_team | size}}) {% for member in collaborating_team %}{% if member == site.author %}<u>{{member}}</u>{% else %}{{member}}{% endif %}{% unless forloop.last %} • {% endunless %}{% endfor %}</div>
+                            {% endif %}
+
+                            {% if item.role %}
+                                <div class="timeline-meta"><i class="fa-regular fa-user" title="{{t.role[page.lang]}}"></i>{{item.role}}</div>
+                            {% endif %}
+
+                            {% if item.doi %}
+                                <div class="timeline-meta"><a href="https://doi.org/{{ item.doi }}" title="DOI/Handle" target="_blank" rel="noopener">📄 {{item.doi}}</a></div>
+                            {% elsif item.handle %}
+                                <div class="timeline-meta"><a href="{{ item.handle }}" title="DOI/Handle" target="_blank" rel="noopener">📄 {{item.handle}}</a></div>
+                            {% endif %}
+
+                            {% if item.website %}
+                                <div class="timeline-meta"><a href="{{ item.website }}" title="{{t.website[page.lang]}}/{{t.link[page.lang]}}" target="_blank" rel="noopener">🔗 {{item.website}}</a></div>
+                            {% endif %}
+
+                            {% if item.register %}
+                                <div class="timeline-meta"><span title="{{t.registered[page.lang]}}">®️ {{item.register}}</span></div>
+                            {% endif %}
+
+                            {% if item.description %}
+                                <div class="timeline-desc">{{item.description[page.lang]}}</div>
+                            {% endif %}             
+                        </div>
+
+                        {% if item.images %}
+                            <div class="timeline-image shrink-0">
+                                <div class="swiper award-swiper">
+                                    <div class="swiper-wrapper">
+                                        {% for img in item.images %}
+                                            <div class="swiper-slide">
+                                                {% if item.website %}
+                                                    <a href="{{item.website}}" target="_blank" rel="noopener noreferrer">
+                                                        <img src="{{ img | relative_url }}" alt="{{ title }}" title="{{ title }}" class="timeline-clickable rounded-lg shadow-sm border border-accent-2/10" style="cursor: pointer !important;"/>
+                                                    </a>
+                                                {% else %}
+                                                    <img src="{{ img | relative_url }}" alt="{{ title }}" title="{{ title }}" class="timeline-clickable rounded-lg shadow-sm border border-accent-2/10" onclick="showImage('{{ img | relative_url }}')"/>
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                    </div> {% comment %} Fixed missing closing swiper-wrapper div {% endcomment %}
+
+                                    {% if item.images.size > 1 %}
+                                        <div class="swiper-button-prev"><i class="fa-solid fa-circle-chevron-left"></i></div>
+                                        <div class="swiper-button-next"><i class="fa-solid fa-circle-chevron-right"></i></div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% if type == "publication" %}
+                        {% include publication_dialog.html pub=item %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+
+<dialog id="image-dialog" class="timeline-dialog">
+    <img id="dialog-image" src="" alt="">
+    <button onclick="document.getElementById('image-dialog').close()">✕</button>
+</dialog>
+
+<script src="{{ '/assets/js/timeline.js' | relative_url }}" defer></script>

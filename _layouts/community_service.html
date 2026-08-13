@@ -1,67 +1,9 @@
 ---
 layout: default
 ---
-{% assign t = site.data.i18n %}
+{% assign collection_name = "community_service" %}
+{% assign items = site[collection_name] | sort: "date" | reverse %}
 
-{% assign months_en = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec" | split: "," %}
-{% assign months_es = "Ene,Feb,Mar,Abr,May,Jun,Jul,Ago,Sep,Oct,Nov,Dic" | split: "," %}
+<h1 class="prose">{{ page.title }} ({{items.size}})</h1>
 
-  {% comment %} 
-    Lógica automática: si el idioma es 'es', añade '_es' al nombre de la colección 
-  {% endcomment %}
-  {% assign sufijo = "" %}
-  {% if page.lang == "es" %}{% assign sufijo = "_es" %}{% endif %}
-  {% assign nombre_coleccion = "community_service" | append: sufijo %}
-  
-  {% assign services = site[nombre_coleccion] %}
-
-  <h1 class="prose">{{ page.title }} ({{services.size}})</h1>
-  
-    {% comment %}
-  1. Creamos un array de años únicos extrayendo el año de cada fecha
-{% endcomment %}
-{% assign years = "" | split: "" %}
-{% for service in services %}
-  {% assign y = service.date | date: "%Y" %}
-  {% assign years = years | push: y | uniq %}
-{% endfor %}
-
-{% comment %}
-  2. Ordenamos los años (del más reciente al más antiguo)
-{% endcomment %}
-{% assign years = years | sort | reverse %}
-
-{% comment %}
-  3. Iteramos por cada año y buscamos los servicios que coincidan
-{% endcomment %}
-
-<div class="timeline">
-  {% for year in years %}
-    <div class="timeline-year-header">
-      <span class="timeline-year-label">{{ year }}</span>
-    </div>
-    {% for service in services %}
-      {% assign service_year = service.date | date: "%Y" %}
-      {% if service_year == year %}
-        <div class="timeline-item">
-          <span class="timeline-dot"></span>
-          <div class="timeline-header">
-            <span class="timeline-org">{{service.title}}</span>
-          </div>
-          <span class="timeline-title">{{service.venue}}</span>
-          {% assign month_index = service.date | date: "%m" | minus: 1 %}
-          {% if page.lang == "es" %}
-            {% assign month_name = months_es[month_index] %}
-          {% else %}
-            {% assign month_name = months_en[month_index] %}
-          {% endif %}
-            <div class="timeline-meta">
-              <span title="{{t.date[page.lang]}}{% if service.address %} • {{ t.location[page.lang] }}{% endif %}">🗺️</span>
-              <span class="format-date" data-date="{{ service.date }}" data-format="month-year">{{ month_name }} {{service.date | date: "%Y"}}</span>{% if service.address %} • <span>{{ service.address }}</span>{% endif %}
-              {% if service.website %}<a href="{{service.website}}" title="{{t.website[page.lang]}}" target="_blank" rel="noopener">🌐</a>{% endif %}
-            </div>
-        </div>
-      {% endif %}
-    {% endfor %}
-  {% endfor %}
-</div>
+{% include timeline.html items=items %}

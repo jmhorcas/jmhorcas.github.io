@@ -7,7 +7,7 @@ authors: David Romero-Organvidez, José Ángel Galindo, Chico Sundermann, José 
 date: 2024-10-01
 images:
   - "/assets/img/software/uvlhub.jpg"
-description: "An open source repository for managing and sharing UVL models, currently the de facto standard for variability modeling."
+description: 
+  en: "An open source repository for managing and sharing UVL models, currently the de facto standard for variability modeling."
+  es: "Un repositorio de código abierto para gestionar y compartir modelos UVL, actualmente el estándar de facto para el modelado de variabilidad."
 ---
-# {{ page.title }}
-Aquí va toda la explicación detallada de este premio...

@@ -7,7 +7,7 @@ authors: Inmaculada Ayala, Mercedes Amor, José Miguel Horcas, Lidia Fuentes
 date: 2019-11-01
 images:
   - "/assets/img/software/istar2fm.jpeg"
-description: "Set of algorithms and scripts to perform a mapping from an i* (iStar) requirements model to a feature model (FM)."
+description: 
+  en: "Set of algorithms and scripts to perform a mapping from an i* (iStar) requirements model to a feature model (FM)."
+  es: "Conjunto de algoritmos y scripts para realizar un mapeo desde un modelo de requisitos i* (iStar) hacia un modelo de características (FM)."
 ---
-# {{ page.title }}
-Aquí va toda la explicación detallada de este premio...

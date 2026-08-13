@@ -175,7 +175,7 @@ function isTrack(type) {
 }
 
 // Ejecutar el conteo nada más cargar la página
-document.addEventListener("DOMContentLoaded", updateCounts);
+//document.addEventListener("DOMContentLoaded", updateCounts);
 
 // Carga swiper para el slider de imágenes
 document.addEventListener("DOMContentLoaded", function () {
@@ -270,87 +270,87 @@ function showToast(message) {
     }, 1800);
 }
 
-/* Filtro para proyectos */
-function filterProjects(type) {
-    const items = document.querySelectorAll('.timeline-item');
-    const groups = document.querySelectorAll('.timeline-year-group');
+// /* Filtro para proyectos */
+// function filterProjects(type) {
+//     const items = document.querySelectorAll('.timeline-item');
+//     const groups = document.querySelectorAll('.timeline-year-group');
 
-    // 1. LÓGICA DE FILTRADO DE PROYECTOS
-    items.forEach(item => {
+//     // 1. LÓGICA DE FILTRADO DE PROYECTOS
+//     items.forEach(item => {
 
-        if (type === 'all') {
-            item.style.display = '';
-        }
-        else {
-            item.style.display =
-                item.classList.contains(type) ? '' : 'none';
-        }
+//         if (type === 'all') {
+//             item.style.display = '';
+//         }
+//         else {
+//             item.style.display =
+//                 item.classList.contains(type) ? '' : 'none';
+//         }
 
-    });
+//     });
 
-    // 2. OCULTAR AÑOS VACÍOS
-    groups.forEach(group => {
+//     // 2. OCULTAR AÑOS VACÍOS
+//     groups.forEach(group => {
 
-        const hasVisible = Array.from(
-            group.querySelectorAll('.timeline-item')
-        ).some(item => item.style.display !== 'none');
+//         const hasVisible = Array.from(
+//             group.querySelectorAll('.timeline-item')
+//         ).some(item => item.style.display !== 'none');
 
-        group.style.display = hasVisible ? '' : 'none';
+//         group.style.display = hasVisible ? '' : 'none';
 
-    });
+//     });
 
-    // 3. ACTUALIZAR CONTADORES
-    updateProjectCounts();
-}
-
-
-// Actualizar contadores de proyectos
-function updateProjectCounts() {
-
-    const items = document.querySelectorAll('.timeline-item');
-
-    let regional = 0;
-    let national = 0;
-    let international = 0;
-
-    items.forEach(item => {
-
-        if (item.classList.contains('regional')) {
-            regional++;
-        }
-
-        if (item.classList.contains('national')) {
-            national++;
-        }
-
-        if (item.classList.contains('international') || item.classList.contains('european')) {
-            international++;
-        }
-
-    });
-
-    const countAll = document.getElementById('count-project-all');
-    const countRegional = document.getElementById('count-project-regional');
-    const countNational = document.getElementById('count-project-national');
-    const countInternational = document.getElementById('count-project-international');
-
-    if (countAll) {
-        countAll.textContent = items.length;
-    }
-
-    if (countRegional) {
-        countRegional.textContent = regional;
-    }
-
-    if (countNational) {
-        countNational.textContent = national;
-    }
-
-    if (countInternational) {
-        countInternational.textContent = international;
-    }
-}
+//     // 3. ACTUALIZAR CONTADORES
+//     updateProjectCounts();
+// }
 
 
-// Ejecutar los contadores al cargar la página
-document.addEventListener("DOMContentLoaded", updateProjectCounts);
+// // Actualizar contadores de proyectos
+// function updateProjectCounts() {
+
+//     const items = document.querySelectorAll('.timeline-item');
+
+//     let regional = 0;
+//     let national = 0;
+//     let international = 0;
+
+//     items.forEach(item => {
+
+//         if (item.classList.contains('regional')) {
+//             regional++;
+//         }
+
+//         if (item.classList.contains('national')) {
+//             national++;
+//         }
+
+//         if (item.classList.contains('international') || item.classList.contains('european')) {
+//             international++;
+//         }
+
+//     });
+
+//     const countAll = document.getElementById('count-project-all');
+//     const countRegional = document.getElementById('count-project-regional');
+//     const countNational = document.getElementById('count-project-national');
+//     const countInternational = document.getElementById('count-project-international');
+
+//     if (countAll) {
+//         countAll.textContent = items.length;
+//     }
+
+//     if (countRegional) {
+//         countRegional.textContent = regional;
+//     }
+
+//     if (countNational) {
+//         countNational.textContent = national;
+//     }
+
+//     if (countInternational) {
+//         countInternational.textContent = international;
+//     }
+// }
+
+
+// // Ejecutar los contadores al cargar la página
+// document.addEventListener("DOMContentLoaded", updateProjectCounts);

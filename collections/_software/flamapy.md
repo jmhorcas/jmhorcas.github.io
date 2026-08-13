@@ -7,7 +7,7 @@ authors: José Ángel Galindo, José Miguel Horcas, Viet-Man Le, Victor Lamas, R
 date: 2023-08-28
 images:
   - "/assets/img/software/flamapy.png"
-description: "The cutting-edge Python-based tool for Automated Analysis of Feature Models using UVL and more."
+description: 
+  en: "The cutting-edge Python-based tool for Automated Analysis of Feature Models using UVL and more."
+  es: "La herramienta de referencia basada en Python para el análisis automático de modelos de variabilidad con soporte para UVL."
 ---
-# {{ page.title }}
-Aquí va toda la explicación detallada de este premio...
