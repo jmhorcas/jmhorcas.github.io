@@ -25,10 +25,10 @@
   <div class="publication-modal">
 
     <div class="publication-modal-header">
-        <h5>{{ pub.title | replace: open_brace, '' | replace: close_brace, '' }}</h5>
+        <h5>Publication details</h5>
 
         <button class="dialog-close" type="button" onclick="this.closest('dialog').close()">
-            <i class="fa-solid fa-xmark"></i>
+            ✕
         </button>
     </div>
 
@@ -57,6 +57,9 @@
                             {%- unless forloop.last -%}, {% endunless -%}
                         {%- endfor -%}
 
+                    {% when "month" %}
+                        {{ value | date: "%B" | capitalize }}
+                        
                     {% when "doi" %}
                         <a href="https://doi.org/{{value}}" target="_blank" rel="noopener">{{value}}</a>
 

@@ -1,4 +1,81 @@
-/* Generic Timeline Filter Engine */
+/* ==========================================================================
+   TIMELINE.JS - Unificado (Filtros, Swiper, Fechas, Modales y BibTeX)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Cálculo de fechas y duración
+   -------------------------------------------------------------------------- */
+const ProjectUtils = (function() {
+    const formatDate = (dateStr, lang, options = {}) => {
+        if (!dateStr) return "";
+        const date = dateStr === 'now' ? new Date() : new Date(dateStr);
+        
+        const defaultOptions = {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric'
+        };
+
+        const finalOptions = Object.assign({}, defaultOptions, options);
+        return new Intl.DateTimeFormat(lang, finalOptions).format(date);
+    };
+
+    const calculateDuration = (startStr, endStr, lang) => {
+        const start = new Date(startStr);
+        const end = new Date(endStr);
+        
+        let years = end.getFullYear() - start.getFullYear();
+        let months = end.getMonth() - start.getMonth();
+
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        const labels = {
+            es: { yr: "año", yrs: "años", mo: "mes", mos: "meses", and: " y ", less: "menos de 1 mes" },
+            en: { yr: "year", yrs: "years", mo: "month", mos: "months", and: " and ", less: "less than 1 month" }
+        };
+
+        const t = labels[lang] || labels.en;
+        let parts = [];
+
+        if (years > 0) parts.push(years === 1 ? `1 ${t.yr}` : `${years} ${t.yrs}`);
+        if (months > 0) parts.push(months === 1 ? `1 ${t.mo}` : `${months} ${t.mos}`);
+        
+        return parts.length > 0 ? parts.join(t.and) : t.less;
+    };
+
+    const init = () => {
+        document.querySelectorAll('.duration-container').forEach(container => {
+            const lang = container.getAttribute('data-lang') || 'en';
+            const startStr = container.getAttribute('data-start');
+            const endStr = container.getAttribute('data-end') || 'now';
+
+            // Formatear las fechas visibles
+            container.querySelectorAll('.format-date').forEach(el => {
+                const dateToFormat = el.getAttribute('data-date');
+                const formatType = el.getAttribute('data-format');
+                let options = {};
+                if (formatType === 'month-year') {
+                    options = { day: undefined, month: 'short', year: 'numeric' };
+                }
+                el.innerText = formatDate(dateToFormat, lang, options);
+            });
+
+            // Calcular y mostrar duración
+            const display = container.querySelector('.duration-display');
+            const durationText = calculateDuration(startStr, endStr, lang);
+            if (display) display.innerText = durationText;
+        });
+    };
+
+    return { init };
+})();
+
+/* --------------------------------------------------------------------------
+   2. Sistema Genérico de Filtros Jerárquicos
+   -------------------------------------------------------------------------- */
 function filterTimeline(targetCategory) {
     const items = document.querySelectorAll('.timeline-item');
     const groups = document.querySelectorAll('.timeline-year-group');
@@ -66,7 +143,9 @@ function filterTimeline(targetCategory) {
     updateTimelineCounts();
 }
 
-/* Dynamic Counter Update Contextual */
+/* --------------------------------------------------------------------------
+   3. Actualización Contextual de Contadores (Badges)
+   -------------------------------------------------------------------------- */
 function updateTimelineCounts() {
     const items = document.querySelectorAll('.timeline-item');
     const countBadges = document.querySelectorAll('[data-count]');
@@ -120,5 +199,104 @@ function updateTimelineCounts() {
     });
 }
 
-// Inicializar al cargar la página
-document.addEventListener("DOMContentLoaded", updateTimelineCounts);
+
+/* --------------------------------------------------------------------------
+   4. Inicialización de Swiper (Galería de Imágenes)
+   -------------------------------------------------------------------------- */
+function initTimelineSwiper() {
+    document.querySelectorAll(".award-swiper").forEach(function (swiperEl) {
+        const slideCount = swiperEl.querySelectorAll('.swiper-slide').length;
+
+        new Swiper(swiperEl, {
+            loop: slideCount > 1,
+            slidesPerView: 1,
+            // Permite a Swiper re-calcular el layout automáticamente cuando CSS termina de cargar
+            observer: true,
+            observeParents: true,
+            navigation: {
+                nextEl: swiperEl.querySelector(".swiper-button-next"),
+                prevEl: swiperEl.querySelector(".swiper-button-prev"),
+            },
+        });
+    });
+}
+/* --------------------------------------------------------------------------
+   5. Diálogos de Imágenes y Toast Notifications
+   -------------------------------------------------------------------------- */
+function showImage(src) {
+    const dialogImg = document.getElementById("dialog-image");
+    const dialog = document.getElementById("image-dialog");
+    if (dialogImg && dialog) {
+        dialogImg.src = src;
+        dialog.showModal();
+    }
+}
+
+function showToast(message) {
+    let toast = document.getElementById("toast");
+
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "toast";
+        toast.className = "toast";
+        document.body.appendChild(toast);
+    }
+
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    clearTimeout(toast.timer);
+    toast.timer = setTimeout(() => {
+        toast.classList.remove("show");
+    }, 1800);
+}
+
+/* --------------------------------------------------------------------------
+   6. Acciones de Copiado (Reference y BibTeX)
+   -------------------------------------------------------------------------- */
+function copyReference(id) {
+    const refElem = document.getElementById("reference-" + id);
+    if (!refElem) return;
+    
+    const text = refElem.innerText.trim();
+    navigator.clipboard.writeText(text)
+        .then(() => showToast("✓ Reference copied"))
+        .catch(console.error);
+}
+
+let bibDatabase = null;
+
+async function loadBib() {
+    if (bibDatabase !== null) return bibDatabase;
+    const response = await fetch("/assets/bib/publications.bib");
+    bibDatabase = await response.text();
+    return bibDatabase;
+}
+
+async function copyBibtex(id) {
+    try {
+        const bib = await loadBib();
+        const escaped = id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const regex = new RegExp("@\\w+\\s*\\{\\s*" + escaped + "\\s*,([\\s\\S]*?)\\n\\}", "m");
+        const match = bib.match(regex);
+
+        if (!match) {
+            alert("BibTeX entry not found.");
+            return;
+        }
+
+        await navigator.clipboard.writeText(match[0]);
+        showToast("✓ BibTeX copied");
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   7. Disparador Global DOMContentLoaded
+   -------------------------------------------------------------------------- */
+document.addEventListener("DOMContentLoaded", () => {
+    ProjectUtils.init();
+    initTimelineSwiper();
+    updateTimelineCounts();
+});

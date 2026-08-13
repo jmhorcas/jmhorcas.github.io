@@ -1,0 +1,608 @@
+/* ============================= */
+/* Resume Timeline Component     */
+/* ============================= */
+.timeline {
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: var(--line-x);
+    top: 0.25rem;
+    bottom: 0.25rem;
+    width: var(--line-w);
+    background: color-mix(in srgb, var(--color-accent-2) 20%, transparent);
+}
+
+.timeline-item {
+    position: relative;
+    padding: 0 0 1.75rem 0;
+    padding-left: 3rem;
+    border-left: 2px solid var(--color-border);
+    margin-left: 2rem; 
+    padding-bottom: 2rem;
+}
+
+.timeline-item.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-grow {
+    flex: 1;
+}
+
+.shrink-0 {
+    flex-shrink: 0;
+}
+
+.timeline-image {
+    flex: 0 0 250px;
+    width: 250px;
+    max-width: 250px;
+    align-self: flex-start;
+}
+
+.timeline-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: none;
+    cursor: zoom-in;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -7px;
+    top: 0.5rem;
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    border: 2px solid var(--color-global-bg);
+}
+
+.timeline-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.timeline-org {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-accent-2);
+}
+
+.timeline-icon {
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--color-accent-2);
+}
+
+.timeline-award {
+    font-weight: 700;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--color-accent-2);
+}
+
+.timeline-title {
+    color: var(--color-global-text);
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.timeline-dates {
+    margin-left: auto;
+    font-size: 0.8125rem;
+    letter-spacing: 0.02em;
+    color: color-mix(in srgb, var(--color-accent-2) 65%, transparent);
+}
+
+.timeline-meta {
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+    color: color-mix(in srgb, var(--color-accent-2) 75%, transparent);
+}
+
+.timeline-desc {
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    color: color-mix(in srgb, var(--color-accent-2) 75%, transparent);
+}
+
+/* Timeline Responsive */
+@media (max-width: 640px) {
+    .timeline-item {
+        margin-left: 1rem;
+    }
+    .timeline-year-header {
+        justify-content: flex-start;
+        margin-left: 0.5rem;
+    }
+    .timeline-item.flex {
+        flex-direction: column-reverse;
+    }
+    .timeline-image {
+        width: 100%;
+        max-width: none;
+    }
+    .timeline-image img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline-item.flex {
+        flex-direction: column-reverse;
+    }
+    .timeline-image {
+        width: 100%;
+        max-width: none;
+    }
+    .timeline-image img {
+        max-width: 100%;
+    }
+}
+
+.timeline-year-header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    z-index: 10;
+}
+
+.timeline-year-label {
+    background-color: var(--color-global-bg);
+    color: var(--color-accent);
+    font-size: 1.5rem;
+    font-weight: 800;
+    padding: 0.2rem 1rem;
+    border: 2px solid var(--color-accent);
+    border-radius: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    box-shadow: 0 0 10px color-mix(in srgb, var(--color-accent) 20%, transparent);
+}
+
+.timeline-meta a {
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+
+/* Colores para dots por categoría */
+.timeline-item.journal .timeline-dot {
+  background-color: #c32b72;
+  border-color: #c32b72;
+}
+
+.timeline-item.international-conference .timeline-dot {
+  background-color: #196ca3;
+  border-color: #196ca3;
+}
+
+.timeline-item.workshop .timeline-dot {
+  background-color: #2ecc71;
+  border-color: #2ecc71;
+}
+
+.timeline-item.national-conference .timeline-dot {
+  background-color: #e68019;
+  border-color: #e68019;
+}
+
+.timeline-item.other .timeline-dot {
+  background-color: #ffd500;
+  border-color: #ffd500;
+}
+
+/* Timeline Dialog Modal */
+.timeline-clickable {
+    cursor: zoom-in;
+    transition: transform 0.2s ease;
+}
+
+.timeline-clickable:hover {
+    transform: scale(1.05);
+}
+
+.timeline-dialog {
+    border: none;
+    padding: 0;
+    background: transparent;
+
+    &::backdrop {
+        background: rgba(0,0,0,0.75);
+    }
+
+    img {
+        max-width: 90vw;
+        max-height: 90vh;
+        border-radius: 1rem;
+    }
+
+    button {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(0,0,0,0.6);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 2rem;
+        height: 2rem;
+        cursor: pointer;
+    }
+}
+
+/* ============================= */
+/* Filter Switches Component     */
+/* ============================= */
+.filter-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 5px 0;
+    margin: 0;
+}
+
+.filter-switch-group {
+    display: inline-flex;
+    background: #f1f3f5;
+    padding: 3px;
+    border-radius: 12px;
+    gap: 2px;
+    border: 1px solid #e2e8f0;
+}
+
+.switch-label {
+    input { display: none; }
+}
+
+.switch-text {
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.switch-label input:checked + .switch-text {
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    color: #007bff;
+
+    .badge {
+        background: #007bff;
+        color: white;
+    }
+}
+
+.badge {
+    background: #e9ecef;
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-size: 0.8em;
+    color: #666;
+}
+
+.sub-container {
+    margin-top: -5px;
+    z-index: 1;
+    animation: slideDown 0.3s ease-out;
+}
+
+.sub-group {
+    background: #e9ecef;
+    padding: 2px;
+    border-radius: 0 0 10px 10px;
+    transform: scale(0.9);
+    position: relative;
+}
+
+.switch-label.sub .switch-text {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+}
+
+.level-3 {
+    margin-top: -8px;
+
+    .switch-text {
+        font-size: 0.75rem;
+        color: #6c757d;
+    }
+
+    .badge {
+        background: transparent;
+        border: 1px solid #dee2e6;
+    }
+}
+
+.tracks-group {
+    background: #f8f9fa;
+    border: 1px dashed #dee2e6;
+    transform: scale(0.85);
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+    .filter-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0 10px;
+        width: 100%;
+        overflow-x: visible;
+    }
+}
+
+/* ============================= */
+/* Images carousel & Modal       */
+/* ============================= */
+.award-swiper {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: white;
+        transform: scale(.55);
+
+        &::after {
+            display: none;
+        }
+
+        i {
+            font-size: 28px;
+            color: rgba(255,255,255,0.9);
+            text-shadow: 0 0 4px rgba(0,0,0,.8);
+        }
+    }
+}
+
+.publication-dialog {
+    padding: 0;
+    border: none;
+    border-radius: .5rem;
+    width: min(850px, 90vw);
+    max-height: 90vh;
+    overflow: hidden;
+    background: transparent;
+
+    &::backdrop {
+        background: rgba(0,0,0,.5);
+    }
+}
+
+.publication-modal {
+    background: var(--color-global-bg);
+    color: var(--color-global-text);
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+}
+
+.publication-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+
+    h5 {
+        margin: 0;
+        color: var(--color-accent-2);
+        font-size: 1.25rem;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .dialog-close {
+        position: absolute; /* Lo saca del flujo de centrado */
+        right: 1rem;       /* Lo fija a la derecha */
+    }
+}
+
+.publication-modal-body {
+    overflow: auto;
+    padding: 1.5rem;
+    line-height: 1.7;
+}
+
+.publication-modal-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    padding: 1rem;
+    border-top: 1px solid #dee2e6;
+
+    button {
+        display: flex;
+        align-items: center;
+        gap: .45rem;
+        padding: .55rem 1rem;
+        border-radius: .45rem;
+        border: 1px solid var(--color-border);
+        background: var(--color-card-bg);
+        color: var(--color-global-text);
+        cursor: pointer;
+
+        &:hover {
+            background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+    }
+}
+
+.dialog-close {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--color-global-text);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(0,0,0,.08);
+    }
+}
+
+.publication-title {
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+/* Referencia dentro del modal */
+.publication-reference {
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+    font-size: .95rem;
+}
+
+/* Toast notifications */
+.toast {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 9999;
+    padding: .8rem 1rem;
+    background: var(--color-card-bg);
+    color: var(--color-global-text);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent);
+    border-radius: .5rem;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 24px var(--color-shadow);
+    font-size: .9rem;
+    font-family: inherit;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .25s ease, transform .25s ease;
+
+    &.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* BibTexViz link */
+.bibtexviz-link {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0.8rem 0 2rem;
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        text-decoration: none;
+        opacity: 0.75;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+
+        &:hover {
+            opacity: 1;
+            transform: translateX(2px);
+        }
+    }
+
+    img {
+        width: 36px;
+        height: 36px;
+        object-fit: contain;
+    }
+
+    span {
+        font-size: 0.85rem;
+        color: inherit;
+    }
+
+    strong {
+        font-weight: 600;
+    }
+}
+
+/* ============================= */
+/* Colores de Proyectos (Scope)  */
+/* ============================= */
+
+/* Azul para International y European */
+.timeline-item.international .timeline-dot,
+.timeline-item.european .timeline-dot {
+    background-color: #196ca3;
+    border-color: #196ca3;
+}
+
+/* Rojo para National */
+.timeline-item.national .timeline-dot {
+    background-color: #c32b72;
+    border-color: #c32b72;
+}
+
+/* Verde para Regional */
+.timeline-item.regional .timeline-dot {
+    background-color: #006633;
+    border-color: #006633;
+}
+
+/* Aplica cursor 'help' o 'default' a elementos con atributo title,
+   PERO si están dentro de un enlace <a> mantienen el cursor 'pointer' habitual */
+[title]:not(a):not(a *) {
+    cursor: help; /* o 'default' si prefieres la flecha estándar */
+}
+
+/* Garantiza que cualquier enlace o elemento dentro de un enlace mantenga la manita */
+a, 
+a [title] {
+    cursor: pointer;
+}
