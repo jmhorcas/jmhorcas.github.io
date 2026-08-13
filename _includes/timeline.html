@@ -47,6 +47,7 @@
                 {% assign cat_pub_type = nil %}
                 {% assign cat_pub_conference_type = nil %}
                 {% assign cat_pub_track = nil %}
+                {% assign cat_thesis = nil %}
                 
                 {% comment %} Category filters {% endcomment %}
                 {% if type == "project" %}
@@ -76,8 +77,10 @@
 
                         {% assign cat_pub_track = cat_pub_conference_type | append: "-" | append: raw_track %}
                     {% endif %}
+                {% elsif type == "supervision" %}
+                    {% assign cat_thesis = item.type | downcase | strip %}
                 {% endif %}
-                {% assign all_categories = "" | append: cat_project | append: " " | append: cat_pub_type | append: " " | append: cat_pub_conference_type | append: " " | append: cat_pub_track | strip | replace: "  ", " " %}
+                {% assign all_categories = "" | append: cat_project | append: " " | append: cat_pub_type | append: " " | append: cat_pub_conference_type | append: " " | append: cat_pub_track | append: " " | append: cat_thesis | strip | replace: "  ", " " %}
 
                 {% comment %} Title fallback logic {% endcomment %}
                 {% if item.title[page.lang] %}
@@ -167,37 +170,100 @@
                         <span class="timeline-dot {{ all_categories }}" data-category="{{ all_categories }}"></span>
                         <div class="flex-grow">
                             <div class="timeline-header">
-                                <span>
-                                    {% if item.icon %}<span class="timeline-icon">{{ item.icon }}</span>{% endif %}
-                                    <!-- Modal opener con fallback seguro -->
-                                    <span class="timeline-org" {% if type == 'publication' %}style="cursor: pointer;" onclick="const d = document.getElementById('pub-{{item.ID}}'); if(d){ d.showModal(); } else { console.error('Modal pub-{{item.ID}} no encontrado'); }"{% endif %}>
-                                        {% if item.acronym %}{{ item.acronym }} {% endif %}
-                                        {% if item.identifier %}({{ item.identifier }}){% else %}{{ title }}{% endif %}
-                                    </span>
-                                </span>
-                                {% if item.start_date or item.end_date %}
-                                    <span class="timeline-dates duration-container" data-start="{{ item.start_date }}" data-end="{{ item.end_date }}" data-lang="{{ page.lang }}">
-                                        <span title="{{ t.duration[page.lang] }}">📆 </span><span class="format-date" data-date="{{ item.start_date }}">{{ item.start_date | date: "%d %b %Y" }}</span> - <span class="format-date" data-date="{{ item.end_date }}">{{ item.end_date | date: "%d %b %Y" }}</span> (<span class="duration-display"></span>)
-                                    </span>
-                                {% endif %}
-                                {% if type == "community-service" %}
-                                    <span class="timeline-dates">
-                                        <span title="{{t.date[page.lang]}}{% if item.address %} • {{ t.location[page.lang] }}{% endif %}">🗺️ </span><span class="format-date" data-date="{{ item.date }}" data-format="month-year">{{ item.date | date: "%b %Y" }}</span>{% if item.address %} • <span>{% if item.address[page.lang] %}{{ item.address[page.lang] }}{% else %}{{ item.address }}{% endif %}</span>{% endif %}
-                                    </span>
-                                {% endif %}
+                                <div class="timeline-header-main">
+                                    <span>
+                                        {% if item.icon %}
+                                            <span class="timeline-icon">{{ item.icon }}</span>
+                                        {% endif %}
 
-                                {% if item.calification %}
-                                    <span class="timeline-calification" title="{{t.calification[page.lang]}}">🎓 {% if item.calification[page.lang] %}{{item.calification[page.lang]}}{% else %}{{item.calification}}{% endif %}</span>
-                                {% endif %}
+                                        {% if item.status %}
+                                            <span class="timeline-org">⚠️ ({{ item.status }})</span>
+                                        {% endif %}
 
-                                {% if item.identifier %}
-                                    <span class="timeline-title">{{title}}</span>
-                                {% endif %}
-                                {% if item.work %}
-                                    <span class="timeline-title">{{item.work}}</span>
-                                {% endif %}
+                                        <span class="timeline-org"
+                                            {% if type == 'publication' %}
+                                                style="cursor: pointer;"
+                                                onclick="const d = document.getElementById('pub-{{item.ID}}'); if(d){ d.showModal(); } else { console.error('Modal pub-{{item.ID}} no encontrado'); }"
+                                            {% endif %}>
+                                            {% if item.acronym %}
+                                                {{ item.acronym }}
+                                            {% endif %}
+
+                                            {% if item.identifier %}
+                                                ({{ item.identifier }})
+                                            {% else %}
+                                                {{ title }}
+                                            {% endif %}
+                                        </span>
+                                    </span>
+                                </div>
+
+                                <div class="timeline-header-info">
+
+                                    {% if item.start_date or item.end_date %}
+                                        <span class="timeline-dates duration-container"
+                                            data-start="{{ item.start_date }}"
+                                            data-end="{{ item.end_date }}"
+                                            data-lang="{{ page.lang }}">
+                                            <span title="{{ t.duration[page.lang] }}">📆 </span>
+                                            <span class="format-date" data-date="{{ item.start_date }}">
+                                                {{ item.start_date | date: "%d %b %Y" }}
+                                            </span>
+                                            -
+                                            <span class="format-date" data-date="{{ item.end_date }}">
+                                                {{ item.end_date | date: "%d %b %Y" }}
+                                            </span>
+                                            (<span class="duration-display"></span>)
+                                        </span>
+                                    {% endif %}
+
+                                    {% if type == "community-service" %}
+                                        <span class="timeline-dates">
+                                            <span title="{{t.date[page.lang]}}{% if item.address %} • {{ t.location[page.lang] }}{% endif %}">
+                                                🗺️
+                                            </span>
+                                            <span class="format-date"
+                                                data-date="{{ item.date }}"
+                                                data-format="month-year">
+                                                {{ item.date | date: "%b %Y" }}
+                                            </span>
+                                            {% if item.address %}
+                                                •
+                                                <span>
+                                                    {% if item.address[page.lang] %}
+                                                        {{ item.address[page.lang] }}
+                                                    {% else %}
+                                                        {{ item.address }}
+                                                    {% endif %}
+                                                </span>
+                                            {% endif %}
+                                        </span>
+                                    {% endif %}
+
+                                    {% if item.calification %}
+                                        <span class="timeline-calification"
+                                            title="{{t.calification[page.lang]}}">
+                                            🎓
+                                            {% if item.calification[page.lang] %}
+                                                {{item.calification[page.lang]}}
+                                            {% else %}
+                                                {{item.calification}}
+                                            {% endif %}
+                                        </span>
+                                    {% endif %}
+
+                                </div>
+
                             </div>
 
+                            {% if item.identifier %}
+                                <div class="timeline-meta"><span class="timeline-title">{{ title }}</span></div>
+                            {% endif %}
+
+                            {% if item.work %}
+                                <div class="timeline-meta"><span class="timeline-title">{{ item.work }}</span></div>
+                            {% endif %}
+                            
                             {% if authors and type != "supervision" %}
                                 <div class="timeline-meta"><i class="fa-solid fa-users" title="{{t.authors[page.lang]}}"></i> {% if author_index >= 0 %}({{author_index}}/{{authors.size}}){% endif %} {% for author in authors %}{% if author == site.author %}<u>{{author}}</u>{% else %}{{author}}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
                             {% endif %}
@@ -228,7 +294,7 @@
                                 </div>
                             {% endif %}                        
 
-                            {% if type != "project" and type != "community-service" %}
+                            {% if type != "project" and type != "community-service" and type != "supervision" %}
                                 {% if item.date or item.address %}
                                     <div class="timeline-meta"><span title="{{t.date[page.lang]}}{% if item.address %} • {{ t.location[page.lang] }}{% endif %}">🗺️ </span><span class="format-date" data-date="{{ item.date }}" data-format="month-year">{{ item.date | date: "%b %Y" }}</span>{% if item.address %} • <span>{% if item.address[page.lang] %}{{ item.address[page.lang] }}{% else %}{{ item.address }}{% endif %}</span>{% endif %}</div>
                                 {% endif %}

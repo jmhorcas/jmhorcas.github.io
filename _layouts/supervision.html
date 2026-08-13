@@ -20,29 +20,29 @@ layout: default
       </label>
 
       <label class="switch-label">
-        <input type="radio" name="timeline-filter" value="thesis" onclick="filterTimeline('thesis')">
+        <input type="radio" name="timeline-filter" value="phd" onclick="filterTimeline('phd')">
         <span class="switch-text">
-          <i class="fa-solid fa-circle" style="color: #196ca3;"></i>
+          <i class="fa-solid fa-circle" style="color: #ffd500;"></i>
           {{t.theses[page.lang]}}
-          <span data-count="european,international" class="badge">0</span>
+          <span data-count="phd" class="badge">0</span>
         </span>
       </label>
 
       <label class="switch-label">
         <input type="radio" name="timeline-filter" value="tfm" onclick="filterTimeline('tfm')">
         <span class="switch-text">
-          <i class="fa-solid fa-circle" style="color: #c32b72;"></i>
+          <i class="fa-solid fa-circle" style="color: #006633;"></i>
           {{t.tfms[page.lang]}}
-          <span data-count="national" class="badge">0</span>
+          <span data-count="tfm" class="badge">0</span>
         </span>
       </label>
 
       <label class="switch-label">
         <input type="radio" name="timeline-filter" value="tfg" onclick="filterTimeline('tfg')">
         <span class="switch-text">
-          <i class="fa-solid fa-circle" style="color: #006633;"></i>
+          <i class="fa-solid fa-circle" style="color: #196ca3;"></i>
           {{t.tfgs[page.lang]}}
-          <span data-count="regional" class="badge">0</span>
+          <span data-count="tfg" class="badge">0</span>
         </span>
       </label>
 

@@ -68,11 +68,25 @@
 }
 
 .timeline-header {
-    display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    column-gap: 1rem;
 }
+
+.timeline-header-main {
+    min-width: 0;
+}
+
+.timeline-header-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.2rem;
+    white-space: nowrap;
+    text-align: right;
+}
+
 
 .timeline-org {
     font-weight: 700;
@@ -100,14 +114,12 @@
 }
 
 .timeline-dates {
-    margin-left: auto;
     font-size: 0.8125rem;
     letter-spacing: 0.02em;
     color: color-mix(in srgb, var(--color-accent-2) 65%, transparent);
 }
 
 .timeline-calification {
-    margin-left: auto;
     letter-spacing: 0.02em;
     color: color-mix(in srgb, var(--color-accent-2) 65%, transparent);
 }
@@ -611,4 +623,20 @@
 a, 
 a [title] {
     cursor: pointer;
+}
+
+/* Colores para las tesis */
+.timeline-item.phd .timeline-dot {
+    background-color: #ffd500;
+    border-color: #ffd500;
+}
+
+.timeline-item.tfm .timeline-dot {
+    background-color: #006633;
+    border-color: #006633;
+}
+
+.timeline-item.tfg .timeline-dot {
+    background-color: #196ca3;
+    border-color: #196ca3;
 }

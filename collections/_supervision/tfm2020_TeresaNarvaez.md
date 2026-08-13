@@ -4,7 +4,7 @@ title:
   es: "Software verde con métodos ágiles y su relación con los servicios de tecnología de información y el software regulado"
 entity: Universidad de Málaga
 author: Teresa de Jesús Narváez Narváez
-year: 2020
+date: 2020-06-01
 supervisors: Mónica Pinto, José Miguel Horcas
 type: tfm
 program: Máster en Ingeniería del Software e Inteligencia Artificial

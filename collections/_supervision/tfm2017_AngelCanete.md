@@ -4,7 +4,7 @@ title:
   es: "Tejedor Dinámico y Ecoeficiente de Código Android"
 entity: Universidad de Málaga
 author: Ángel Jesús Cañete Valverde
-year: 2017
+date: 2017-09-01
 supervisors: Lidia Fuentes, José Miguel Horcas
 type: tfm
 program: Máster Universitario en Ingeniería Informática
