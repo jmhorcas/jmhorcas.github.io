@@ -148,9 +148,9 @@ role:
 link:
   en: "Link"
   es: "Enlace"
-entities:
-  en: "Entities"
-  es: "Entidades"
+institutions:
+  en: "Institutions"
+  es: "Instituciones"
 theses:
   en: "PhD Dissertations"
   es: "Tesis Doctorales"

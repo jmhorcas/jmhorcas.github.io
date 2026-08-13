@@ -5,6 +5,7 @@ lang: es
 permalink: /es/resume/
 ---
 {% include publication_stats.html %}
+
 # Resumen
 Actualmente soy **Profesor Titular de Universidad** en el área de Lenguajes y Sistemas Informáticos (LSI) del departamento de Lenguajes y Ciencias de la Computación (LCC) de la [**Universidad de Málaga (UMA)**](https://www.uma.es/){:target="_blank" rel="noopener noreferrer"}, puesto que ocupo desde abril de 2025. Mi trayectoria académica y profesional ha estado vinculada principalmente a la UMA, donde me titulé como Ingeniero Informático (2012) y obtuve mi Doctorado (2018).
 Mi actividad investigadora comenzó en 2012 en el grupo [**CAOSD**](https://caosd.lcc.uma.es/){:target="_blank" rel="noopener noreferrer"}, liderado por la Catedrática Lidia Fuentes, en el que continúo desarrollando mi labor científica.
@@ -40,5 +41,5 @@ Como antecedente clave, lideré el desarrollo de [**vEXgine**](https://caosd.lcc
 {: style="text-align: justify"}
 
 ## Docencia y capacidad formativa
-Tengo reconocido **un quinquenio docente** (con previsión del segundo en 2026) y experiencia docente en la UMA y la US, además de la participación en proyectos de innovación educativa. He dirigido **10 TFGs y 6 TFMs**, y actualmente codirijo dos tesis doctorales, una de ellas en colaboración con la [**UNED**](https://www.uned.es/universidad/docentes/informatica/ruben-heradio-gil.html){:target="_blank" rel="noopener noreferrer"}.
+Tengo reconocido **un quinquenio docente** (con previsión del segundo en 2026) y experiencia docente en la UMA y la US, además de la participación en proyectos de innovación educativa. He dirigido **{{ tfms_count }} TFMs y {{ tfgs_count }} TFGs**, y actualmente codirijo dos tesis doctorales, una de ellas en colaboración con la [**UNED**](https://www.uned.es/universidad/docentes/informatica/ruben-heradio-gil.html){:target="_blank" rel="noopener noreferrer"}.
 {: style="text-align: justify"}

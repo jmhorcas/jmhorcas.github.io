@@ -6,6 +6,7 @@ permalink: /resume/
 ---
 {% include publication_stats.html %}
 
+
 # Summary
 I am currently an **Associate Professor** in the Languages and Information Systems (LSI) area at the Department of Languages and Computer Science (LCC) of the [**University of Málaga (UMA)**](https://www.uma.es/){:target="_blank" rel="noopener noreferrer"}, a position I have held since April 2025. My academic and professional career has been closely linked to UMA, where I obtained my degree in Informatics Engineering (2012) and my PhD (2018). 
 My research activity began in 2012 within the [**CAOSD**](https://caosd.lcc.uma.es/){:target="_blank" rel="noopener noreferrer"} research group, led by Professor Lidia Fuentes, where I continue to carry out my scientific work.
@@ -42,5 +43,5 @@ As a key antecedent, I led the development of [**vEXgine**](https://caosd.lcc.um
 
 ## Teaching and mentoring
 I have **one recognized teaching period (quinquennium)**, and teaching experience at both the UMA and the US, as well as participation in educational innovation projects.
-I have supervised **10 Bachelor's theses and 6 Master's theses**, and I am currently co-supervising two PhD thesis, one in collaboration with the [**UNED**](https://www.uned.es/universidad/docentes/informatica/ruben-heradio-gil.html){:target="_blank" rel="noopener noreferrer"}.
+I have supervised **{{ tfms_count }} Master's thesis and {{ tfgs_count }} Bachelor's theses**, and I am currently co-supervising two PhD thesis, one in collaboration with the [**UNED**](https://www.uned.es/universidad/docentes/informatica/ruben-heradio-gil.html){:target="_blank" rel="noopener noreferrer"}.
 {: style="text-align: justify"}

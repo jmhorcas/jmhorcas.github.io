@@ -287,7 +287,7 @@
 
                             {% if entities %}
                                 <div class="timeline-meta">
-                                    <i class="fa-solid fa-building-columns" title="{{t.entities[page.lang]}}"></i> {% for entity in entities %}{{entity}}{% unless forloop.last %} • {% endunless %}{% endfor %}
+                                    <i class="fa-solid fa-building-columns" title="{{t.institutions[page.lang]}}"></i> {% for entity in entities %}{{entity}}{% unless forloop.last %} • {% endunless %}{% endfor %}
                                     {% if item.program %}
                                     <span title="{{t.studies[page.lang]}}">📚</span> {% if item.program[page.lang] %}{{item.program[page.lang]}}{% else %}{{item.program}}{% endif %}
                                     {% endif %}

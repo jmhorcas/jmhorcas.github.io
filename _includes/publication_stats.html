@@ -47,3 +47,5 @@
 
 
 {% assign projects_count = site.projects | size %}
+{% assign tfms_count = site.supervision | where: "type", "tfm" | size %}
+{% assign tfgs_count = site.supervision | where: "type", "tfg" | size %}
