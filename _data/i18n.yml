@@ -82,9 +82,9 @@ journals:
 conferences:
   en: "Conferences"
   es: "Conferencias"
-internationals:
-  en: "Internationals"
-  es: "Internacionales"
+national:
+  en: "National 🇪🇸"
+  es: "Nacional 🇪🇸"
 nationals:
   en: "Nationals 🇪🇸"
   es: "Nacionales 🇪🇸"
@@ -127,9 +127,15 @@ registered_software:
 registered:
   en: "Registered"
   es: "Registrado"
+international:
+  en: "International 🇪🇺"
+  es: "Internacional 🇪🇺"
 internationals:
   en: "Internationals 🇪🇺"
   es: "Internacionales 🇪🇺"
+regional:
+  en: "Regional 🇺🇿"
+  es: "Regional 🇺🇿"
 regionals:
   en: "Regionals 🇺🇿"
   es: "Regionales 🇺🇿"
@@ -142,3 +148,27 @@ role:
 link:
   en: "Link"
   es: "Enlace"
+entities:
+  en: "Entities"
+  es: "Entidades"
+theses:
+  en: "PhD Dissertations"
+  es: "Tesis Doctorales"
+tfms:
+  en: "Master's Theses"
+  es: "Trabajos Fin de Máster"
+tfgs:
+  en: "Bachelor's Theses"
+  es: "Trabajos Fin de Grado"
+student:
+  en: "Student"
+  es: "Estudiante"
+supervisors:
+  en: "Supervisors"
+  es: "Directores"
+studies:
+  en: "Studies"
+  es: "Estudios"
+calification:
+  en: "Calification"
+  es: "Calificación"

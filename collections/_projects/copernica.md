@@ -1,5 +1,7 @@
 ---
-title: "COPERNICA: Business process collaboration for the good governance of shared services and data"
+title: 
+  en: "COPERNICA: Business process collaboration for the good governance of shared services and data"
+  es: "COPERNICA: Colaboración en procesos de negocio para el buen gobierno de servicios y datos compartidos"
 acronym: COPERNICA
 identifier: P20_01224
 funds: 164100.00
@@ -15,8 +17,10 @@ ips: María Teresa Gómez
 research_team: David Benavides, Diana Borrego, Rafael Ceballos, José Á. Galindo, Rafael Martínez, Pablo Neira, Antonia María Reina, Ángel Jesús Varela
 working_team:
 collaborating_team: Don Batory, Paolo Ceravolo, Alexander Felferning, José Miguel Horcas, Salvador Muñoz, María Luisa Parody, José Miguel Pérez, Belén Ramos, Álvaro Valencia, Moe Wynn
-role: Collaborating Researcher
-description: "The project focused on creating collaborative business process models to improve the governance and management of shared services and data. It aims to develop technical frameworks that ensure data integrity and efficient cooperation within digital business environments."
+role: 
+  en: Collaborating Researcher
+  es: Equipo Colaborador
+description: 
+  en: "The project focused on creating collaborative business process models to improve the governance and management of shared services and data. It aims to develop technical frameworks that ensure data integrity and efficient cooperation within digital business environments."
+  es: "El proyecto se centra en la creación de modelos de procesos de negocio colaborativos para mejorar la gobernanza y gestión de servicios y datos compartidos. Su objetivo es desarrollar marcos técnicos que garanticen la integridad de los datos y una cooperación eficiente dentro de entornos empresariales digitales."
 ---
-# {{ page.title }}
-Aquí va toda la explicación detallada de este proyecto...

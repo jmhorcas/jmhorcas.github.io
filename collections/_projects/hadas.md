@@ -1,5 +1,7 @@
 ---
-title: "HADAS: Tool for Analysis and Development of Sustainable Applications"
+title: 
+  en: "HADAS: Tool for Analysis and Development of Sustainable Applications"
+  es: "HADAS: Herramienta de Análisis y Desarrollo de Aplicaciones Sostenibles"
 acronym: HADAS
 identifier: TIN2015-64841-R
 funds: 90266.00
@@ -13,8 +15,10 @@ program: Programa Estatal de I+D+i Orientada a los Retos de la Sociedad
 ips: Lidia Fuentes
 research_team: Mónica Pinto, Mercedes Amor, Inmaculada Ayala, José Miguel Horcas, José Antonio Montenegro, Daniel Jesús Muñoz
 working_team: 
-role: Project Staff
-description: "The main goal of the project is to develop tools and methodologies for analyzing and reducing software energy consumption, promoting the development of sustainable applications."
+role: 
+  en: Project Staff
+  es: Equipo de Trabajo
+description: 
+  en: "The main goal of the project is to develop tools and methodologies for analyzing and reducing software energy consumption, promoting the development of sustainable applications."
+  es: "El objetivo principal del proyecto es desarrollar herramientas y metodologías para analizar y reducir el consumo energético del software, promoviendo el desarrollo de aplicaciones sostenibles."
 ---
-# {{ page.title }}
-Aquí va toda la explicación detallada de este proyecto...

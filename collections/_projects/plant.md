@@ -1,5 +1,7 @@
 ---
-title: "Líneas de productos software para la especialización inteligente de la producción agrícola sostenible"
+title: 
+  en: "Líneas de productos software para la especialización inteligente de la producción agrícola sostenible"
+  es: "Líneas de productos software para la especialización inteligente de la producción agrícola sostenible"
 acronym: PLANT
 identifier: DGP_PIDI_2024_01144
 funds: 187000.00
@@ -14,8 +16,8 @@ framework: "Estrategia de Investigación, Desarrollo e Innovación de Andalucía
 ips: David Benavides, José Á. Galindo
 research_team: Megha Bhushan, Mireia Corell González, Francisco José Domínguez Mayo, Antonio Manuel Gutiérrez Fernández, José Miguel Horcas, Alfonso Moriana Elvira, Pablo Neira Ayuso, Miguel Ángel Olivero González
 working_team: Ana Eva Chacón Luna, Antonio Javier Fernández Domínguez, Rafael Harana Mancilla, Noelia López Durán, Jesús Moreno León, Salvador Muñoz Hermoso, Víctor Hugo Rea Sánchez, David Romero Organvídez, José Manuel Sánchez Ruiz, José Antonio Zamudio Amaya
-role: Research Team
+role: 
+  en: Research Team
+  es: Equipo de Investigación
 description: ""
 ---
-# {{ page.title }}
-Aquí va toda la explicación detallada de este proyecto...

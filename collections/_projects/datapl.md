@@ -1,5 +1,7 @@
 ---
-title: "Data-intensive Software Product Lines"
+title: 
+  en: "Data-intensive Software Product Lines"
+  es: "Líneas de productos software intensivas en datos"
 acronym: Data-PL
 identifier: PID2022-138486OB-I00
 funds: 115375.00
@@ -14,8 +16,10 @@ framework: "Programa Estatal para Impulsar la Investigación Científico-Técnic
 ips: David Benavides, José Á. Galindo
 research_team: Megha Bhushan, Francisco José Domínguez, Pablo Neira
 working_team: Antonio Javier Fernández, Manuel Giménez, Antonio Manuel Gutiérrez, Hiba Hnaini, José Miguel Horcas, Antonio Germán Márquez, Raul Mazo, Leticia Morales, Salvador Muñoz, Miguel Ángel Olivero, David Romero Organvídez, José Antonio Zamudio, Francisco Sebastian Benitez, Noelia Lopez, Jesús Moreno, José Manuel Sánchez
-role: Project Staff
-description: "The project focuses on applying Software Product Line (SPL) engineering to data-intensive systems, specifically managing variability in how data is processed, transformed, and visualized."
+role: 
+  en: Project Staff
+  es: Equipo de Trabajo
+description: 
+  en: "The project focuses on applying Software Product Line (SPL) engineering to data-intensive systems, specifically managing variability in how data is processed, transformed, and visualized."
+  es: "El proyecto se centra en aplicar la ingeniería de Líneas de Productos de Software (SPL) a sistemas intensivos en datos, específicamente gestionando la variabilidad en la forma en que los datos son procesados, transformados y visualizados."
 ---
-# {{ page.title }}
-Aquí va toda la explicación detallada de este proyecto...

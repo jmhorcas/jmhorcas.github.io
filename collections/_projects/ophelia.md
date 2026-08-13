@@ -1,5 +1,7 @@
 ---
-title: "Optimización de Servicios Basados en Conocimiento Usando Aplicaciones Basadas en Servicios"
+title: 
+  en: "Optimización de Servicios Basados en Conocimiento Usando Aplicaciones Basadas en Servicios"
+  es: "Optimización de Servicios Basados en Conocimiento Usando Aplicaciones Basadas en Servicios"
 acronym: OPHELIA
 identifier: RTI2018-101204-B-C22
 funds: 147136.00
@@ -14,8 +16,10 @@ framework: "Plan Estatal de Investigación Científica y Técnica y de Innovaci�
 ips: Manuel Resinas Arias, David Benavides
 research_team: Beatriz Bernárdez, Adela del Río, Amador Durán, José Á. Galindo, Alfonso Eduardo Márquez, Pablo Neira, Joaquín Peña
 working_team: Margarita Cruz, Irene Bedilia Estrada, José Miguel Horcas, Víctor Hugo Rea, David Romero Organvídez
-role: Project Staff
-description: "The objective of OPHELIA is to optimize knowledge-intensive services by automating software product line analysis and improving the technical management of service-level indicators."
+role: 
+  en: Project Staff
+  es: Equipo de Trabajo
+description: 
+  en: "The objective of OPHELIA is to optimize knowledge-intensive services by automating software product line analysis and improving the technical management of service-level indicators."
+  es: "El objetivo de OPHELIA es optimizar los servicios intensivos en conocimiento mediante la automatización del análisis de líneas de productos de software y la mejora técnica de la gestión de niveles de servicio."
 ---
-# {{ page.title }}
-Aquí va toda la explicación detallada de este proyecto...

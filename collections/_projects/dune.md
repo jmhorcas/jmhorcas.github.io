@@ -1,5 +1,7 @@
 ---
-title: "DUNE: Variability, Configuration, and Continuous Deployment on Virtualization Platforms for IoT-Edge-Cloud"
+title: 
+  en: "DUNE: Variability, Configuration, and Continuous Deployment on Virtualization Platforms for IoT-Edge-Cloud"
+  es: "DUNE: Variabilidad, Configuración y Despliegue Continuo en plataformas de virtualización para IoT-Edge-Cloud"
 acronym: DUNE
 identifier: DGP_PIDI_2024_00092
 funds: 146000.00
@@ -13,8 +15,10 @@ program:
 ips: Lidia Fuentes, Mercedes Amor
 research_team: Lawrence Mandow, Mónica Pinto, Inmaculada Ayala, Joaquín Ballesteros, José Miguel Horcas, Daniel Jesús Muñoz
 working_team: 
-role: Research Team
-description: "The DUNE project proposes methods and tools for managing a dynamic continuous integration, delivery, and deployment (CI/CD) pipeline with variability, automating all activities related to the configuration and resource management of applications across the IoT-Edge-Cloud continuum."
+role: 
+  en: Research Team
+  es: Equipo de Investigación
+description: 
+  en: "The DUNE project proposes methods and tools for managing a dynamic continuous integration, delivery, and deployment (CI/CD) pipeline with variability, automating all activities related to the configuration and resource management of applications across the IoT-Edge-Cloud continuum."
+  es: "El proyecto DUNE propone métodos y herramientas para la gestión de un canal de integración, entrega y despliegue continuos (pipeline) dinámico con variabilidad, que automatice todas las actividades relacionadas con la configuración y gestión de recursos de aplicaciones del IoT-Edge-Cloud continuum."
 ---
-# {{ page.title }}
-Aquí va toda la explicación detallada de este proyecto...

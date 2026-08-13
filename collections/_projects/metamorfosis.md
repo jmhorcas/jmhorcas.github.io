@@ -1,5 +1,7 @@
 ---
-title: "METAMORFOSIS: Digital Transformation Framework through Software Customization on Data Management, Business Processes, and Security Governance"
+title: 
+  en: "METAMORFOSIS: Digital Transformation Framework through Software Customization on Data Management, Business Processes, and Security Governance"
+  es: "METAMORFOSIS: Marco dE Transformación digitAl Mediante Customización soFtware sobre gestiÓn de datos, proceSos de negocio y gobIerno de la Seguridad"
 acronym: METAMORFOSIS
 identifier: US-1381375
 funds: 90000.00
@@ -15,8 +17,10 @@ ips: David Benavides, María Teresa Gómez
 research_team: Diana Borrego, Rafael Ceballos, Rafael Corchuelo, Patricia Jiménez, María Luisa Parody, Antonia María Reina, Ángel Jesús Varela, José Á. Galindo
 working_team:
 collaborating_team: Francisco Javier Busto, Josep Carmona, Alexander Felferning, Eduardo Fernández-Medina, Antonio José García, José Miguel Horcas, Belén Ramos, Hassan Sleiman, Pedro Szekely, Álvaro Valencia
-role: Collaborating Researcher
-description: "The objective is to develop a digital transformation framework that automates software customization by integrating advanced data management, process optimization, and cybersecurity governance."
+role: 
+  en: Collaborating Researcher
+  es: Equipo Colaborador
+description: 
+  en: "The objective is to develop a digital transformation framework that automates software customization by integrating advanced data management, process optimization, and cybersecurity governance."
+  es: "El objetivo principal es desarrollar un marco de transformación digital que automatice la personalización de software, integrando la gestión avanzada de datos, la optimización de procesos y el gobierno de la ciberseguridad."
 ---
-# {{ page.title }}
-Aquí va toda la explicación detallada de este proyecto...

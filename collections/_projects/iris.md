@@ -1,5 +1,7 @@
 ---
-title: "Stepwise confIguRatIon of virtualized Services for sustainable and adaptive mobile networks"
+title: 
+  en: "Stepwise confIguRatIon of virtualized Services for sustainable and adaptive mobile networks"
+  es: "ConfIguRacIón multi-etapa de Servicios virtualizados para la adaptación sostenible de redes móviles"
 acronym: IRIS
 identifier: PID2021-122812OB-I00
 funds: 127897.00
@@ -14,8 +16,10 @@ framework: "Programa Estatal para Impulsar la Investigación Científico-Técnic
 ips: Lidia Fuentes, Mercedes Amor
 research_team: Mónica Pinto, Lawrence Mandow, Inmaculada Ayala, Joaquín Ballesteros, José Miguel Horcas, Daniel Jesús Muñoz
 working_team: 
-role: Research Team
-description: "IRIS develops techniques for configuring virtualized services in mobile networks, aiming for sustainable adaptation and energy efficiency through advanced software engineering."
+role: 
+  en: Research Team
+  es: Equipo de Investigación
+description: 
+  en: "IRIS develops techniques for configuring virtualized services in mobile networks, aiming for sustainable adaptation and energy efficiency through advanced software engineering."
+  es: "El proyecto IRIS desarrolla técnicas para configurar servicios virtualizados en redes móviles, buscando que se adapten de forma sostenible y consuman menos energía mediante ingeniería de software avanzada."
 ---
-# {{ page.title }}
-Aquí va toda la explicación detallada de este proyecto...

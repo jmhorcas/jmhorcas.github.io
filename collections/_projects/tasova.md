@@ -1,5 +1,7 @@
 ---
-title: "Network on New Trends in Software Architecture and Variability"
+title: 
+  en: "TASOVA: Network on New Trends in Software Architecture and Variability"
+  es: "TASOVA: Red en Nuevas Tendencias en Arquitectura Software y Variabilidad"
 acronym: TASOVA
 identifier: TIN2017-90644-REDT
 funds: 10000.00
@@ -15,9 +17,11 @@ framework: "Plan Estatal de Investigación Científica y Técnica y de Innovaci�
 ips: Lidia Fuentes
 research_team: 
 working_team: 
-role: Project Staff
-description: "The project aims to consolidate a national network of excellence dedicated to researching new trends in software architectures and variability management, facilitating the development of complex and dynamic systems such as the Internet of Things (IoT)."
+role: 
+  en: Project Staff
+  es: Equipo de Trabajo
+description: 
+  en: "The project aims to consolidate a national network of excellence dedicated to researching new trends in software architectures and variability management, facilitating the development of complex and dynamic systems such as the Internet of Things (IoT)."
+  es: "El proyecto tiene como objetivo principal consolidar una red nacional de excelencia dedicada a la investigación de nuevas tendencias en arquitecturas de software y la gestión de la variabilidad, facilitando el desarrollo de sistemas complejos y dinámicos como el Internet de las Cosas (IoT)."
 website: "http://tasova.uma.es/"
 ---
-# {{ page.title }}
-Aquí va toda la explicación detallada de este proyecto...

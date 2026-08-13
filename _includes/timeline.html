@@ -27,6 +27,10 @@
             {% for item in items %}
                 {% comment %} Reset item-level variables {% endcomment %}
                 {% assign authors = nil %}
+                {% assign author_index = nil %}
+                {% assign supervisors = nil %}
+                {% assign supervisors_index = nil %}
+                {% assign scope = nil %}
                 {% assign ips = nil %}
                 {% assign research_team = nil %}
                 {% assign working_team = nil %}
@@ -34,15 +38,16 @@
                 {% assign members = nil %}
                 {% assign entities = nil %}
                 {% assign title = nil %}
-                {% assign author_index = nil %}
                 {% assign item_year = nil %}
+                {% assign funding_entity = nil %}
+                {% assign call = nil %}
                 {% assign conference_title = nil %}
                 {% assign all_categories = nil %}
                 {% assign cat_project = nil %}
                 {% assign cat_pub_type = nil %}
                 {% assign cat_pub_conference_type = nil %}
                 {% assign cat_pub_track = nil %}
-
+                
                 {% comment %} Category filters {% endcomment %}
                 {% if type == "project" %}
                     {% assign cat_project = item.scope | downcase | strip %}
@@ -99,6 +104,26 @@
                     {% endfor %}
                 {% endif %}
 
+                {% if item.supervisors %}
+                    {% assign supervisors = item.supervisors | split: ", " %}
+                {% endif %}
+                {% if supervisors %}
+                    {% assign supervisors_index = -1 %}
+                    {% for supervisor in supervisors %}
+                        {% if supervisor == site.author %}
+                            {% assign supervisors_index = forloop.index %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+                {% comment %} Determine the scope for filtering {% endcomment %}
+
+                {% if item.scope %}
+                    {% assign scope = item.scope | downcase | strip %}
+                {% endif %}
+
+                {% comment %} Determine the year for filtering {% endcomment %}
+
                 {% if item.start_date %}
                     {% assign item_year = item.start_date | date: "%Y" %}
                 {% elsif item.date %}
@@ -126,6 +151,17 @@
                     {% assign entities = item.entity | split: ", " %}
                 {% endif %}
 
+                {% if item.funding_entity[page.lang] %}
+                    {% assign funding_entity = item.funding_entity[page.lang] %}
+                {% elsif item.funding_entity %}
+                    {% assign funding_entity = item.funding_entity %}
+                {% endif %}
+                {% if item.call[page.lang] %}
+                    {% assign call = item.call[page.lang] %}
+                {% elsif item.call %}
+                    {% assign call = item.call %}
+                {% endif %}
+
                 {% if item_year == year %}
                     <div class="timeline-item flex items-start gap-4 {{ all_categories }}" data-category="{{ all_categories }}">
                         <span class="timeline-dot {{ all_categories }}" data-category="{{ all_categories }}"></span>
@@ -144,6 +180,16 @@
                                         <span title="{{ t.duration[page.lang] }}">📆 </span><span class="format-date" data-date="{{ item.start_date }}">{{ item.start_date | date: "%d %b %Y" }}</span> - <span class="format-date" data-date="{{ item.end_date }}">{{ item.end_date | date: "%d %b %Y" }}</span> (<span class="duration-display"></span>)
                                     </span>
                                 {% endif %}
+                                {% if type == "community-service" %}
+                                    <span class="timeline-dates">
+                                        <span title="{{t.date[page.lang]}}{% if item.address %} • {{ t.location[page.lang] }}{% endif %}">🗺️ </span><span class="format-date" data-date="{{ item.date }}" data-format="month-year">{{ item.date | date: "%b %Y" }}</span>{% if item.address %} • <span>{% if item.address[page.lang] %}{{ item.address[page.lang] }}{% else %}{{ item.address }}{% endif %}</span>{% endif %}
+                                    </span>
+                                {% endif %}
+
+                                {% if item.calification %}
+                                    <span class="timeline-calification" title="{{t.calification[page.lang]}}">🎓 {% if item.calification[page.lang] %}{{item.calification[page.lang]}}{% else %}{{item.calification}}{% endif %}</span>
+                                {% endif %}
+
                                 {% if item.identifier %}
                                     <span class="timeline-title">{{title}}</span>
                                 {% endif %}
@@ -152,8 +198,15 @@
                                 {% endif %}
                             </div>
 
-                            {% if authors %}
-                                <div class="timeline-meta"><i class="fa-solid fa-users" title="{{t.authors[page.lang]}}"></i> ({{author_index}}/{{authors.size}}) {% for author in authors %}{% if author == site.author %}<u>{{author}}</u>{% else %}{{author}}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
+                            {% if authors and type != "supervision" %}
+                                <div class="timeline-meta"><i class="fa-solid fa-users" title="{{t.authors[page.lang]}}"></i> {% if author_index >= 0 %}({{author_index}}/{{authors.size}}){% endif %} {% for author in authors %}{% if author == site.author %}<u>{{author}}</u>{% else %}{{author}}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</div>
+                            {% endif %}
+
+                            {% if supervisors %}
+                                <div class="timeline-meta">
+                                    <span title="{{t.student[page.lang]}}">🧑‍🎓</span> {% if author_index >= 0 %}({{author_index}}/{{authors.size}}){% endif %} {% for author in authors %}{% if author == site.author %}<u>{{author}}</u>{% else %}{{author}}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}
+                                    <span title="{{t.supervisors[page.lang]}}">🧑‍🏫</span> {% for supervisor in supervisors %}{% if supervisor == site.author %}<u>{{supervisor}}</u>{% else %}{{supervisor}}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}
+                                </div>
                             {% endif %}
 
                             {% if item.journal %}
@@ -167,19 +220,24 @@
                             {% endif %}
 
                             {% if entities %}
-                                <div class="timeline-meta"><i class="fa-solid fa-building-columns" title="{{t.entity[page.lang]}}"></i>{% for entity in entities %}{{entity}}{% unless forloop.last %} • {% endunless %}{% endfor %}</div>
-                            {% endif %}
+                                <div class="timeline-meta">
+                                    <i class="fa-solid fa-building-columns" title="{{t.entities[page.lang]}}"></i> {% for entity in entities %}{{entity}}{% unless forloop.last %} • {% endunless %}{% endfor %}
+                                    {% if item.program %}
+                                    <span title="{{t.studies[page.lang]}}">📚</span> {% if item.program[page.lang] %}{{item.program[page.lang]}}{% else %}{{item.program}}{% endif %}
+                                    {% endif %}
+                                </div>
+                            {% endif %}                        
 
-                            {% if type != "project" %}
+                            {% if type != "project" and type != "community-service" %}
                                 {% if item.date or item.address %}
                                     <div class="timeline-meta"><span title="{{t.date[page.lang]}}{% if item.address %} • {{ t.location[page.lang] }}{% endif %}">🗺️ </span><span class="format-date" data-date="{{ item.date }}" data-format="month-year">{{ item.date | date: "%b %Y" }}</span>{% if item.address %} • <span>{% if item.address[page.lang] %}{{ item.address[page.lang] }}{% else %}{{ item.address }}{% endif %}</span>{% endif %}</div>
                                 {% endif %}
                             {% endif %}
                             
-                            {% if item.funds and (item.funding_entity or item.call) %}
+                            {% if item.funds and (funding_entity or call) %}
                                 <div class="timeline-meta">
                                     <i class="fa-solid fa-coins" title="{{t.funds[page.lang]}}"></i> <span class="format-number">{{ item.funds }}</span> € 
-                                    <i class="fa-solid fa-building-columns" title="{{t.funding_entity[page.lang]}} • {{t.call[page.lang]}}"></i><span> {{item.funding_entity}}{% if item.call %} • {{item.call}}{% endif %}</span>
+                                    <i class="fa-solid fa-building-columns" title="{{t.funding_entity[page.lang]}} • {{t.call[page.lang]}}"></i><span> {{funding_entity}}{% if call %} • {{call}}{% endif %}</span>
                                 </div>
                             {% endif %}
 
@@ -196,7 +254,7 @@
                             {% endif %}
 
                             {% if item.role %}
-                                <div class="timeline-meta"><i class="fa-regular fa-user" title="{{t.role[page.lang]}}"></i> {{item.role}}</div>
+                                <div class="timeline-meta"><i class="fa-regular fa-user" title="{{t.role[page.lang]}}"></i> {% if item.role[page.lang] %}{{item.role[page.lang]}}{% else %}{{item.role}}{% endif %}</div>
                             {% endif %}
 
                             {% if item.doi %}

@@ -1,5 +1,7 @@
 ---
-title: "Software product lines and multi-agent systems for the self-management of the IoT"
+title: 
+  en: "Software product lines and multi-agent systems for the self-management of the IoT"
+  es: "Líneas de producto software y sistemas Multiagente para la Auto-Gestión de sistemas"
 acronym: MAGIC
 identifier: P12-TIC1814
 funds: 163686.50
@@ -13,9 +15,11 @@ program:
 ips: Lidia Fuentes
 research_team: Mónica Pinto, Mercedes Amor, Inmaculada Ayala
 working_team: José Miguel Horcas, Daniel Jesús Muñoz
-role: "Project Staff: Predoctoral and Postdoctoral Researcher FPI Fellowship"
-description: "The goal of this project is to enhance software development processes of self-management systems for the IoT using software agents, which facilitates the reconfiguration of interconnected hetoregenous devices."
+role: 
+  en: "Project Staff: Predoctoral and Postdoctoral Researcher FPI Fellowship"
+  es: "Equipo de Trabajo: Investigador Predoctoral y Posdoctoral FPI"
+description: 
+  en: "The goal of this project is to enhance software development processes of self-management systems for the IoT using software agents, which facilitates the reconfiguration of interconnected hetoregenous devices."
+  es: "El objetivo de este proyecto es mejorar los procesos de desarrollo de software de sistemas de autogestión para el IoT utilizando agentes de software, lo que facilita la reconfiguración de dispositivos heterogéneos interconectados."
 website: "https://caosd.lcc.uma.es/magic/"
 ---
-# {{ page.title }}
-Aquí va toda la explicación detallada de este proyecto...

@@ -1,5 +1,7 @@
 ---
-title: "Automating the process of developing aspect-oriented applications using a model-driven approach"
+title: 
+  en: "Automating the process of developing aspect-oriented applications using a model-driven approach"
+  es: "Automatización del proceso de desarrollo de aplicaciones orientadas a aspectos usando un enfoque dirigido por modelos"
 acronym: RAP
 identifier: TIN2008-01942
 funds: 150040.00
@@ -15,8 +17,10 @@ framework: Plan Nacional de Investigación Científica, Desarrollo e Innovación
 ips: Lidia Fuentes
 research_team: Mónica Pinto, Mercedes Amor, José María Troya, Daniel Garrido
 working_team: Inmaculada Ayala, Nadia Gámez, José Miguel Horcas
-role: "Project Staff: Project-funded Specialist Technician"
-description: The goal of the project is the automation of software development using model-driven engineering and aspect-oriented programming to optimize complex systems and IoT environments.
+role: 
+  en: "Project Staff: Project-funded Specialist Technician"
+  es: "Equipo de Trabajo: Técnico Especialista con cargo a proyecto"
+description: 
+  en: The goal of the project is the automation of software development using model-driven engineering and aspect-oriented programming to optimize complex systems and IoT environments.
+  es: El objetivo del proyecto es la automatización del desarrollo de software mediante ingeniería dirigida por modelos y programación orientada a aspectos para optimizar sistemas complejos e IoT.
 ---
-# {{ page.title }}
-Aquí va toda la explicación detallada de este proyecto...

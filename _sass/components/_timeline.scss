@@ -106,6 +106,12 @@
     color: color-mix(in srgb, var(--color-accent-2) 65%, transparent);
 }
 
+.timeline-calification {
+    margin-left: auto;
+    letter-spacing: 0.02em;
+    color: color-mix(in srgb, var(--color-accent-2) 65%, transparent);
+}
+
 .timeline-meta {
     margin-top: 0.25rem;
     font-size: 0.9rem;

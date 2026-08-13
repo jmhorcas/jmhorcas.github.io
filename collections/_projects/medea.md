@@ -1,5 +1,7 @@
 ---
-title: "MEDEA: Methods and tools for deploying eco-efficient applications on the Edge"
+title: 
+  en: "MEDEA: Methods and tools for deploying eco-efficient applications on the Edge"
+  es: "MEDEA: Métodos y herramientas para el despliegue de aplicaciones eco-eficientes en el Edge"
 acronym: MEDEA
 identifier: RTI2018-099213-B-I00
 funds: 92565.00
@@ -13,8 +15,10 @@ program: Programa Estatal de I+D+i Orientada a los Retos de la Sociedad
 ips: Lidia Fuentes, Mónica Pinto
 research_team: Mercedes Amor, Inmaculada Ayala, Joaquín Ballesteros, José Miguel Horcas, José Antonio Montenegro, Daniel Jesús Muñoz
 working_team: 
-role: Project Staff
-description: "The project focuses on Edge Computing, specifically developing methodologies and software tools to ensure that applications deployed at the network edge are eco-efficient. This involves optimizing energy consumption and resource management in decentralized computing environments."
+role: 
+  en: Project Staff
+  es: Equipo de Trabajo
+description: 
+  en: "The project focuses on Edge Computing, specifically developing methodologies and software tools to ensure that applications deployed at the network edge are eco-efficient. This involves optimizing energy consumption and resource management in decentralized computing environments."
+  es: "El proyecto se centra en Edge Computing, específicamente en el desarrollo de metodologías y herramientas de software para garantizar que las aplicaciones desplegadas en el borde de la red sean eco-eficientes. Esto implica optimizar el consumo de energía y la gestión de recursos en entornos de computación descentralizados."
 ---
-# {{ page.title }}
-Aquí va toda la explicación detallada de este proyecto...
