@@ -5,7 +5,7 @@ title:
 entity: "Universidad de Málaga"
 date: 2018-07-17
 type: higher_education
-calification: "Sobresaliente «CUMLAUDE»"
+calification: "Sobresaliente «Cum Laude»"
 work: "Thesis: «WeaFQAs: A Software Product Line approach for customizing and weaving efficient Functional Quality Attributes»."
 doi: "http://hdl.handle.net/10630/17231"
 ---
