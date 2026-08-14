@@ -172,3 +172,24 @@ studies:
 calification:
   en: "Calification"
   es: "Calificación"
+education:
+  en: "Education"
+  es: "Formación Académica"
+hours:
+  en: "Hours"
+  es: "Horas"
+hours_abrv:
+  en: "hrs"
+  es: "h"
+higher_education:
+  en: "Higher Education"
+  es: "Educación Superior"
+technical_courses:
+  en: "Specialization & Technical Courses"
+  es: "Cursos de Especialización y Técnicos"
+training_courses:
+  en: "Doctoral & Research Training"
+  es: "Formación Doctoral y Académica Específica"
+seminars:
+  en: "Workshops, Seminars & Conferences"
+  es: "Jornadas, Talleres y Seminarios"

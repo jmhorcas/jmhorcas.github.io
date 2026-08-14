@@ -48,6 +48,7 @@
                 {% assign cat_pub_conference_type = nil %}
                 {% assign cat_pub_track = nil %}
                 {% assign cat_thesis = nil %}
+                {% assign cat_education = nil %}
                 
                 {% comment %} Category filters {% endcomment %}
                 {% if type == "project" %}
@@ -79,8 +80,10 @@
                     {% endif %}
                 {% elsif type == "supervision" %}
                     {% assign cat_thesis = item.type | downcase | strip %}
+                {% elsif type == "education" %}
+                    {% assign cat_education = item.type | downcase | strip %}
                 {% endif %}
-                {% assign all_categories = "" | append: cat_project | append: " " | append: cat_pub_type | append: " " | append: cat_pub_conference_type | append: " " | append: cat_pub_track | append: " " | append: cat_thesis | strip | replace: "  ", " " %}
+                {% assign all_categories = "" | append: cat_project | append: " " | append: cat_pub_type | append: " " | append: cat_pub_conference_type | append: " " | append: cat_pub_track | append: " " | append: cat_thesis | append: " " | append: cat_education | strip | replace: "  ", " " %}
 
                 {% comment %} Title fallback logic {% endcomment %}
                 {% if item.title[page.lang] %}
@@ -251,6 +254,12 @@
                                             {% endif %}
                                         </span>
                                     {% endif %}
+                                    {% if item.hours %}
+                                        <span class="timeline-calification"
+                                            title="{{t.hours[page.lang]}}">
+                                            🕒 {{item.hours}} {{t.hours_abrv[page.lang]}}
+                                        </span>
+                                    {% endif %}
 
                                 </div>
 
@@ -261,7 +270,7 @@
                             {% endif %}
 
                             {% if item.work %}
-                                <div class="timeline-meta"><span class="timeline-title">{{ item.work }}</span></div>
+                                <div class="timeline-meta"><span class="timeline-title">{% if item.work[page.lang] %}{{ item.work[page.lang] }}{% else %}{{ item.work }}{% endif %}</span></div>
                             {% endif %}
                             
                             {% if authors and type != "supervision" %}
@@ -294,7 +303,7 @@
                                 </div>
                             {% endif %}                        
 
-                            {% if type != "project" and type != "community-service" and type != "supervision" %}
+                            {% if type != "project" and type != "community-service" and type != "supervision" and type != "education" %}
                                 {% if item.date or item.address %}
                                     <div class="timeline-meta"><span title="{{t.date[page.lang]}}{% if item.address %} • {{ t.location[page.lang] }}{% endif %}">🗺️ </span><span class="format-date" data-date="{{ item.date }}" data-format="month-year">{{ item.date | date: "%b %Y" }}</span>{% if item.address %} • <span>{% if item.address[page.lang] %}{{ item.address[page.lang] }}{% else %}{{ item.address }}{% endif %}</span>{% endif %}</div>
                                 {% endif %}

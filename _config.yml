@@ -31,6 +31,9 @@ collections:
   supervision:
     output: true
     permalink: /supervision/:path/
+  education:
+    output: true
+    permalink: /education/:path/
 
 defaults:
   - scope:

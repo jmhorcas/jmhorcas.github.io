@@ -8,5 +8,5 @@ date: 2025-09-01
 supervisors: José Miguel Horcas, Laura Panizo
 type: tfg
 program: Grado en Ingeniería del Software
-calification: 7
+calification: 7.0
 ---

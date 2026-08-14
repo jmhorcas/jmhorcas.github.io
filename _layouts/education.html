@@ -1,0 +1,62 @@
+---
+layout: default
+---
+{% assign t = site.data.i18n %}
+{% assign collection_name = "education" %}
+{% assign items = site[collection_name] | sort: "date" | reverse %}
+
+<h1 class="prose">{{ page.title }} ({{items.size}})</h1>
+
+<div class="filter-wrapper">
+  <div class="filter-container">
+    <div class="filter-switch-group">
+
+      <label class="switch-label">
+        <input type="radio" name="timeline-filter" value="all" checked onclick="filterTimeline('all')">
+        <span class="switch-text">
+          {{t.all[page.lang]}}
+          <span data-count="all" class="badge">{{ items.size }}</span>
+        </span>
+      </label>
+
+      <label class="switch-label">
+        <input type="radio" name="timeline-filter" value="higher_education" onclick="filterTimeline('higher_education')">
+        <span class="switch-text">
+          <i class="fa-solid fa-circle" style="color: #000000;"></i>
+          {{t.higher_education[page.lang]}}
+          <span data-count="higher_education" class="badge">0</span>
+        </span>
+      </label>
+
+      <label class="switch-label">
+        <input type="radio" name="timeline-filter" value="technical_course" onclick="filterTimeline('technical_course')">
+        <span class="switch-text">
+          <i class="fa-solid fa-circle" style="color: #2ecc71;"></i>
+          {{t.technical_courses[page.lang]}}
+          <span data-count="technical_course" class="badge">0</span>
+        </span>
+      </label>
+
+      <label class="switch-label">
+        <input type="radio" name="timeline-filter" value="training_course" onclick="filterTimeline('training_course')">
+        <span class="switch-text">
+          <i class="fa-solid fa-circle" style="color: #196ca3;"></i>
+          {{t.training_courses[page.lang]}}
+          <span data-count="training_course" class="badge">0</span>
+        </span>
+      </label>
+
+    <label class="switch-label">
+        <input type="radio" name="timeline-filter" value="seminar" onclick="filterTimeline('seminar')">
+        <span class="switch-text">
+          <i class="fa-solid fa-circle" style="color: #ffd500;"></i>
+          {{t.seminars[page.lang]}}
+          <span data-count="seminar" class="badge">0</span>
+        </span>
+      </label>
+
+    </div>
+  </div>
+</div>
+
+{% include timeline.html items=items type="education" %}
