@@ -2,6 +2,7 @@
 layout: default
 title: "Tesis Doctoral"
 lang: es
+permalink: /es/thesis/
 ---
 # Tesis Doctoral
 

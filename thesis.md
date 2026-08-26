@@ -2,6 +2,7 @@
 layout: default
 title: "Ph.D. Thesis"
 lang: en
+permalink: /thesis/
 ---
 # Ph.D. Thesis
 
