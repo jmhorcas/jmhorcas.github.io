@@ -42,8 +42,18 @@
             {% assign value = pub[key] %}
             {% if value %}
                 <p>
-                    <strong>{{ labels[key] | default:key | capitalize }}:</strong>
-
+                    {% if key == 'handle' and pub.doi %}
+                        {% continue %}
+                    {% endif %}
+                    
+                    <strong>
+                        {%- if key == 'doi' or key == 'jcr' or key == 'icore' -%}
+                            {{ labels[key] | default:key | upcase }}
+                        {%- else -%}
+                            {{ labels[key] | default:key | capitalize }}
+                        {%- endif -%}
+                    </strong>:
+                    
                     {% case key %}
                     {% when "author" %}
                         {% assign authors = value | split:" and " -%}
