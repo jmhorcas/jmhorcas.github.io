@@ -8,5 +8,5 @@ date: 2026-09-26
 supervisors: Mónica Pinto, José Miguel Horcas
 type: tfg
 program: Grado en Ingeniería del Software
-calification: ""
+calification: 9.5
 ---
