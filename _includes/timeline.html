@@ -303,7 +303,7 @@
                                 </div>
                             {% endif %}                        
 
-                            {% if type != "project" and type != "community-service" and type != "supervision" and type != "education" %}
+                            {% if type != "project" and type != "community-service" and type != "education" %}
                                 {% if item.date or item.address %}
                                     <div class="timeline-meta"><span title="{{t.date[page.lang]}}{% if item.address %} • {{ t.location[page.lang] }}{% endif %}">🗺️ </span><span class="format-date" data-date="{{ item.date }}" data-format="month-year">{{ item.date | date: "%b %Y" }}</span>{% if item.address %} • <span>{% if item.address[page.lang] %}{{ item.address[page.lang] }}{% else %}{{ item.address }}{% endif %}</span>{% endif %}</div>
                                 {% endif %}
