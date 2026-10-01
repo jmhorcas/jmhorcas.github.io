@@ -1460,3 +1460,43 @@
   keywords     = {Software Product Lines, Feature Models, Universal Variability Language, UVL, Binary Decision Diagrams, BDD, Variability Analysis, Knowledge Compilation},
   note         = {external collaboration}
 }
+
+@article{Horcas2026_LLMs4UVL,
+  author       = {José Miguel Horcas and Joaquín Ballesteros and Mónica Pinto and Lidia Fuentes},
+  title        = {Do LLMs Know UVL? Quantifying Factual Knowledge and Generative Capabilities in Variability Engineering},
+  booktitle    = {International Conference on Software and Systems Reuse, Product Lines, and Configuration (VARIABILITY)},
+  address      = {Limassol, Cyprus},
+  year         = {2026},
+  month        = {sep},
+  publisher    = {Springer},
+  series       = {Lecture Notes in Computer Science},
+  abstract     = {The Universal Variability Language (UVL) aims to unify variability modeling in Software Product Lines, yet its formal and evolving nature poses challenges for automated support. At the same time, Large Language Models (LLMs) are increasingly used in software engineering tasks, but their understanding of technical modeling languages such as UVL remains largely unexplored. This paper presents a systematic methodology to quantify, analyze, and compare the factual knowledge and generative capability that LLMs possess about UVL. We adapt the extensive materialization technique to externalize the LLM knowledge into structured knowledge bases, and we construct a curated Ground Truth from official UVL resources to enable rigorous comparison. Using this framework, we evaluate four state-of-the-art LLMs in terms of precision, coverage, and hallucination rates. Furthermore, we assess their ability to generate syntactically and semantically correct UVL models from natural language descriptions under different knowledge conditions and across three expressiveness levels of UVL (Boolean, Arithmetic, and Type). Our results show that LLMs exhibit limited and fragmented knowledge of UVL, with a clear trade-off between coverage and reliability. While external knowledge significantly improves model generation, performance degrades as language expressiveness increases. These findings highlight fundamental limitations of current LLMs in handling formally defined modeling languages, and provide actionable insights and reusable resources to support future LLM-based UVL modeling tools.},
+  keywords     = {Factual Knowledge, Large Language Model, Extensive Materialization, UVL, Variability Model},
+}
+
+@article{Horcas2026_SMT,
+  author       = {José Miguel Horcas and Francisco Sebastián Benítez and José A. Galindo and David Benavides},
+  title        = {Automated Analysis of UVL using Satisfiability Modulo Theories},
+  booktitle    = {International Conference on Software and Systems Reuse, Product Lines, and Configuration (VARIABILITY)},
+  address      = {Limassol, Cyprus},
+  year         = {2026},
+  month        = {sep},
+  publisher    = {Springer},
+  series       = {Lecture Notes in Computer Science},
+  abstract     = {Automated variability analysis is central to Software Product Line Engineering, but has traditionally been restricted to Boolean Feature Models (FMs). The Universal Variability Language (UVL) extends this scope with typed (non-Boolean) features, attributes, and arithmetic constraints, making fully expressive models challenging for standard SAT- or BDD-based reasoning. In this paper, we address this limitation by presenting a complete formal representation of the full UVL language as a Satisfiability Modulo Theories (SMT) problem. Our encoding systematically captures the full expressiveness of UVL, including structural relations, complex constraints, typed features, attributes, and aggregate functions. Our approach is implemented using the Z3 solver, and is integrated within the state-of-the-art tools of the UVL ecosystem to facilitate the execution of the analysis operations. We evaluate our approach on a benchmark of 58 non-Boolean UVL models from the literature. The results show that complexity is primarily driven by arithmetic and attribute constraints rather than feature-selection variables. A comparative analysis with Boolean SAT solvers demonstrates that SAT-based reasoning over-approximates the configuration space and fails to detect semantically relevant properties such as dead and false-optional features when using language constructs beyond the Boolean level, while SMT ensures correctness with comparable performance for structural analyses. Our findings highlight the necessity of SMT-based reasoning for fully expressive UVL models and provide a foundation for accurate and scalable variability analysis in the presence of rich constraints.},
+  keywords     = {Automated Analysis, Feature Model, Formalization, Full Expressiveness, Non-Boolean, SMT, UVL},
+}
+
+@article{Horcas2026_UVLHighlight,
+  author       = {José Miguel Horcas and Chico Sundermann},
+  title        = {A Unified Visual Representation of UVL Models in Scientific Literature: The uvlhighlight Package},
+  booktitle    = {10th International Workshop on Languages for Modelling Variability ({MODEVAR} @ {VARIABILITY})},
+  address      = {Limassol, Cyprus},
+  year         = {2026},
+  month        = {sep},
+  publisher    = {Springer},
+  series       = {Lecture Notes in Computer Science},
+  abstract     = {The Universal Variability Language (UVL) has rapidly emerged as the open standard for feature modeling in Software Product Lines. However, its adoption has led to a fragmented visual landscape in scientific literature, where researchers rely on ad-hoc, error-prone LaTeX configurations that risk de-anonymization in double-blind reviews, break semantic indentations or fail to highlight advanced language constructs. This paper introduces emph{uvlhighlight}, a configurable, zero-dependency LaTeX package published on the Comprehensive TeX Archive Network (CTAN) that standardizes UVL typesetting. The package provides automatic syntax highlighting, multi-theme support (e.g., academic black-and-white, flamapy.ide, and UVLS dark modes), and specialized macros to foster safe code ingestion and artifact reproducibility. By unifying the visual grammar of UVL, emph{uvlhighlight} eliminates visual authorship signatures while enhancing the readability and precision of variability models in scientific venues.},
+  keywords     = {Syntax highlight, Feature Model, LaTeX, UVL, Variability},
+}
+
