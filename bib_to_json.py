@@ -25,9 +25,7 @@ def convert_bib_to_json(bib_file, output_file):
     if not os.path.exists('_data'):
         os.makedirs('_data')
 
-    with open(bib_file, encoding='utf-8') as f:
-        # Cargamos el archivo BibTeX
-        bib_database = bibtexparser.load(f)
+    bib_database = bibtexparser.parse_file(bib_file)
         
     entries = bib_database.entries
 
