@@ -25,27 +25,36 @@ def convert_bib_to_json(bib_file, output_file):
     if not os.path.exists('_data'):
         os.makedirs('_data')
 
-    bib_database = bibtexparser.parse_file(bib_file)
+    library = bibtexparser.parse_file(bib_file)
+    
+    formatted_entries = []
+    
+    for entry in library.entries:
+        # Extract fields as key-value pairs (strings)
+        entry_dict = {field.key: field.value for field in entry.fields}
         
-    entries = bib_database.entries
+        # Add metadata like entry_type and key if needed
+        entry_dict['ENTRYTYPE'] = entry.entry_type
+        entry_dict['ID'] = entry.key
 
-    # Process each entry to inject the formatted date attribute
-    for entry in entries:
-        year = entry.get('year', '0000')
-        raw_month = entry.get('month', '').strip().lower()
+        year = entry_dict.get('year', '0000')
+        raw_month = entry_dict.get('month', '').strip().lower()
         
         # Resolve the 2-digit representation of the month if available
         month_num = MONTH_MAP.get(raw_month, '00')
         
         # Combine into YYYY-MM format
-        entry['date'] = f"{year}-{month_num}-{'01'}"  # Defaulting to the first day of the month
+        entry_dict['date'] = f"{year}-{month_num}-01"
 
         # --- CAMBIO DE 'url' A 'handle' ---
-        if 'url' in entry:
-            entry['handle'] = entry.pop('url')
+        if 'url' in entry_dict:
+            entry_dict['handle'] = entry_dict.pop('url')
             
+        formatted_entries.append(entry_dict)
+    
     with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(entries, f, indent=4, ensure_ascii=False)
+        json.dump(formatted_entries, f, indent=4, ensure_ascii=False)
+
 
 if __name__ == "__main__":
     # Cambia 'mis_referencias.bib' por el nombre de tu archivo
