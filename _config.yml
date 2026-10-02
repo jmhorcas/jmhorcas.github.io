@@ -48,6 +48,6 @@ defaults:
       layout: "default"
 
 scholar:
-  citations: 849
+  citations: 877
   h_index: 17
   i10_index: 30
