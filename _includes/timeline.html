@@ -346,6 +346,18 @@
                                 <div class="timeline-meta"><span title="{{t.registered[page.lang]}}">®️ {{item.register}}</span></div>
                             {% endif %}
 
+                            {% if type == "publication" %}
+                                {% if item.awards %}
+                                <div class="timeline-meta">
+                                    <i class="fa-solid fa-trophy" title="{{t.awards[page.lang]}}"></i>
+                                        {% assign awards_list = item.awards | split: "," %}
+                                        {% for award in awards_list %}
+                                            <strong><em>«{{ award | strip }}»</em></strong>{% unless forloop.last %}, {% endunless %}
+                                        {% endfor %}
+                                </div>
+                                {% endif %}
+                            {% endif %}
+
                             {% if item.description %}
                                 <div class="timeline-desc">{{item.description[page.lang]}}</div>
                             {% endif %}             
