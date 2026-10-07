@@ -2,7 +2,7 @@
 title: "Best Paper Award"
 work: "Using models at runtime to adapt self-managed agents for the IoT"
 entity: 14th German Conference on Multiagent System Technologies (MATES)
-work_link: https://doi.org/10.1007/978-3-319-45889-2_12
+doi: https://doi.org/10.1007/978-3-319-45889-2_12
 authors: Inmaculada Ayala, José Miguel Horcas, Mercedes Amor, Lidia Fuentes
 date: 2016-09-30
 address: 

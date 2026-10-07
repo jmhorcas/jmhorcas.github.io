@@ -2,7 +2,7 @@
 title: "Best Paper Award"
 work: "Do LLMs Know UVL? Quantifying Factual Knowledge and Generative Capabilities in Variability Engineering"
 entity: International Conference on Software and Systems Reuse, Product Lines, and Configuration (VARIABILITY)
-work_link: ""
+doi: ""
 authors: José Miguel Horcas, Joaquín Ballesteros, Mónica Pinto, Lidia Fuentes
 date: 2026-10-01
 address: 
