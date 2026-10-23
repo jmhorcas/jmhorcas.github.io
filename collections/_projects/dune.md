@@ -5,8 +5,8 @@ title:
 acronym: DUNE
 identifier: DGP_PIDI_2024_00092
 funds: 146000.00
-start_date: 2025-01-01 
-end_date: 2026-12-31
+start_date: 2025-04-20 
+end_date: 2029-04-19
 months: 
 scope: regional
 funding_entity: Junta de Andalucía
