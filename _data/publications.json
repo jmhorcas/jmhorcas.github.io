@@ -1666,13 +1666,17 @@
         "address": "Limassol, Cyprus",
         "year": "2026",
         "month": "oct",
+        "volume": "17104",
+        "pages": "59--68",
         "publisher": "Springer",
         "series": "Lecture Notes in Computer Science",
+        "doi": "10.1007/978-3-032-40421-3_5",
         "abstract": "The Universal Variability Language (UVL) has rapidly emerged as the open standard for feature modeling in Software Product Lines. However, its adoption has led to a fragmented visual landscape in scientific literature, where researchers rely on ad-hoc, error-prone LaTeX configurations that risk de-anonymization in double-blind reviews, break semantic indentations or fail to highlight advanced language constructs. This paper introduces emph{uvlhighlight}, a configurable, zero-dependency LaTeX package published on the Comprehensive TeX Archive Network (CTAN) that standardizes UVL typesetting. The package provides automatic syntax highlighting, multi-theme support (e.g., academic black-and-white, flamapy.ide, and UVLS dark modes), and specialized macros to foster safe code ingestion and artifact reproducibility. By unifying the visual grammar of UVL, emph{uvlhighlight} eliminates visual authorship signatures while enhancing the readability and precision of variability models in scientific venues.",
         "keywords": "Syntax highlight, Feature Model, LaTeX, UVL, Variability",
         "note": "external collaboration",
         "ENTRYTYPE": "inproceedings",
         "ID": "Horcas2026_UVLHighlight",
-        "date": "2026-10-01"
+        "date": "2026-10-01",
+        "handle": "https://doi.org/10.1007/978-3-032-40421-3_5"
     }
 ]
