@@ -1,6 +1,6 @@
 ---
 title: "uvlhighlight"
-doi: 
+doi: "https://doi.org/10.1007/978-3-032-40421-3_5"
 website: https://ctan.org/pkg/uvlhighlight
 entity: Universidad de Málaga, TU Braunschweig
 authors: José Miguel Horcas, Chico Sundermann
