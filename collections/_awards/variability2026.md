@@ -10,7 +10,7 @@ address:
   es: Limassol, Chipre
 icon: 🥇
 images:
-  - "/assets/img/awards/variability2026.jpg"
+  - "/assets/img/awards/variability2026.png"
   - "/assets/img/awards/variability2026_b.jpg"
 description: 
   en: "Best Paper Award."
